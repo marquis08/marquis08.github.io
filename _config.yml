@@ -21,7 +21,7 @@ title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "YG SEO"
 description              : "Dev log"
-url                      : "https://marquis08.github.io"
+url                      : "https://marquis08.github.io/"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -94,9 +94,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "yilguk seo"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
+  name             : "Yilguk Seo"
+  avatar           : "/assets/images/GGU.jpg"
+  # "/assets/images/bio-photo.jpg"
+  bio              : "A DL/ML Engineer"
   location         : "Somewhere"
   email            :
   links:
