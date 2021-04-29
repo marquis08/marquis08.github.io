@@ -13,3 +13,7 @@ bundle exec jekyll serve
 
 year-archive.md file
 > <https://www.dsaint31.me/github.io/jekyll/minimal-mistakes/log4blog/blogging/jekyll-navigation/>
+
+
+zsh cheatsheet
+> <https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet>
