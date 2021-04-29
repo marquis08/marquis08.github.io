@@ -81,9 +81,9 @@ bash or zsh on CLI
 # VSCODE remote connection font broken
 server에서는 잘 보이는데  
 vscode remote connection으로 할때는 폰트가 깨진다.  
-window 환경이라서 그런거 같다.  
+windows 환경이라서 그런거 같다.  
 
-window 환경에서 powerline font 설치  
+windows 환경에서 powerline font 설치  
 download 받은 fonts-master directory로 가서 참고한 블로그대로 설치하면 된다.  
 설치후 원하는 powerline font 중 하나를
 
@@ -98,7 +98,6 @@ Terminal › Integrated: Font Family
 
 개인적으로 Space Mono for Powerline, Roboto Mono for Powerline, Cousine for Powerline 중에서   
 Cousine이 제일 적절해 보인다.
-
 
 
 >window 환경에서 powerline font 설치  <https://slmeng.medium.com/how-to-install-powerline-fonts-in-windows-b2eedecace58>
