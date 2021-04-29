@@ -1,8 +1,8 @@
 ---
 date: 2021-04-29
 title: "Change default shell in linux"
-categories: linux
-tags: linux, shell, zsh, bash
+# categories: linux
+# tags: linux, shell, zsh, bash
 # 목차
 toc: False  
 toc_sticky: true 
@@ -10,7 +10,7 @@ toc_label : "Index"
 ---
 
 Check current default shell
-```python
+```
 ps -p $$
 # or
 echo $0
@@ -19,7 +19,7 @@ echo $0
 ```
 
 Get all shells available
-```python
+```
 cat /etc/shells
 # in my case
 # /bin/sh
@@ -56,6 +56,7 @@ chsh -s $(which zsh)
 # or
 chsh -s /usr/bin/zsh
 ```
+
 ### change theme
 go to ~/.zshrc
 
@@ -63,23 +64,17 @@ go to ~/.zshrc
 # edit by vim
 vim ~/.zshrc
 ```
-```
-# change theme to whatever you want
+
+change theme to whatever you want
 ZSH_THEME="agnoster"
-```
 
 ### Change shell
 just type
 bash or zsh on CLI
 
 ### Showing only user name
-```
-prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-  fi
-}
-```
+
+
 > <https://stackoverflow.com/questions/31848957/zsh-hide-computer-name-in-terminal>
 
 
