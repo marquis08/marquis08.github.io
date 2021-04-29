@@ -1,8 +1,8 @@
 ---
 date: 2021-04-29
 title: "Change default shell in linux"
-# categories: linux
-# tags: linux, shell, zsh, bash
+categories: linux
+tags: linux, shell, zsh, bash
 # 목차
 toc: False  
 toc_sticky: true 
