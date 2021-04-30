@@ -9,7 +9,7 @@ toc_sticky: true
 toc_label : "Contents"
 ---
 
-> **Book - Python Algorithms**
+> **Book - Python Algorithms by Magnus Lie Hetland**
 
 # Chapter 2 - The Basics
 ## Asymptotic Notation (점근 표기법)
@@ -50,7 +50,7 @@ Commonalities:
 Differences:  
 - Array has an index, not List.
     - Array occupies consecutive memory spaces.
-    - This property makes array to find element much faster than List.
+    - This property makes array find element much faster than List.
 - Think of Linked List
     - Each items are spreaded in memory.
     - Each items can be accessed by its address of memory, not index.
