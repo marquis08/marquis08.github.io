@@ -282,5 +282,6 @@ defaults:
       share: true
       related: true
       mathjax: true
+      show_date: true
 
 remote_theme : mmistakes/minimal-mistakes
