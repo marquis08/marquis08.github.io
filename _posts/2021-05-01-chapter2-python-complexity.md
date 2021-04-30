@@ -2,7 +2,7 @@
 date: 2021-05-01 04:01
 title: "Chapter2 - The Basics - Python complexity"
 categories: Python Algorithms
-tags: Algorithms, timeit, cprofile, list comprehension, time complexity
+tags: Algorithms, timeit, cprofile, list-comprehension, time-complexity
 # 목차
 toc: True  
 toc_sticky: true 
