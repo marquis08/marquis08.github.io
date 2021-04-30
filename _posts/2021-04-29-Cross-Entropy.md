@@ -2,7 +2,7 @@
 date: 2021-04-29
 title: "Cross Entropy"
 categories: DevCourse2
-tags: DevCourse2, Probability, LossFunction
+tags: DevCourse2 Probability LossFunction
 # 목차
 toc: False  
 toc_sticky: true 

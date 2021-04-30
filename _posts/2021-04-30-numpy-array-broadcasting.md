@@ -2,7 +2,7 @@
 date: 2021-04-30
 title: "Numpy Array Broadcasting"
 categories: DevCourse2
-tags: DevCourse2, Numpy
+tags: DevCourse2 Numpy
 # 목차
 toc: True  
 toc_sticky: true 
