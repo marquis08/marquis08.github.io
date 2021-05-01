@@ -9,12 +9,18 @@ toc_sticky: true
 toc_label : "Contents"
 ---
 
+> **Book - Python Algorithms by Magnus Lie Hetland**
+
+# Loops and Recursion
 Loops and recursion are important for calculating complexity.
 
+# List Comprehension Big-O
 List Comprehension = $$O(n)$$, Linear Complexity
 
+# Algorithim Engineering
 Algorithm engineering: efficiently implementing algorithms reducing the hidden constants in that asymptotic complexity.
 
+# Python Profiler and timeit
 To find bottlenecks, use a profiler.  
 *cProfile*
 ```python
