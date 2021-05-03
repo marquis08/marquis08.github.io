@@ -9,10 +9,9 @@ toc_sticky: true
 toc_label : "Contents"
 ---
 
-# 1. 파이썬의 컴퓨팅 라이브러리, numpy
+# Numpy
 
-## Numpy 연산
-### Vector and Scalar
+## Vector and Scalar
 ```python
 import numpy
 x = np.array([1,2,3])
@@ -28,7 +27,7 @@ print("Division: \t\t{}\n".format(x / c))
 # Multiplication: [ 5 10 15]
 # Division:       [0.2 0.4 0.6]
 ```
-### Vector and Vector
+## Vector and Vector
 $$y = \begin{pmatrix}1\\3\\5\end{pmatrix}$$  $$z = \begin{pmatrix}2\\9\\20\end{pmatrix}$$
 
 ```python
@@ -46,7 +45,8 @@ print("Division: \t\t{}".format(y / z))
 # Division:       [0.5        0.33333333 0.25      ]
 ```
 
-$$y = \begin{pmatrix}1\\3\\5\end{pmatrix}$$  $$z = \begin{pmatrix}2\\9\\20\end{pmatrix}$$ $$y+z = \begin{pmatrix}3\\12\\25\end{pmatrix}$$
+$$y = \begin{pmatrix}1\\3\\5\end{pmatrix}$$  $$z = \begin{pmatrix}2\\9\\20\end{pmatrix}$$ $$y+z = \begin{pmatrix}3\\12\\25\end{pmatrix}$$  
+<br>
 
 # Linear Algebra With Numpy
 ## Zero Vector(Matrix)
