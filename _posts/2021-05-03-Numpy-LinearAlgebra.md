@@ -52,14 +52,37 @@ $$y = \begin{pmatrix}1\\3\\5\end{pmatrix}$$  $$z = \begin{pmatrix}2\\9\\20\end{p
 ## Zero Vector(Matrix)
 np.zeros(dim)
 ```python
+import numpy as np
 np.zeros(3)
 np.zeros((3,3,3))
+
+### Output ###
+# [0. 0. 0.] 
+
+# [[[0. 0. 0.]
+#   [0. 0. 0.]
+#   [0. 0. 0.]]
+
+#  [[0. 0. 0.]
+#   [0. 0. 0.]
+#   [0. 0. 0.]]
+
+#  [[0. 0. 0.]
+#   [0. 0. 0.]
+#   [0. 0. 0.]]]
 ```
 ## One Vector(Matrix)
 np.ones(dim)
 ```python
 np.ones(2)
 np.ones((3,3))
+
+### Output ###
+# [1. 1.]
+
+# [[1. 1. 1.]
+#  [1. 1. 1.]
+#  [1. 1. 1.]]
 ```
 ## Diagonal Matrix
 All zeros except main diagonal
@@ -67,6 +90,13 @@ np.diag((main_diagonal))
 ```python
 np.diag((2,4))
 np.diag((1,3,5))
+### Output ###
+# [[2 0]
+#  [0 4]]
+
+# [[1 0 0]
+#  [0 3 0]
+#  [0 0 5]]
 ```
 ## Identity Matrix
 All zeros except main diagonal are ones
@@ -74,6 +104,14 @@ np.eye()
 ```python
 np.eye(2, dtype=int) # n = 2 -> n*n
 np.eye(3)
+
+### Output ###
+# [[1 0]
+#  [0 1]]
+
+# [[1. 0. 0.]
+#  [0. 1. 0.]
+#  [0. 0. 1.]]
 ```
 ## Dot Product
 np.dot() or @
@@ -83,6 +121,13 @@ mat_2 = np.array([[7,9], [0,6]])
 
 mat_1.dot(mat_2)
 mat_1@mat_2
+
+### Output ###
+# [[ 7 33]
+#  [14 36]]
+
+# [[ 7 33]
+#  [14 36]]
 ```
 ## Trace
 The sum along diagonals of the array.  
@@ -92,6 +137,11 @@ arr = np.array([[1,2,3],[4,5,6],[7,8,9]])
 arr.trace()
 
 np.eye(2, dtype=int).trace()
+
+### Output ###
+# 15
+
+# 2
 ```
 ## Determinant
 The determinant of an array.  
@@ -102,6 +152,11 @@ np.linalg.det(arr_2)
 
 arr_3 = np.array([[1,4,7],[2,5,8],[3,6,9]])
 np.linalg.det(arr_3)
+
+### Output ###
+# 9.000000000000002
+
+# 0.0
 ```
 $$det(A) = 0$$ : Col vectors are linearly dependent.
 > If the determinant of a square matrix n×n A is zero, then A is not invertible. This is a crucial test that helps determine whether a square matrix is invertible, i.e., if the matrix has an inverse. When it does have an inverse, it allows us to find a unique solution, e.g., to the equation Ax=b given some vector b. When the determinant of a matrix is zero, the system of equations associated with it is **linearly dependent**; that is, if the determinant of a matrix is zero, at least one row of such a matrix is a scalar multiple of another.  
@@ -114,6 +169,14 @@ mat = np.array([[1,4,],[2,3]])
 mat_inv = np.linalg.inv(mat)
 
 mat@mat_inv
+
+### Output ###
+# inversed matrix
+# [[-0.6  0.8]
+#  [ 0.4 -0.2]]
+
+# [[ 1.00000000e+00  0.00000000e+00]
+#  [-1.11022302e-16  1.00000000e+00]]
 ```
 ## Eigenvalue and Eigenvector
 정방행렬(n x n)에 대해서 $$Ax = \lambda x$$를 만족하는 $$\lambda$$와 x를 각각 고유값과 고유벡터라고 한다.  
@@ -127,6 +190,16 @@ eig_val, eig_vec = np.linalg.eig(mat)
 mat @ eig_vec[:,0] # Ax
 # Using matrix broadcasting not dot product for lambda x
 eig_val[0] * eig_vec[:,0]# lambda x
+
+### Output ###
+# np.linalg.eig(mat)
+# (array([1., 2., 1.]), array([[0.        , 0.70710678, 0.89442719],
+#        [1.        , 0.70710678, 0.        ],
+#        [0.        , 0.        , 0.4472136 ]])) 
+
+# [0. 1. 0.] 
+
+# [0. 1. 0.]
 ```
 ## Getting L2 norm
 np.linalg.norm(x, ord=2)
