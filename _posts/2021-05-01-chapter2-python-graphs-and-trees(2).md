@@ -1,7 +1,7 @@
 ---
 date: 2021-05-02 03:00
 title: "Chapter2 - The Basics - Graphs and Trees(2)"
-categories: Python Algorithms
+categories: Python-Algorithms
 tags: Algorithms Graphs Trees Dict Set Hash Adjacency-List Adjacency-Set Traps sum extend float bunch-pattern
 # 목차
 toc: True  

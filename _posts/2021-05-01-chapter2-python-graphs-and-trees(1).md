@@ -1,7 +1,7 @@
 ---
 date: 2021-05-01 20:25
 title: "Chapter2 - The Basics - Graphs and Trees(1)"
-categories: Python Algorithms
+categories: Python-Algorithms
 tags: Algorithms Graphs Trees Dict Set Hash Adjacent-List Numpy
 # 목차
 toc: True  

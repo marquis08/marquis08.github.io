@@ -1,7 +1,7 @@
 ---
 date: 2021-05-01 00:32
 title: "Chapter2 - The Basics - Python List"
-categories: Python Algorithms
+categories: Python-Algorithms
 tags: Algorithms array List
 # 목차
 toc: True  
