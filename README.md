@@ -15,5 +15,9 @@ year-archive.md file
 > <https://www.dsaint31.me/github.io/jekyll/minimal-mistakes/log4blog/blogging/jekyll-navigation/>
 
 
+Google Analytics & Google Search Console
+> <https://devinlife.com/howto%20github%20pages/google-search-console-and-analytics/>
+
 zsh cheatsheet
 > <https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet>
+
