@@ -18,6 +18,9 @@ year-archive.md file
 Google Analytics & Google Search Console
 > <https://devinlife.com/howto%20github%20pages/google-search-console-and-analytics/>
 
+jekyll sitemap.xml
+> <https://moon9342.github.io/jekyll-sitemap>
+
 zsh cheatsheet
 > <https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet>
 
