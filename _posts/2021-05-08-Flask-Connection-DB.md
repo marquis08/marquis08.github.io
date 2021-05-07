@@ -1,5 +1,5 @@
 ---
-date: 2021-05-08 02:40
+date: 2021-05-08 02:41
 title: "Flask Connection to DB with SQLAlchemy - RESTful APIs"
 categories: DevCourse2 Flask
 tags: DevCourse2 Flask SQLAlchemy RESTful
