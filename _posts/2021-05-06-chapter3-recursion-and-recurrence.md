@@ -81,7 +81,7 @@ Found that *s* has a linear running time.
 #### ⛔ Caution ⛔
 This method, called the method of *repeated substitutions* (or sometimes the *iteration method* ), is perfectly valid, if you’re careful. However, it’s quite **easy to make an unwarranted assumption or two**, especially in more complex recurrences. This means you should probably treat the result as a hypothesis and then check your answer using the techniques described in the section “Guessing and Checking” later in this chapter.
 
-## [Table 3-1] Recurrence 5
+## Recurrence 5 [Table 3-1]
 a perfect binary tree  
 <img src="/assets/images/perfect-binary-tree.png" alt="" width="80%" height="80%">  
 
@@ -89,91 +89,19 @@ a perfect binary tree
 \\[ = {T(n/4) + 1} + 1 \\]
 \\[ = {T(n/8) + 1} + 1 + 1 \\]
 
+
+### Test
+
 #### Unraveling Recurrence
 This stepwise unraveling (or repeated substitution) is just the first step of our solution method. The general approach is as follows: 
-1. Unravel the recurrence until you see a pattern. 
-2. Express the pattern (usually involving a sum), using a line number variable, *i*. 
-3. Choose *i* so the recursion reaches its base case (and solve the sum).
+  1. Unravel the recurrence until you see a pattern. 
+  2. Express the pattern (usually involving a sum), using a line number variable, *i*. 
+  3. Choose *i* so the recursion reaches its base case (and solve the sum).
 
 The first step is what we have done already. Let’s have a go at step 2:  
 \\[ T(n) = T(n/2^{i}) + \sum_{k=1}^{i}1 \\]  
 For each unraveling (each line further down), we halve the problem size (that is, double the divisor) and add another unit of work (another 1).  
-We know we have *i* ones, so the sum is clearly just *i*. I’ve written it as a sum to show the general pattern of the method here.  $$ \sum_{k=1}^{i}1 = i $$.
+We know we have *i* ones, so the sum is clearly just *i*. I’ve written it as a sum to show the general pattern of the method here.  $$ \sum_{k=1}^{i}1 = i $$.  
 
-To get to the base case of the recursion, we must get T (n/2 i ) to become, say, T (1). That just means we have to halve our way from n to 1, which should be familiar by now: The recursion height is logarithmic, or $$ i = \log n $$.  
+To get to the base case of the recursion, we must get $$ T (n/2^{i}  )$$ to become, say, $$T(1)$$. That just means we have to halve our way from n to 1, which should be familiar by now: The recursion height is logarithmic, or $$ i = \log n $$.  
 Insert that into the pattern, and you get that $$T(n)$$ is, indeed, $$\theta(\log n)$$.  
-
-## [Table 3-1] Recurrence 6
-$$T(n) = 2T(n/2) + n$$  
-$$ = 2{2T(n/4) + n/2} + n$$  
-$$ = 2(2\{2T(n/8) + n/4\} + n/2) + n $$   
-$$ ... $$  
-$$ = 2^{i}T(n/2^{i}) + n\cdot i $$
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-### Assert (가정 설정문)
-assert는 뒤의 조건이 True가 아니면 AssertError를 발생한다.
-
-#### Assert 사용하는 이유:  
-어떤 함수는 성능을 높이기 위해 반드시 정수만을 입력받아 처리하도록 만들 수 있다. 이런 함수를 만들기 위해서는 반드시 함수에 정수만 들어오는지 확인할 필요가 있다. 이를 위해 if문을 사용할 수도 있고 '예외 처리'를 사용할 수도 있지만 '가정 설정문'을 사용하는 방법도 있다.  
-
-아래 코드는 함수 인자가 정수인지 확인하는 코드이다.  
-
-lists = [1, 3, 6, 3, 8, 7, 13, 23, 13, 2, 3.14, 2, 3, 7]  
-```python
-def test(t):
-    assert type(t) is int, '정수 아닌 값이 있네'
-
-for i in lists:
-    test(i)
-#결과
-AssertionError: 정수 아닌 값이 있네
-```
-#### Assert format
-assert 조건, '메시지'  
-'메시지'는 생략할 수 있다.  
-assert는 개발자가 프로그램을 만드는 과정에 관여한다. 원하는 조건의 변수 값을 보증받을 때까지 assert로 테스트 할 수 있다.  
-이는 단순히 에러를 찾는것이 아니라 값을 보증하기 위해 사용된다.  
-예를 들어 함수의 입력 값이 어떤 조건의 참임을 보증하기 위해 사용할 수 있고 함수의 반환 값이 어떤 조건에 만족하도록 만들 수 있다. 혹은 변수 값이 변하는 과정에서 특정 부분은 반드시 어떤 영역에 속하는 것을 보증하기 위해 가정 설정문을 통해 확인 할 수도 있다.  
-이처럼 실수를 가정해 값을 보증하는 방식으로 코딩 하기 때문에 이를 '방어적 프로그래밍'이라 부른다.  
-
-```python
->>> assert 2 + 2 == 4
->>> assert 2 + 2 == 3
-Traceback (most recent call last):
-  File "<interactive input>", line 1, in <module>
-AssertionError
-```
-```python
->>> assert 1 == False, "That can't be right."
-Traceback (most recent call last):
-  File "<interactive input>", line 1, in <module>
-AssertionError: That can't be right.
-```
-
-### Recurrence Relation (점화식)
-> In mathematics, a recurrence relation is an equation that recursively defines a sequence or multidimensional array of values, once one or more initial terms are given; each further term of the sequence or array is defined as a function of the preceding terms. 
-
----
-> python assert: <https://wikidocs.net/21050>  
-> docs: <https://python-reference.readthedocs.io/en/latest/docs/statements/assert.html>  
-> recurrence relation: <https://en.wikipedia.org/wiki/Recurrence_relation>
