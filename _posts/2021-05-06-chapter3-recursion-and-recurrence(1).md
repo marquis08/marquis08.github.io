@@ -2,7 +2,7 @@
 date: 2021-05-06 14:12
 title: "Chapter3 - Counting 101 - Recursion and Recurrence(1)"
 categories: Python-Algorithms
-tags: Algorithms Assert 
+tags: Algorithms Assert recursion recurrence
 # 목차
 toc: True  
 toc_sticky: true 
