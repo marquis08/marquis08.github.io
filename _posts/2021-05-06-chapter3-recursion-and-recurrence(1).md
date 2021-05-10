@@ -54,12 +54,20 @@ we implicitly assume that T(k) = Θ(1), for some constant k. That means we can i
 \\[ T(n) = T(n-1) + 1 \\]  
 This means that the time it takes to compute S(seq, i), which is T(n), is equal to the time required for the recursive call S(seq, i+1), which is T (n–1), plus the time required for the access seq[i], which is constant, or Θ(1).  
 > $$ \theta(n) = \theta(n-1) + \theta(1) $$.  
-> By removing constant $$\theta(1)$$, we can get $$\theta(n) = \theta(n-1)$$
+> By removing constant $$\theta(1)$$,  
+> we can get $$\theta(n) = \theta(n-1)$$
 
 As we know that $$T(n) = T(n-1)+1$$, replace *n* with *n-1*, then:  
-\\[T(n) = T(n-1) + 1\\]
-\\[ = T(n-2) + 1 + 1\\]
-\\[ = T(n-3) + 1 + 1 + 1\\]  
+
+$$\begin{align}
+T(n) & = T(n-1) + 1 \\
+& = T(n-2) + 1 + 1 \\
+& = T(n-3) + 1 + 1 + 1 \\
+\end{align}$$
+
+<!-- \\[T(n) = T(n-1) + 1\\]
+\\[ = T(n-2) + 1 + 1\\] -->
+<!-- \\[ = T(n-3) + 1 + 1 + 1\\]   -->
 The fact that $$ T(n–2) = T (n–3) + 1 $$ (the two boxed expressions) again follows from the original recurrence relation. It’s at this point we should see a pattern: Each time we reduce the parameter by one, the sum of the work (or time) we’ve unraveled (outside the recursive call) goes up by one.  
 
 If we unravel T (n) recursively i steps, we get the following:  
@@ -67,10 +75,19 @@ If we unravel T (n) recursively i steps, we get the following:
 where the level of recursion is expressed as a variable.  
 
 What we do is go right up to the base case and try to make $$T(n–i)$$ into $$T(1)$$, because we know, or implicitly assume, that $$T(1)$$ is $$\theta(1)$$, which would mean we had solved the entire thing. And we can easily do that by setting *i = n–1*:  
+
+$$\begin{align}
+T(n) & = T(n-(n-1)) + (n-1)\\
+& = T(1) + n - 1\\
+& = \theta(1) + n - 1\\
+& = \theta(n)\\
+\end{align}$$
+
+<!-- 
 \\[T(n) = T(n-(n-1)) + (n-1)\\]
 \\[ = T(1) + n - 1\\]
 \\[ = \theta(1) + n - 1\\]
-\\[ = \theta(n)\\]  
+\\[ = \theta(n)\\]   -->
 
 Found that *s* has a linear running time.
 
@@ -85,9 +102,16 @@ This method, called the method of *repeated substitutions* (or sometimes the *it
 a perfect binary tree  
 <img src="/assets/images/perfect-binary-tree.png" alt="" width="80%" height="80%">  
 
-\\[ T(n) = T(n/2) + 1 \\]
+$$\begin{align}
+T(n) & = T(n/2) + 1 \\
+& = {T(n/4) + 1} + 1 \\
+& = {T(n/8) + 1} + 1 + 1 \\
+\end{align}$$
+
+
+<!-- \\[ T(n) = T(n/2) + 1 \\]
 \\[ = {T(n/4) + 1} + 1 \\]
-\\[ = {T(n/8) + 1} + 1 + 1 \\]
+\\[ = {T(n/8) + 1} + 1 + 1 \\] -->
 
 
 ### Test
@@ -107,11 +131,20 @@ To get to the base case of the recursion, we must get $$ T (n/2^{i}  )$$ to beco
 Insert that into the pattern, and you get that $$T(n)$$ is, indeed, $$\theta(\log n)$$.  
 
 ## Recurrence 6 [Table 3-1]
-\\[ T(n) = 2T(n/2) + n \\]
+$$\begin{align}
+T(n) & = 2T(n/2) + n \\
+& = 2{2T(n/4) + n/2} + n \\
+& = 2(2\{2T(n/8) + n/4\} + n/2) + n  \\
+...  \\
+& = 2^{i}T(n/2^{i}) + n\cdot i  \\
+\end{align}$$
+
+
+<!-- \\[ T(n) = 2T(n/2) + n \\]
 \\[  = 2{2T(n/4) + n/2} + n \\]
 \\[  = 2(2\{2T(n/8) + n/4\} + n/2) + n  \\]
 \\[  ...  \\]
-\\[  = 2^{i}T(n/2^{i}) + n\cdot i  \\]  
+\\[  = 2^{i}T(n/2^{i}) + n\cdot i  \\]   -->
 
 Set $$i = logn$$. Assuming that $$T(1) = 1$$, we get the following:  
 \\[  T(n) = 1 + \sum_{k=0}^{\log n-1}(n/2^{k}) = \sum_{k=0}^{\log n}(n/2^{k}) \\]  
