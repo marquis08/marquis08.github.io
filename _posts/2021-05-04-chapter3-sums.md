@@ -2,7 +2,7 @@
 date: 2021-05-04 14:22
 title: "Chapter3 - Counting 101 - Sums"
 categories: Python-Algorithms
-tags: Algorithms array List
+tags: Algorithms array List recursion recurrence
 # 목차
 toc: True  
 toc_sticky: true 
