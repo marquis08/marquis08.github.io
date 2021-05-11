@@ -1,6 +1,6 @@
 ---
 date: 2021-05-10 15:24
-title: "Chapter4 - Induction, Recursion, and Reduction - Part(1/3)"
+title: "Chapter4 - Induction, Recursion, and Reduction - Part1"
 categories: Python-Algorithms
 tags: Algorithms recursion induction reduction
 # 목차
