@@ -2,7 +2,7 @@
 date: 2021-05-14 02:00
 title: "VScode Update in linux"
 categories: vscode
-tags: vscode linux
+tags: vscode linux markdown
 # 목차
 toc: True  
 toc_sticky: true 
