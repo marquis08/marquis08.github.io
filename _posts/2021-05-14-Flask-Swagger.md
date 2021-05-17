@@ -82,6 +82,32 @@ $ python cal.py
 
 
 
+Issue:  
+AttributeError: 'DummySession' object has no attribute 'query'  
+
+
+solution:  
+
+edit  ./resources/weapon.py
+```python
+from db import db
+## from 
+weapon_schema.load(weapon_json)
+## to
+weapon_schema.load(weapon_json, session=db.session)
+```  
+
+solution ref:  <https://www.gitmemory.com/issue/marshmallow-code/flask-marshmallow/44/508944019>
+
+
+---  
 
 ref:  
 > flask swagger: <https://nurilab.github.io/2020/04/19/we_do_swagger/>  
+
+> flask swagger: <https://minwook-shin.github.io/python-flask-restplus-swagger/>
+
+>  Flask + REST API + Swagger: <https://m.blog.naver.com/PostView.nhn?blogId=wideeyed&logNo=221571623994&proxyReferer=https:%2F%2Fwww.google.com%2F>
+
+> Flask, sqlalchemy, marshmallow <https://medium.com/analytics-vidhya/building-rest-apis-using-flask-restplus-sqlalchemy-marshmallow-cff76b202bfb>
+

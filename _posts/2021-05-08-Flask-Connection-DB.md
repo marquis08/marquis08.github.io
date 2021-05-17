@@ -9,11 +9,22 @@ toc_sticky: true
 toc_label : "Contents"
 ---
 # Flask and SQLAlchemy - RESTful APIs - connect to DB
-## Flask Shell
+## Flask Shell - create db fist
 Run Flask Shell on conda env or venv:  
 ```terminal
 flask shell
 ```
+```flask
+>>> from app import db, Menu
+>>> db.creat_all() # create db -> app.db is created at this point
+>>> Menu.query.all()
+[]
+
+```  
+To exit flask shell:  
+ctrl + d
+
+
 
 # Display GET POST DELETE PUT by screenshot
 ## 1. Run flask by(app.py):  
