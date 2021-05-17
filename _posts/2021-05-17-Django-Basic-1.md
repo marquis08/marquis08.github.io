@@ -1,6 +1,6 @@
 ---
 date: 2021-05-17 17:36
-title: "Django - Part 1"
+title: "Django Basic - Part 1"
 categories: DevCourse2 Django
 tags: DevCourse2 Django
 # 목차
