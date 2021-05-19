@@ -46,7 +46,7 @@ Groups, Users are also models as default when creating superuser
 
 ## Migration
 To let django know model infomation:  
-makemigration(notice to django about changes of models) -> migrate(save changes)  
+**makemigration**(notice to django about changes of models) -> **migrate**(save changes)  
 ```
 makemigrations == git add  
 migrate == git commit  
