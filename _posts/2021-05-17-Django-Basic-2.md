@@ -176,16 +176,13 @@ homepage/forms.py:
 ## Make forms.py
 ```python
 from django import forms
-
 from .models import Coffee
 
 # forms.ModelForm
-
 class CoffeeForm(forms.ModelForm): # ModelForm을 상속받는 CoffeForm 생성
     class Meta:
         model = Coffee # model
         fields = ('name', 'price', 'is_ice') # name, price, is_ice
-
 ```  
 
 ## Add to views.py
@@ -193,9 +190,7 @@ class CoffeeForm(forms.ModelForm): # ModelForm을 상속받는 CoffeForm 생성
 from django.shortcuts import HttpResponse, render
 from .models import Coffee
 from .forms import CoffeeForm
-
 ...
-
 def coffee_view(request):
     coffee_all = Coffee.objects.all() # all, get, filter, ...
     form = CoffeeForm()
@@ -211,7 +206,6 @@ coffee.html:
         {%raw%}{% for coffee in coffee_list %}{%endraw%}
             <p>{%raw%}{{coffee.name}}, {{coffee.price}}{%endraw%}</p>
         {%raw%}{% endfor%}{%endraw%}
-
         <form action="">
             {%raw%}{{ coffee_form.as_p}}{%endraw%} <!-- as_p: as paragraph -->
         </form>
