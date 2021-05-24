@@ -238,6 +238,7 @@ But got a error.
 ```
 django.db.utils.OperationalError: no such table: auth_user
 ```  
+
 Why?  
 No table exist since I didn't create any table yet.  
 (I intentionally skipped above execution creating DB with python shell)  
@@ -255,8 +256,9 @@ $ python manage.py migrate
 $ python manage.py createsuperuser
 ```  
 
-# Show Coffee list in coffee/
-1. Make a view in views.py  
+# Show Coffee list in coffee
+
+### 1. Make a view in views.py
 ```python
 from django.shortcuts import render
 from .models import Coffee
@@ -266,7 +268,8 @@ def coffee_list(request):
     my_coffee_list = Coffee.objects.all()
     return render(request, 'coffee_list.html', {"my_coffee_list":my_coffee_list})
 ```  
-2. Make a template for coffee_list  
+
+### 2. Make a template for coffee_list
 ```html
 <!DOCTYPE html>
 <html>
@@ -282,7 +285,8 @@ def coffee_list(request):
     </body>
 </html>
 ```  
-3. Add url to urls.py  
+
+### 3. Add url to urls.py
 ```python
 from django.contrib import admin
 from django.urls import path
@@ -295,7 +299,8 @@ urlpatterns = [
     path('admin/', admin.site.urls), #localhost/admin
 ]
 ```  
-4. Add Template path to TEMPLATES in setting.py  
+
+### 4. Add Template path to TEMPLATES in setting.py
 ```python
 TEMPLATES = [
     {
