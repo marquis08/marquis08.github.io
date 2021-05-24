@@ -322,6 +322,7 @@ D o n e !
 
 
 # Process
+
 1. Make Template dir and make html template (html file) (at app dir)
 2. Add Template dir in setting.py (at root proj)
 3. Add a View in views.py as render (at app dir)
