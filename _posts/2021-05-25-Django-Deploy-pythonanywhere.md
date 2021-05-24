@@ -99,4 +99,6 @@ reload
 
 
 ref:  
-> myteammate: <https://taksw222.tistory.com/64?category=481008>
+> myteammate 👍: <https://taksw222.tistory.com/64?category=481008>  
+> <https://windybay.net/post/2/>  
+> <https://morningbird.tistory.com/24>  
