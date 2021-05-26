@@ -94,8 +94,7 @@ I created venv at Main(manage.py) dir, so venv dir is like this:
 #### Reload
 reload
 #### Go to the site
-<yilgukseo.pythonanywhere.com>  
-
+[yilgukseo.pythonanywhere.com](yilgukseo.pythonanywhere.com)  
 
 
 ref:  
