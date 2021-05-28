@@ -10,7 +10,11 @@ toc_label : "Contents"
 ---
 
 # Just collect references so far.
+best for chart.js (2 years ago):  
+<https://www.youtube.com/watch?v=1OL5n06kO_w>  
 
+best for django rest api with chart.js, (4 years ago):  
+<https://www.youtube.com/watch?v=B4Vmm3yZPgc>  
 
 ref:  
 > <https://testdriven.io/blog/django-charts/>  
