@@ -12,12 +12,13 @@ toc_label : "Contents"
 While writing django code snippet, I found that it hides double curly brackets( {% raw %}{{}}{% endraw %} ).  
 Since Jekyll uses the Liquid templating language to process templates, Liquid's template language uses double curly brackets, also.  
 
-To show:  
+To show, use raw tag:  
 ```
 {% raw %} {{ }} {% endraw %}
 ```  
 
 Done!
+
 
 ref:  
 > stackoverflow: <https://stackoverflow.com/questions/24102498/escaping-double-curly-braces-inside-a-markdown-code-block-in-jekyll>
