@@ -50,6 +50,10 @@ $$\lambda$$ 값이 커질수록 $$\lVert \mathbf{w} \rVert^{2}$$의 값을 작�
 Random Variable: Continuous Random Variable(has PDF, CDF), Discrete Random Variable(has PMF)
 
 Sample space, Random variable X, Probability  
+
+![pdf-cdf](/assets/images/toss-1-coin.png){: .align-center .img-50}  
+![pdf-cdf](/assets/images/toss-1-coin.png){: .align-center .img-70}  
+
 <img src='/assets/images/toss-1-coin.png' width='40%' height='40%'>  
 <img src='/assets/images/random-variable-x.png' width='40%' height='40%'>  
 <img src='/assets/images/toss-3-coin.png' width='40%' height='40%'>  
@@ -66,6 +70,7 @@ In contrast, when a random variable takes values from a **continuum** then typic
 <!-- <img src='/assets/images/pdf-cdf.png' width='60%' height='60%'>   -->
 
 ![pdf-cdf](/assets/images/pdf-cdf.png){: .align-center}
+
 
 *On the left is the probability density function. On the right is the cumulative distribution function, which is the area under the probability density curve.*
 *(wikipedia)*  
