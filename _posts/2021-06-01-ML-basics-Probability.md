@@ -1,8 +1,8 @@
 ---
 date: 2021-06-01 11:21
 title: "ML basics - Probability"
-categories: DevCourse2 Probability
-tags: DevCourse2 Probability
+categories: DevCourse2 Probability Mathjax
+tags: DevCourse2 Probability Mathjax
 # 목차
 toc: true  
 toc_sticky: true 
