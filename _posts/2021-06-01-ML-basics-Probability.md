@@ -43,7 +43,8 @@ $$\begin{align}
 
 $$\lambda$$ 값이 커질수록 $$\lVert \mathbf{w} \rVert^{2}$$의 값을 작게 만들어준다.  
 
-<img src='/assets/images/lambda.png'>  
+![lambda](/assets/images/lambda.png){: .align-center .img-80}  
+<!-- <img src='/assets/images/lambda.png'>   -->
 출처: <https://towardsdatascience.com/understanding-regularization-in-machine-learning-d7dd0729dde5>
 
 # Random Variable
@@ -51,12 +52,14 @@ Random Variable: Continuous Random Variable(has PDF, CDF), Discrete Random Varia
 
 Sample space, Random variable X, Probability  
 
-![pdf-cdf](/assets/images/toss-1-coin.png){: .align-center .img-50}  
-![pdf-cdf](/assets/images/toss-1-coin.png){: .align-center .img-70}  
+![toss-1-coin](/assets/images/toss-1-coin.png){: .align-center .img-50}
+![random-variable-x](/assets/images/random-variable-x.png){: .align-center .img-50}
+![toss-3-coin](/assets/images/toss-3-coin.png){: .align-center .img-50}  
 
-<img src='/assets/images/toss-1-coin.png' width='40%' height='40%'>  
+
+<!-- <img src='/assets/images/toss-1-coin.png' width='40%' height='40%'>  
 <img src='/assets/images/random-variable-x.png' width='40%' height='40%'>  
-<img src='/assets/images/toss-3-coin.png' width='40%' height='40%'>  
+<img src='/assets/images/toss-3-coin.png' width='40%' height='40%'>   -->
 
 # Probability Distribution (Discrete Vs. Continuous)
 To define **probability distributions** for the specific case of **random variables** (so the sample space can be seen as a numeric set), it is common to distinguish between **discrete** and **continuous** random variables.  
@@ -82,8 +85,9 @@ A probability mass function differs from a probability density function (PDF) in
 The value of the random variable having the largest probability mass is called the **mode**.  
 Well-known discrete probability distributions used in statistical modeling include the **Poisson distribution**, the **Bernoulli distribution**, the **binomial distribution**, the **geometric distribution**, and **the negative binomial distribution**. Additionally, the **discrete uniform distribution** is commonly used in computer programs that make equal-probability random selections between a number of choices.  
 
-<!-- ![discrete-cdf](/assets/images/pmf.jpg){: .align-center} -->
-<img src='/assets/images/pmf.jpg' width='40%' height='40%'>  
+![pmf](/assets/images/pmf.jpg){: .align-center .img-40}
+<!-- <img src='/assets/images/pmf.jpg' width='40%' height='40%'>   -->
+
 #### CDF
 CDF of discrete random variables increases only by jump discontinuities—that is, its cdf increases only where it "jumps" to a higher value, and is constant between those jumps.  
 
@@ -96,7 +100,7 @@ There are many examples of continuous probability distributions: normal, uniform
 if $$I = [a,b]$$, then we would have:  
 \\[ P[a \le X \le b] = \int_{a}^{b}f(x)\ dx\\]  
 
-![discrete-cdf](/assets/images/pdf.jpg){: .align-center}
+![pdf](/assets/images/pdf.jpg){: .align-center}
 ### CDF
 \\[ F(x) = P[ -\infty< X \le x] = \int_{-\infty}^{x}f(x)\ dx\\]  
 <!-- <img src='/assets/images/continuous-cdf.png' width='20%' height='20%'>   -->
@@ -111,7 +115,7 @@ This probability is given by the **integral** of this variable's PDF over that r
 *(wikipedia)*   -->
 
 # Summary
-![summary](/assets/images/probability-summary.jpg){: .align-center}
+![summary](/assets/images/probability-summary.jpg){: .align-center .img-70}
 
 # Appendix
 ## Math Expression(mathjax)
