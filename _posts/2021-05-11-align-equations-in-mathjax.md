@@ -1,8 +1,8 @@
 ---
 date: 2021-05-11 15:29
 title: "Aligning Equations in mathjax"
-categories: Mathjax
-tags: Mathjax
+categories: MathJax
+tags: MathJax
 # 목차
 toc: True  
 toc_sticky: true 
