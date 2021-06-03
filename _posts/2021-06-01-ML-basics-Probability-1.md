@@ -11,8 +11,7 @@ toc_label : "Contents"
 
 > **Deep Learning Model's Outcome is the Probability of the Variable X**
 
-# Probability Part 1
-## Polynomial Curve Fitting
+# Polynomial Curve Fitting
 - Probability Theory
 - Decision Theory  
 
@@ -23,12 +22,12 @@ y(x,w) & = w_{0}+w_{1}x+w_{2}x^{2}+...+w_{M}x^{M} \\
 
 **Find $$w$$ is the purpose.**
 
-## Error Function (how to find $$w$$)
+# Error Function (how to find $$w$$)
 $$\begin{align}
 E(w) & = \frac{1}{2}\sum_{n=1}^{N} \{y(x_{n},w)-t_{n}\} ^{2}
 \end{align}$$
 
-## Regularization
+# Regularization
 $$\begin{align}
 \tilde{E}(w) = \frac{1}{2}\sum_{n=1}^{N} \{y(x_{n},w)-t_{n}\} ^{2} + \frac{\lambda}{2} \lVert \mathbf{w} \rVert^{2} \\
 where\ \lVert \mathbf{w} \rVert^{2} = w^{T}w = w_{0}^{2} + w_{1}^{2} + ... + w_{M}^{2}
