@@ -105,14 +105,71 @@ Jacobian Matrix: is the matrix of all first-order partial derivatives of a multi
 
 Note that when m=1 the Jacobian is same as the gradient because it is a generalization of the gradient.  <https://math.stackexchange.com/questions/1519367/difference-between-gradient-and-jacobian>  
 
-Jacobian Matrix가 Back propagation에 쓰이는 거 같은데 이건 내일 다시.  
+아무리 복잡한 함수라도 Jacobian Matrix를 구할 수 있다면, 새로 주어진 확률 변수에 대해서 밀도함수를 구할 수 있다는 것이 강력한 힘이다.  
 
+비선형변환이지만 작은 영역에서는 선형변환이지 않을까.  
+국소적 영역에서 선형변환으로 approx할 수 있지 않을까.  
 
 ## Inverse CDF Technique
+In probability and statistics, the **quantile function**, associated with a probability distribution of a random variable, **specifies the value of the random variable** such that the probability of the variable being less than or equal to that value equals the given probability. It is also called the percent-point function or inverse cumulative distribution function.   
+
+By cumulative distribution function we denote the function that returns probabilities of $$X$$ being smaller than or equal to some value $$x$$,  
+\\[ Pr(X \le x) = F(X) \\]  
+This function takes as input $$x$$ and returns values from the $$[0,1]$$ interval (probabilities)—let's denote them as $$p$$. The inverse of the cumulative distribution function (or quantile function) tells you what $$x$$ would make $$F(x)$$ return some value $$p$$,
+\\[ F^{−1}(p) = x \\]  
+![lambda](/assets/images/inverse-cdf.png){: .align-center}  
+
+In short:  
+CDF: x -> prob  
+ICDF: prob -> x
+
 # Expectations
+## Discrete Distribution
+Expectation of Discrete Distribution can be interpreted as weighted sum of$$p(x_{i})$$.  
+\\[ E[X] = \sum_{x_{i}\in \omega}x_{i}\ p(x_{i}) \\]  
+or  
+\\[ E[f] = \sum_{x}p(x)\ f(x) \\]  
+
+## Continuous Distribution
+\\[ E[X] = \int\ x\ f(x)\ dx \\]  
+or  
+\\[ E[f] = \int\ p(x)\ f(x)\ dx \\]  
+
+## Multiple Random Variables
+두 개의 변수 x, y의 경우:  
+\\[ E_{x}{[}f(x,y){]} = \sum_{x}f(x,y)p(x) \\]  
+여기서 x에 관해서 합을 해버리거나 적분을 해버리기 때문에 결과는 y에 관한 것들만 남게 된다.  
+따라서 y에 대한 함수이다.  
+
+두 개의 변수 모두에 대해 기대값을 구할때는 joint pdf가 주어지기 때문에 더하면 된다.
+\\[ E_{x,y}{[}f(x,y){]} = \sum_{y}\sum_{x}f(x,y)p(x,y)\\]  
+
+## Conditional Expectation
+\\[ E_{x}{[}f|y{]} = \sum_{x}f(x)p(x|y) \\]  
+
 ## Variance
+Variance is the expectation of the **squared deviation** of a random variable **from its mean**. The variance is the **square of the standard deviation**.  
+\\[ var[f] = E{[}(f(x)-E{[}f(x){]})^{2}{]} = E{[}f(x)^{2}{]} - E{[}f(x){]} ^{2} \\]  
+\\[ var[x] = E{[}x^{2}{]} - E{[}x{]} ^{2} \\]  
+
 ## Covariance
-# Frequentist Vs. Bayesian
+Covariance is a measure of the joint variability of two random variables. The sign of the covariance shows **the tendency in the linear relationship** between the variables.  
+
+for random variable x and y:  
+
+$$\begin{align}
+cov {[}x,y{]} &= E_{x,y}{[}{x-E{[}x{]} }{y-E{[}y{]} }{]} \\
+&= E_{x,y}{[}xy{]} - E{[}x{]} E{[}y{]} \\
+\end{align}$$  
+
+for vector of random variable $$\boldsymbol x$$ and $$\boldsymbol y$$:  
+
+$$\begin{align}
+cov {[}\boldsymbol x,\boldsymbol y{]} &= E_{\boldsymbol x,\boldsymbol y}{[}{\boldsymbol x-E{[}\boldsymbol x{]} }{y^{T} -E{[}\boldsymbol y^{T}{]} }{]} \\
+&= E_{\boldsymbol x,\boldsymbol y}{[}\boldsymbol x\boldsymbol y^{T}{]} - E{[}\boldsymbol x{]} E{[}\boldsymbol y^{T}{]} \\
+cov {[}\boldsymbol x,\boldsymbol y{]} &= cov {[}\boldsymbol x,\boldsymbol x{]}
+\end{align}$$  
+
 # Gaussian Distribution
 ## Normalization
 ## Expectation
@@ -133,6 +190,14 @@ $$\approx$$:
 $$\thickapprox$$:  
 ```
 \thickapprox
+```  
+$${[}escape-bracket{]}$$:
+```
+$${[}escape-bracket{]}$$:
+```  
+$$\boldsymbol y$$:  
+```
+$$\boldsymbol y$$
 ```
 
 ## Mutually Exclusive Vs. Independent
@@ -167,3 +232,8 @@ Hessian Matrix: is a square matrix of second-order partial derivatives of a scal
 > Probability Theory: <https://blog.naver.com/rokpilot/220603888519>  
 > Gradient, Jacobian, Hessian: <https://www.quora.com/What-is-the-difference-between-the-Jacobian-Hessian-and-the-gradient-in-machine-learning>  
 > Jacobian and gradient: <https://math.stackexchange.com/questions/1519367/difference-between-gradient-and-jacobian>  
+> Jacobian Matrix: <https://angeloyeo.github.io/2020/07/24/Jacobian.html>  
+> inverse CDF: <https://www.youtube.com/watch?v=-Fg6KEXIlVU>  
+> inverse CDF: <https://stats.stackexchange.com/questions/212813/help-me-understand-the-quantile-inverse-cdf-function>  
+> Expectations: <https://datascienceschool.net/02%20mathematics/07.02%20%EA%B8%B0%EB%8C%93%EA%B0%92%EA%B3%BC%20%ED%99%95%EB%A5%A0%EB%B3%80%EC%88%98%EC%9D%98%20%EB%B3%80%ED%99%98.html#id9>  
+
