@@ -190,7 +190,7 @@ MAE loss is useful if the training data is corrupted with outliers.
 
 Intuitively, we can think about it like this: If we only had to give one predction for all the observations that try to minimize MSE, then that prediction should be the **mean** of all target values. But if we try to minimize MAE, that prediction would be the **median** of all observations.  
 
-## MSE produces better on UnderPrediction. Why?  
+## MSE predicts less on UnderPrediction. Why?  
 ```
 #######################################
 ## SKF5 - MAE:			5.3994
