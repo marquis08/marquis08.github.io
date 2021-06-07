@@ -171,10 +171,56 @@ cov {[}\boldsymbol x,\boldsymbol y{]} &= cov {[}\boldsymbol x,\boldsymbol x{]}
 \end{align}$$  
 
 # Gaussian Distribution
-## Normalization
+정규 분포 또는 가우스 분포(Gaussian distribution)는 연속 확률 분포의 하나이다. 정규분포는 수집된 자료의 분포를 근사하는 데에 자주 사용되며, 이것은 중심극한정리에 의하여 독립적인 확률변수들의 평균은 정규분포에 가까워지는 성질이 있기 때문이다.  
+정규분포는 2개의 **매개 변수 평균** $$\mu$$ 과 **표준편차** $$\sigma$$ 에 대해 모양이 결정되고, 이때의 분포를 $$N(\mu ,\sigma ^{2})$$로 표기한다. 특히, 평균이 0이고 표준편차가 1인 정규분포 $$N(0,1)$$을 표준 정규 분포(standard normal distribution)라고 한다.  
+
+가우시안 분포의 확률밀도함수(PDF):  
+\\[ N(x|/mu, \sigma ^{2}) =  \frac{1}{(2\pi\sigma^{2})^{1/2}} exp \left(-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right) \\]  
+
+확률밀도함수가 주어졌을 때, 그 함수를 $$-\infty$$부터 $$\infty$$까지 적분했을때 그 값이 1이 되면 이 밀도함수는 normalized.  
+\\[ \int_{-\infty}^{\infty}\ N(x|\mu, \sigma^{2})dx = 1 \\]  
 ## Expectation
+\\[ E{[}x{]} = \mu \\]  
 ## Variance
+\\[ var{[}x{]} = \sigma^{2} \\]  
+
 ## Maximum Likelihood Solution
+$$\boldsymbol X = (x_{1},...,x_{N})^{T}$$가 독립적으로 같은 가우시안분포로부터 추출된 N개의 샘플들이라고 할 떄,  
+
+$$\begin{align}
+p(\boldsymbol X|\mu,\sigma^{2}) & = p(x_{1},...,x_{N}|\mu, \sigma^{2}) \\\\
+& = \Pi_{n=1}^{N}\ N(x|\mu, \sigma^{2})  \\\\
+& = N(x_{1}|\mu, \sigma^{2})\times\ N(x_{1}|\mu, \sigma^{2})\times\ ...\ \times\ N(x_{N}|\mu, \sigma^{2})
+\end{align}$$  
+
+$$p(\boldsymbol X|\mu,\sigma^{2})$$이 값을 최대화 시키는 $$\mu$$와 $$\sigma$$를 찾으려고 한다.  
+
+### $$\mu$$의 Maximum Likelihood Solution
+자연로그 $$\ln$$를 씌워서 푼다:  
+\\[ \ln\ p(\boldsymbol X|\mu,\sigma^{2}) = -\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} -\ \frac{N}{2}\ln\sigma^{2} -\ \frac{N}{2}\ln(2\pi) \\]  
+
+최대우도해를 구하기 위해서 로그를 씌운 후 **$$\mu$$**값으로 미분한다.  
+$$\begin{align}
+\frac{\partial}{\partial\mu}\ln\ p(\boldsymbol X|\mu,\sigma^{2}) &= \frac{\partial}{\partial\mu} \left\{-\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} - \frac{N}{2}\ln\ \sigma^{2} - \frac{N}{2}\ln(2\pi) \right\} \\\\
+&= -\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}2(x_{n}-\mu)\cdot(-1) \\\\
+&= \frac{1}{\sigma^{2}}\left\{ \left(\sum_{n=1}^{N}x_{n}\right) - N\mu \right\} 
+\end{align}$$  
+
+\\[ \mu_{ML} = \frac{1}{N} \sum_{n=1}{N}x_{n} \\]  
+*ML: Maximum Likelihood  
+가우시안 분포의 평균값을 데이터로부터 찾고 싶은데 N값을 관찰했을때 N개의 값을 평균을 내면 이 함수의 평균이 되지 않을까.  
+
+### $$\sigma^{2}$$의 Maximum Likelihood Solution
+$$y=\sigma^{2}$$  
+최대우도해를 구하기 위해서 로그를 씌운 후 **$$\sigma^{2}$$**값으로 미분한다.  
+
+$$\begin{align}
+\frac{\partial}{\partial y}\ln\ p(\boldsymbol X|y,\sigma^{2}) &= \frac{\partial}{\partial y} \left\{-\frac{1}{2}y^{-1} \sum_{n=1}^{N}(x_{n}-\mu_{ML})^{2} - \frac{N}{2}\ln y\ \sigma^{2} - \frac{N}{2}\ln(2\pi) \right\} \\\\
+&= \frac{1}{2}y^{-2} \sum_{n=1}^{N}2(x_{n}-\mu_{ML})^{2} - \frac{N}{2}y^{-1} \\\\
+\end{align}$$  
+
+\\[ y_{ML} = \sigma_{ML}^{2} = \frac{1}{N} \sum_{n=1}{N}(x_{n}-\mu_{ML})^{2} \\]  
+
 # Curve Fitting
 # Bayesian Curve Fitting
 
@@ -198,7 +244,26 @@ $${[}escape-bracket{]}$$:
 $$\boldsymbol y$$:  
 ```
 $$\boldsymbol y$$
+```  
+$$\left[\frac ab,c\right]$$:  
 ```
+$$\left[\frac ab,c\right]$$
+```  
+가변 괄호 with escape curly brackets    
+$$\left\{-\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} \right\}$$:  
+```
+$$\left\{-\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} \right\}$$ 
+```  
+가변 괄호 with brackets    
+$$\left[-\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} \right]$$:  
+```
+$$\left[-\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} \right]$$
+```  
+$$\cdot$$:  
+```
+$$\cdot$$
+```
+
 
 ## Mutually Exclusive Vs. Independent
 **Mutually exclusive** events cannot happen at the same time. For example: when tossing a coin, the result can either be heads or tails but cannot be both.  
