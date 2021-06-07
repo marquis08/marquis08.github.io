@@ -175,10 +175,10 @@ cov {[}\boldsymbol x,\boldsymbol y{]} &= cov {[}\boldsymbol x,\boldsymbol x{]}
 정규분포는 2개의 **매개 변수 평균** $$\mu$$ 과 **표준편차** $$\sigma$$ 에 대해 모양이 결정되고, 이때의 분포를 $$N(\mu ,\sigma ^{2})$$로 표기한다. 특히, 평균이 0이고 표준편차가 1인 정규분포 $$N(0,1)$$을 표준 정규 분포(standard normal distribution)라고 한다.  
 
 가우시안 분포의 확률밀도함수(PDF):  
-\\[ N(x|/mu, \sigma ^{2}) =  \frac{1}{(2\pi\sigma^{2})^{1/2}} exp \left(-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right) \\]  
+\\[ \mathcal{N}(x|/mu, \sigma ^{2}) =  \frac{1}{(2\pi\sigma^{2})^{1/2}} exp \left(-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right) \\]  
 
 확률밀도함수가 주어졌을 때, 그 함수를 $$-\infty$$부터 $$\infty$$까지 적분했을때 그 값이 1이 되면 이 밀도함수는 normalized.  
-\\[ \int_{-\infty}^{\infty}\ N(x|\mu, \sigma^{2})dx = 1 \\]  
+\\[ \int_{-\infty}^{\infty}\ \mathcal{N}(x|\mu, \sigma^{2})dx = 1 \\]  
 ## Expectation
 \\[ E{[}x{]} = \mu \\]  
 ## Variance
@@ -189,7 +189,7 @@ $$\boldsymbol X = (x_{1},...,x_{N})^{T}$$가 독립적으로 같은 가우시안
 
 $$\begin{align}
 p(\boldsymbol X|\mu,\sigma^{2}) & = p(x_{1},...,x_{N}|\mu, \sigma^{2}) \\\\
-& = \Pi_{n=1}^{N}\ N(x|\mu, \sigma^{2})  \\\\
+& = \Pi_{n=1}^{N}\ \mathcal{N}(x|\mu, \sigma^{2})  \\\\
 & = N(x_{1}|\mu, \sigma^{2})\times\ N(x_{1}|\mu, \sigma^{2})\times\ ...\ \times\ N(x_{N}|\mu, \sigma^{2})
 \end{align}$$  
 
@@ -221,11 +221,75 @@ $$\begin{align}
 
 \\[ y_{ML} = \sigma_{ML}^{2} = \frac{1}{N} \sum_{n=1}{N}(x_{n}-\mu_{ML})^{2} \\]  
 
-# Curve Fitting
+# Curve Fitting: Probabilistic Prospect
+Train data:  
+$$\boldsymbol x = (x_{1} , … , x_{N})^{T}, \boldsymbol t = (t_{1} , … , t_{N})$$  
+
+목표값 $$\boldsymbol t$$의 불확실성을 다음과 같이 확률분포로 나타낸다.  
+\\[ p(t|x, \boldsymbol w, \beta) = \mathcal{N}(t|y(x,\boldsymbol w),\beta^{-1})\\]  
+
+![lambda](/assets/images/func-y-x-w.png){: .align-center .img-60}  
+$$x_{0}$$라는 값에 대해서,  
+$$\boldsymbol w$$를 파라미터로 하는 $$y$$ 함수의 값이 있지만,  
+그 값에 대한 불확실성을 나타내기 위해 확률을 가정한다.  
+$$x_{0}$$가 주어졌을 때 $$t$$의 확률은 가우시안 분포를 따른다고 가정한다.(그림에서 파란선)  
+
+$$\mathcal{N}(t\mid y(x,\boldsymbol w),\beta^{-1})$$:  
+$$t\mid y(x,\boldsymbol w)$$인 근사식을 평균으로 가지고, $$\beta^{-1}$$을 분산으로 가지는 가우시안 분포.  
+따라서 이것의 확률 분포는 $$p(t\mid x, \boldsymbol w, \beta)$$이다.  
+
+## Maximum Likelihood of $$\boldsymbol w$$
+파라미터는 $$\boldsymbol w, \beta$$이고 파라미터들의 최대우도해를 구해보자.  
+- Likelihood Function:  
+\\[ p(\boldsymbol t|\boldsymbol X, \boldsymbol w, \beta) = \Pi_{n=1}^{N}\ \mathcal{N}(t_{n}|y(x_{n}, \boldsymbol w), \beta^{-1}) \\]  
+- Log Likelihood Function:  
+\\[ \ln\ p(\boldsymbol t|\boldsymbol X,\boldsymbol w,\beta) = -\frac{\beta}{2} \sum_{n=1}^{N} (y(x_{n}, \boldsymbol w)-t_{n})^{2} -\ \frac{N}{2}\ln\beta -\ \frac{N}{2}\ln(2\pi) \\]  
+
+$$\boldsymbol w$$에 관해서 우도함수를 최대화시키는 것은  
+제곱합 오차함수(sum-of-squares)($$\sum_{n=1}^{N} (y(x_{n}, \boldsymbol w)-t_{n})^{2}$$)를 최소화 시키는 것과 동일하다.  
+\\[ \sum_{n=1}^{N} (y(x_{n}, \boldsymbol w)-t_{n})^{2} \\]  
+
+## Maximum Likelihood of $$\beta$$
+\\[ \frac{1}{\beta_{ML}} = \frac{1}{N} \sum_{n=1}{N}(y(x_{n},\boldsymbol w_{ML})-t_{n})^{2} \\]  
+
+## Predictive Distribution
+가정:  
+\\[ p(t|x, \boldsymbol w, \beta) = \mathcal{N}(t|y(x,\boldsymbol w),\beta^{-1})\\]  
+
+Maximum Likelihood Solution:  
+\\[ p(t|x, \boldsymbol w_{ML}, \beta_{ML}) = \mathcal{N}(t|y(x,\boldsymbol w_{ML}),\beta_{ML}^{-1})\\]  
+
 # Bayesian Curve Fitting
+## Prior
+파라미터 $$\boldsymbol w$$의 사전확률(prior) 가정:  
 
+$$ p(\boldsymbol w\mid \alpha) = \mathcal{N}(\boldsymbol w\mid 0, \alpha^{-1}I) = \left(\frac{\alpha}{2\pi}\right)^{(M+1)/2}\ exp \left\{ -\frac{\alpha}{2}\boldsymbol w^{T}\boldsymbol w \right\} $$  
 
-# Rules of Probability
+$$\boldsymbol w$$의 사후확률(posterior)은 우도함수(likelihood)와 사전확률의 곱에 비례한다.  
+\\[ p(\boldsymbol w\mid \boldsymbol X,\ \boldsymbol t,\ \alpha,\ \beta) \propto p(\boldsymbol t\mid \boldsymbol X, \boldsymbol w,\beta)p(\boldsymbol w\mid \alpha)\\]  
+
+* $$A \propto B$$: A is directly proportional to B  
+
+이 사후확률을 최대화시키는 것은 아래 함수를 최소화시키는 것과 동일하다.  
+
+$$ \frac{\beta}{2}\sum_{n=1}{N}\{ y(x_{n}, \boldsymbol w)-t_{n} \}^{2} + \frac{\alpha}{2}\boldsymbol w^{T}\boldsymbol w $$  
+
+이것은 regularization에서 제곱합 오차함수를 최소화 시키는 것과 동일하다.  
+Regularization:  
+> $$\begin{align}\tilde{E}(w) = \frac{1}{2}(\ \sum_{n=1}^{N} \{y(x_{n},w)-t_{n}\} ^{2} + \lambda\sum_{n=1}^{N}w_{n}^{2}\ )\end{align}$$  
+> 이렇게 되는데 여기서 $$\lambda$$ 를 통해서 고차항의 parameters를 0에 가까운 값으로 만들어 주어 적당한 2차항의 함수로 만들어주는 정규화를 실행.  
+> $$\lambda$$ 값이 커질수록 $$\lVert \mathbf{w} \rVert^{2}$$의 값을 작게 만들어준다. <https://marquis08.github.io/devcourse2/probability/mathjax/ML-basics-Probability-1/>  
+
+통찰:  
+t에 관해서 가우시안 분포를 가정했을때, 최대우도를 만들어내는 $$\boldsymbol w$가 결국 제곱합 오차함수를 푸는 해와 동일.  
+추가적으로 w에 관해서도 가우시안 분포를 가정했을때, 사후확률을 최대화 시키는 것은 규제화부분을 포함시켜서 $$\boldsymbol w$ 구하는 것과 동일하다.  
+
+## Bayesian Curve Fitting
+이제까지 $$t$$의 예측 분포를 구하기 위해 여전히 $$\boldsymbol w$의 점추정에 의존해 왔다. 완전한 베이지안 방법은 $$\boldsymbol w$의 분포로부터 확률의 기본법칙만을 사용해서 $$t$$의 예측분포를 유도한다.  
+\\[ p(t\mid x, \boldsymbol X, \boldsymbol t) = \int\ p(t\mid x,\boldsymbol w)p(\boldsymbol w\mid \boldsymbol X, \boldsymbol t)d\boldsymbol w \\]  
+
+이 예측분포도 가우시안 분포고, 평균벡터와 공분산 행렬을 구할 수 있다.  
+
 
 # Appendix
 ## MathJax
