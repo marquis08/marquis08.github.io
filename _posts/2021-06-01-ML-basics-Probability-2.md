@@ -79,7 +79,7 @@ The key underlying Bayes' theorem is that new evidence does not completely deter
 
 #### Normalization
 In probability theory, a normalizing constant is a constant by which an everywhere non-negative function must be multiplied so the area under its graph is 1, e.g., to **make it a probability density function or a probability mass function**.  
-베이즈 정리에서 $$P(E)$$ 가 normalizing constant 라고 보면된다.  
+베이즈 정리에서 $$P(\mathbb E)$$ 가 normalizing constant 라고 보면된다.  
 
 
 ## Marginal Probaility istribution & Conditional Probaility Distribution
@@ -90,13 +90,13 @@ Marginal probability doesn’t tell about the specific probability(i.e. each cel
 
 # Functions of Random Variables
 ## Joint PDF
-k차원의 확률변수 벡터 $$\boldsymbol x = (x_{1} , … , x_{k})$$ 가 주어졌을때,  
-확률변수벡터 $$\boldsymbol y = (y_{1} , … , y_{k})$$ 를 정의한다.  
-$$\boldsymbol y =\boldsymbol g(\boldsymbol x)$$ 로 나타낼 수 있다.  
-ex. $$\boldsymbol y_{1} =\boldsymbol g_{1}(x_{1} , … , x_{k})$$  
-만약 $$\boldsymbol y =\boldsymbol g(\boldsymbol x)$$ 가 일대일 변환인 경우,  
-$$\boldsymbol y$$의 Joint PDF는  
-\\[ P_{\boldsymbol y}\ (y_{1} , … , y_{k}) = P_{\boldsymbol x}\ (x_{1} , … , x_{k})\ |J| \\]  
+k차원의 확률변수 벡터 $$\bold x = (x_{1} , … , x_{k})$$ 가 주어졌을때,  
+확률변수벡터 $$\bold y = (y_{1} , … , y_{k})$$ 를 정의한다.  
+$$\bold y =\bold g(\bold x)$$ 로 나타낼 수 있다.  
+ex. $$\bold y_{1} =\bold g_{1}(x_{1} , … , x_{k})$$  
+만약 $$\bold y =\bold g(\bold x)$$ 가 일대일 변환인 경우,  
+$$\bold y$$의 Joint PDF는  
+\\[ P_{\bold y}\ (y_{1} , … , y_{k}) = P_{\bold x}\ (x_{1} , … , x_{k})\ |J| \\]  
 $$J$$ is the matrix of all its first-order partial derivatives.*(wikipedia)*
 
 ### Jacobian Matrix
@@ -126,31 +126,31 @@ ICDF: prob -> x
 # Expectations
 ## Discrete Distribution
 Expectation of Discrete Distribution can be interpreted as weighted sum of$$p(x_{i})$$.  
-\\[ E[X] = \sum_{x_{i}\in \omega}x_{i}\ p(x_{i}) \\]  
+\\[ \mathbb E[X] = \sum_{x_{i}\in \omega}x_{i}\ p(x_{i}) \\]  
 or  
-\\[ E[f] = \sum_{x}p(x)\ f(x) \\]  
+\\[ \mathbb E[f] = \sum_{x}p(x)\ f(x) \\]  
 
 ## Continuous Distribution
-\\[ E[X] = \int\ x\ f(x)\ dx \\]  
+\\[ \mathbb E[X] = \int\ x\ f(x)\ dx \\]  
 or  
-\\[ E[f] = \int\ p(x)\ f(x)\ dx \\]  
+\\[ \mathbb E[f] = \int\ p(x)\ f(x)\ dx \\]  
 
 ## Multiple Random Variables
 두 개의 변수 x, y의 경우:  
-\\[ E_{x}{[}f(x,y){]} = \sum_{x}f(x,y)p(x) \\]  
+\\[ \mathbb E_{x}{[}f(x,y){]} = \sum_{x}f(x,y)p(x) \\]  
 여기서 x에 관해서 합을 해버리거나 적분을 해버리기 때문에 결과는 y에 관한 것들만 남게 된다.  
 따라서 y에 대한 함수이다.  
 
 두 개의 변수 모두에 대해 기대값을 구할때는 joint pdf가 주어지기 때문에 더하면 된다.
-\\[ E_{x,y}{[}f(x,y){]} = \sum_{y}\sum_{x}f(x,y)p(x,y)\\]  
+\\[ \mathbb E_{x,y}{[}f(x,y){]} = \sum_{y}\sum_{x}f(x,y)p(x,y)\\]  
 
 ## Conditional Expectation
-\\[ E_{x}{[}f|y{]} = \sum_{x}f(x)p(x|y) \\]  
+\\[ \mathbb E_{x}{[}f|y{]} = \sum_{x}f(x)p(x|y) \\]  
 
 ## Variance
 Variance is the expectation of the **squared deviation** of a random variable **from its mean**. The variance is the **square of the standard deviation**.  
-\\[ var[f] = E{[}(f(x)-E{[}f(x){]})^{2}{]} = E{[}f(x)^{2}{]} - E{[}f(x){]} ^{2} \\]  
-\\[ var[x] = E{[}x^{2}{]} - E{[}x{]} ^{2} \\]  
+\\[ var[f] = \mathbb E{[}(f(x)-\mathbb E{[}f(x){]})^{2}{]} = \mathbb E{[}f(x)^{2}{]} - \mathbb E{[}f(x){]} ^{2} \\]  
+\\[ var[x] = \mathbb E{[}x^{2}{]} - \mathbb E{[}x{]} ^{2} \\]  
 
 ## Covariance
 Covariance is a measure of the joint variability of two random variables. The sign of the covariance shows **the tendency in the linear relationship** between the variables.  
@@ -158,16 +158,16 @@ Covariance is a measure of the joint variability of two random variables. The si
 for random variable x and y:  
 
 $$\begin{align}
-cov {[}x,y{]} &= E_{x,y}{[}{x-E{[}x{]} }{y-E{[}y{]} }{]} \\
-&= E_{x,y}{[}xy{]} - E{[}x{]} E{[}y{]} \\
+cov {[}x,y{]} &= \mathbb E_{x,y}{[}{x-\mathbb E{[}x{]} }{y-\mathbb E{[}y{]} }{]} \\
+&= \mathbb E_{x,y}{[}xy{]} - \mathbb E{[}x{]} \mathbb E{[}y{]} \\
 \end{align}$$  
 
-for vector of random variable $$\boldsymbol x$$ and $$\boldsymbol y$$:  
+for vector of random variable $$\bold x$$ and $$\bold y$$:  
 
 $$\begin{align}
-cov {[}\boldsymbol x,\boldsymbol y{]} &= E_{\boldsymbol x,\boldsymbol y}{[}{\boldsymbol x-E{[}\boldsymbol x{]} }{y^{T} -E{[}\boldsymbol y^{T}{]} }{]} \\
-&= E_{\boldsymbol x,\boldsymbol y}{[}\boldsymbol x\boldsymbol y^{T}{]} - E{[}\boldsymbol x{]} E{[}\boldsymbol y^{T}{]} \\
-cov {[}\boldsymbol x,\boldsymbol y{]} &= cov {[}\boldsymbol x,\boldsymbol x{]}
+cov {[}\bold x,\bold y{]} &= \mathbb E_{\bold x,\bold y}{[}{\bold x-\mathbb E{[}\bold x{]} }{y^{T} -\mathbb E{[}\bold y^{T}{]} }{]} \\
+&= \mathbb E_{\bold x,\bold y}{[}\bold x\bold y^{T}{]} - \mathbb E{[}\bold x{]} \mathbb E{[}\bold y^{T}{]} \\
+cov {[}\bold x,\bold y{]} &= cov {[}\bold x,\bold x{]}
 \end{align}$$  
 
 # Gaussian Distribution
@@ -180,28 +180,28 @@ cov {[}\boldsymbol x,\boldsymbol y{]} &= cov {[}\boldsymbol x,\boldsymbol x{]}
 확률밀도함수가 주어졌을 때, 그 함수를 $$-\infty$$부터 $$\infty$$까지 적분했을때 그 값이 1이 되면 이 밀도함수는 normalized.  
 \\[ \int_{-\infty}^{\infty}\ \mathcal{N}(x|\mu, \sigma^{2})dx = 1 \\]  
 ## Expectation
-\\[ E{[}x{]} = \mu \\]  
+\\[ \mathbb E{[}x{]} = \mu \\]  
 ## Variance
 \\[ var{[}x{]} = \sigma^{2} \\]  
 
 ## Maximum Likelihood Solution
-$$\boldsymbol X = (x_{1},...,x_{N})^{T}$$가 독립적으로 같은 가우시안분포로부터 추출된 N개의 샘플들이라고 할 떄,  
+$$\bold X = (x_{1},...,x_{N})^{T}$$가 독립적으로 같은 가우시안분포로부터 추출된 N개의 샘플들이라고 할 떄,  
 
 $$\begin{align}
-p(\boldsymbol X|\mu,\sigma^{2}) & = p(x_{1},...,x_{N}|\mu, \sigma^{2}) \\\\
+p(\bold X|\mu,\sigma^{2}) & = p(x_{1},...,x_{N}|\mu, \sigma^{2}) \\\\
 & = \Pi_{n=1}^{N}\ \mathcal{N}(x|\mu, \sigma^{2})  \\\\
 & = N(x_{1}|\mu, \sigma^{2})\times\ N(x_{1}|\mu, \sigma^{2})\times\ ...\ \times\ N(x_{N}|\mu, \sigma^{2})
 \end{align}$$  
 
-$$p(\boldsymbol X|\mu,\sigma^{2})$$이 값을 최대화 시키는 $$\mu$$와 $$\sigma$$를 찾으려고 한다.  
+$$p(\bold X|\mu,\sigma^{2})$$이 값을 최대화 시키는 $$\mu$$와 $$\sigma$$를 찾으려고 한다.  
 
 ### $$\mu$$의 Maximum Likelihood Solution
 자연로그 $$\ln$$를 씌워서 푼다:  
-\\[ \ln\ p(\boldsymbol X|\mu,\sigma^{2}) = -\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} -\ \frac{N}{2}\ln\sigma^{2} -\ \frac{N}{2}\ln(2\pi) \\]  
+\\[ \ln\ p(\bold X|\mu,\sigma^{2}) = -\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} -\ \frac{N}{2}\ln\sigma^{2} -\ \frac{N}{2}\ln(2\pi) \\]  
 
 최대우도해를 구하기 위해서 로그를 씌운 후 **$$\mu$$**값으로 미분한다.  
 $$\begin{align}
-\frac{\partial}{\partial\mu}\ln\ p(\boldsymbol X|\mu,\sigma^{2}) &= \frac{\partial}{\partial\mu} \left\{-\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} - \frac{N}{2}\ln\ \sigma^{2} - \frac{N}{2}\ln(2\pi) \right\} \\\\
+\frac{\partial}{\partial\mu}\ln\ p(\bold X|\mu,\sigma^{2}) &= \frac{\partial}{\partial\mu} \left\{-\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} - \frac{N}{2}\ln\ \sigma^{2} - \frac{N}{2}\ln(2\pi) \right\} \\\\
 &= -\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}2(x_{n}-\mu)\cdot(-1) \\\\
 &= \frac{1}{\sigma^{2}}\left\{ \left(\sum_{n=1}^{N}x_{n}\right) - N\mu \right\} 
 \end{align}$$  
@@ -215,7 +215,7 @@ $$y=\sigma^{2}$$
 최대우도해를 구하기 위해서 로그를 씌운 후 **$$\sigma^{2}$$**값으로 미분한다.  
 
 $$\begin{align}
-\frac{\partial}{\partial y}\ln\ p(\boldsymbol X|y,\sigma^{2}) &= \frac{\partial}{\partial y} \left\{-\frac{1}{2}y^{-1} \sum_{n=1}^{N}(x_{n}-\mu_{ML})^{2} - \frac{N}{2}\ln y\ \sigma^{2} - \frac{N}{2}\ln(2\pi) \right\} \\\\
+\frac{\partial}{\partial y}\ln\ p(\bold X|y,\sigma^{2}) &= \frac{\partial}{\partial y} \left\{-\frac{1}{2}y^{-1} \sum_{n=1}^{N}(x_{n}-\mu_{ML})^{2} - \frac{N}{2}\ln y\ \sigma^{2} - \frac{N}{2}\ln(2\pi) \right\} \\\\
 &= \frac{1}{2}y^{-2} \sum_{n=1}^{N}2(x_{n}-\mu_{ML})^{2} - \frac{N}{2}y^{-1} \\\\
 \end{align}$$  
 
@@ -223,56 +223,56 @@ $$\begin{align}
 
 # Curve Fitting: Probabilistic Prospect
 Train data:  
-$$\boldsymbol x = (x_{1} , … , x_{N})^{T}, \boldsymbol t = (t_{1} , … , t_{N})$$  
+$$\bold x = (x_{1} , … , x_{N})^{T}, \bold t = (t_{1} , … , t_{N})$$  
 
-목표값 $$\boldsymbol t$$의 불확실성을 다음과 같이 확률분포로 나타낸다.  
-\\[ p(t|x, \boldsymbol w, \beta) = \mathcal{N}(t|y(x,\boldsymbol w),\beta^{-1})\\]  
+목표값 $$\bold t$$의 불확실성을 다음과 같이 확률분포로 나타낸다.  
+\\[ p(t|x, \bold w, \beta) = \mathcal{N}(t|y(x,\bold w),\beta^{-1})\\]  
 
 ![lambda](/assets/images/func-y-x-w.png){: .align-center .img-60}  
 $$x_{0}$$라는 값에 대해서,  
-$$\boldsymbol w$$를 파라미터로 하는 $$y$$ 함수의 값이 있지만,  
+$$\bold w$$를 파라미터로 하는 $$y$$ 함수의 값이 있지만,  
 그 값에 대한 불확실성을 나타내기 위해 확률을 가정한다.  
 $$x_{0}$$가 주어졌을 때 $$t$$의 확률은 가우시안 분포를 따른다고 가정한다.(그림에서 파란선)  
 
-$$\mathcal{N}(t\mid y(x,\boldsymbol w),\beta^{-1})$$:  
-$$t\mid y(x,\boldsymbol w)$$인 근사식을 평균으로 가지고, $$\beta^{-1}$$을 분산으로 가지는 가우시안 분포.  
-따라서 이것의 확률 분포는 $$p(t\mid x, \boldsymbol w, \beta)$$이다.  
+$$\mathcal{N}(t\mid y(x,\bold w),\beta^{-1})$$:  
+$$t\mid y(x,\bold w)$$인 근사식을 평균으로 가지고, $$\beta^{-1}$$을 분산으로 가지는 가우시안 분포.  
+따라서 이것의 확률 분포는 $$p(t\mid x, \bold w, \beta)$$이다.  
 
-## Maximum Likelihood of $$\boldsymbol w$$
-파라미터는 $$\boldsymbol w, \beta$$이고 파라미터들의 최대우도해를 구해보자.  
+## Maximum Likelihood of $$\bold w$$
+파라미터는 $$\bold w, \beta$$이고 파라미터들의 최대우도해를 구해보자.  
 - Likelihood Function:  
-\\[ p(\boldsymbol t|\boldsymbol X, \boldsymbol w, \beta) = \Pi_{n=1}^{N}\ \mathcal{N}(t_{n}|y(x_{n}, \boldsymbol w), \beta^{-1}) \\]  
+\\[ p(\bold t|\bold X, \bold w, \beta) = \Pi_{n=1}^{N}\ \mathcal{N}(t_{n}|y(x_{n}, \bold w), \beta^{-1}) \\]  
 - Log Likelihood Function:  
-\\[ \ln\ p(\boldsymbol t|\boldsymbol X,\boldsymbol w,\beta) = -\frac{\beta}{2} \sum_{n=1}^{N} (y(x_{n}, \boldsymbol w)-t_{n})^{2} -\ \frac{N}{2}\ln\beta -\ \frac{N}{2}\ln(2\pi) \\]  
+\\[ \ln\ p(\bold t|\bold X,\bold w,\beta) = -\frac{\beta}{2} \sum_{n=1}^{N} (y(x_{n}, \bold w)-t_{n})^{2} -\ \frac{N}{2}\ln\beta -\ \frac{N}{2}\ln(2\pi) \\]  
 
-$$\boldsymbol w$$에 관해서 우도함수를 최대화시키는 것은  
-제곱합 오차함수(sum-of-squares)($$\sum_{n=1}^{N} (y(x_{n}, \boldsymbol w)-t_{n})^{2}$$)를 최소화 시키는 것과 동일하다.  
-\\[ \sum_{n=1}^{N} (y(x_{n}, \boldsymbol w)-t_{n})^{2} \\]  
+$$\bold w$$에 관해서 우도함수를 최대화시키는 것은  
+제곱합 오차함수(sum-of-squares)($$\sum_{n=1}^{N} (y(x_{n}, \bold w)-t_{n})^{2}$$)를 최소화 시키는 것과 동일하다.  
+\\[ \sum_{n=1}^{N} (y(x_{n}, \bold w)-t_{n})^{2} \\]  
 
 ## Maximum Likelihood of $$\beta$$
-\\[ \frac{1}{\beta_{ML}} = \frac{1}{N} \sum_{n=1}{N}(y(x_{n},\boldsymbol w_{ML})-t_{n})^{2} \\]  
+\\[ \frac{1}{\beta_{ML}} = \frac{1}{N} \sum_{n=1}{N}(y(x_{n},\bold w_{ML})-t_{n})^{2} \\]  
 
 ## Predictive Distribution
 가정:  
-\\[ p(t|x, \boldsymbol w, \beta) = \mathcal{N}(t|y(x,\boldsymbol w),\beta^{-1})\\]  
+\\[ p(t|x, \bold w, \beta) = \mathcal{N}(t|y(x,\bold w),\beta^{-1})\\]  
 
 Maximum Likelihood Solution:  
-\\[ p(t|x, \boldsymbol w_{ML}, \beta_{ML}) = \mathcal{N}(t|y(x,\boldsymbol w_{ML}),\beta_{ML}^{-1})\\]  
+\\[ p(t|x, \bold w_{ML}, \beta_{ML}) = \mathcal{N}(t|y(x,\bold w_{ML}),\beta_{ML}^{-1})\\]  
 
 # Bayesian Curve Fitting
 ## Prior
-파라미터 $$\boldsymbol w$$의 사전확률(prior) 가정:  
+파라미터 $$\bold w$$의 사전확률(prior) 가정:  
 
-$$ p(\boldsymbol w\mid \alpha) = \mathcal{N}(\boldsymbol w\mid 0, \alpha^{-1}I) = \left(\frac{\alpha}{2\pi}\right)^{(M+1)/2}\ exp \left\{ -\frac{\alpha}{2}\boldsymbol w^{T}\boldsymbol w \right\} $$  
+$$ p(\bold w\mid \alpha) = \mathcal{N}(\bold w\mid 0, \alpha^{-1}I) = \left(\frac{\alpha}{2\pi}\right)^{(M+1)/2}\ exp \left\{ -\frac{\alpha}{2}\bold w^{T}\bold w \right\} $$  
 
-$$\boldsymbol w$$의 사후확률(posterior)은 우도함수(likelihood)와 사전확률의 곱에 비례한다.  
-\\[ p(\boldsymbol w\mid \boldsymbol X,\ \boldsymbol t,\ \alpha,\ \beta) \propto p(\boldsymbol t\mid \boldsymbol X, \boldsymbol w,\beta)p(\boldsymbol w\mid \alpha)\\]  
+$$\bold w$$의 사후확률(posterior)은 우도함수(likelihood)와 사전확률의 곱에 비례한다.  
+\\[ p(\bold w\mid \bold X,\ \bold t,\ \alpha,\ \beta) \propto p(\bold t\mid \bold X, \bold w,\beta)p(\bold w\mid \alpha)\\]  
 
 * $$A \propto B$$: A is directly proportional to B  
 
 이 사후확률을 최대화시키는 것은 아래 함수를 최소화시키는 것과 동일하다.  
 
-$$ \frac{\beta}{2}\sum_{n=1}{N}\{ y(x_{n}, \boldsymbol w)-t_{n} \}^{2} + \frac{\alpha}{2}\boldsymbol w^{T}\boldsymbol w $$  
+$$ \frac{\beta}{2}\sum_{n=1}{N}\{ y(x_{n}, \bold w)-t_{n} \}^{2} + \frac{\alpha}{2}\bold w^{T}\bold w $$  
 
 이것은 regularization에서 제곱합 오차함수를 최소화 시키는 것과 동일하다.  
 Regularization:  
@@ -281,12 +281,12 @@ Regularization:
 > $$\lambda$$ 값이 커질수록 $$\lVert \mathbf{w} \rVert^{2}$$의 값을 작게 만들어준다. <https://marquis08.github.io/devcourse2/probability/mathjax/ML-basics-Probability-1/>  
 
 통찰:  
-t에 관해서 가우시안 분포를 가정했을때, 최대우도를 만들어내는 $$\boldsymbol w$가 결국 제곱합 오차함수를 푸는 해와 동일.  
-추가적으로 w에 관해서도 가우시안 분포를 가정했을때, 사후확률을 최대화 시키는 것은 규제화부분을 포함시켜서 $$\boldsymbol w$ 구하는 것과 동일하다.  
+t에 관해서 가우시안 분포를 가정했을때, 최대우도를 만들어내는 $$\bold w$가 결국 제곱합 오차함수를 푸는 해와 동일.  
+추가적으로 w에 관해서도 가우시안 분포를 가정했을때, 사후확률을 최대화 시키는 것은 규제화부분을 포함시켜서 $$\bold w$ 구하는 것과 동일하다.  
 
 ## Bayesian Curve Fitting
-이제까지 $$t$$의 예측 분포를 구하기 위해 여전히 $$\boldsymbol w$의 점추정에 의존해 왔다. 완전한 베이지안 방법은 $$\boldsymbol w$의 분포로부터 확률의 기본법칙만을 사용해서 $$t$$의 예측분포를 유도한다.  
-\\[ p(t\mid x, \boldsymbol X, \boldsymbol t) = \int\ p(t\mid x,\boldsymbol w)p(\boldsymbol w\mid \boldsymbol X, \boldsymbol t)d\boldsymbol w \\]  
+이제까지 $$t$$의 예측 분포를 구하기 위해 여전히 $$\bold w$의 점추정에 의존해 왔다. 완전한 베이지안 방법은 $$\bold w$의 분포로부터 확률의 기본법칙만을 사용해서 $$t$$의 예측분포를 유도한다.  
+\\[ p(t\mid x, \bold X, \bold t) = \int\ p(t\mid x,\bold w)p(\bold w\mid \bold X, \bold t)d\bold w \\]  
 
 이 예측분포도 가우시안 분포고, 평균벡터와 공분산 행렬을 구할 수 있다.  
 
@@ -305,9 +305,9 @@ $${[}escape-bracket{]}$$:
 ```
 $${[}escape-bracket{]}$$:
 ```  
-$$\boldsymbol y$$:  
+$$\bold y$$:  
 ```
-$$\boldsymbol y$$
+$$\bold y$$
 ```  
 $$\left[\frac ab,c\right]$$:  
 ```
