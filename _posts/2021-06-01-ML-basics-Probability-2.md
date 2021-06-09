@@ -281,11 +281,11 @@ Regularization:
 > $$\lambda$$ 값이 커질수록 $$\lVert \mathbf{w} \rVert^{2}$$의 값을 작게 만들어준다. <https://marquis08.github.io/devcourse2/probability/mathjax/ML-basics-Probability-1/>  
 
 통찰:  
-t에 관해서 가우시안 분포를 가정했을때, 최대우도를 만들어내는 $$\mathbf w$가 결국 제곱합 오차함수를 푸는 해와 동일.  
-추가적으로 w에 관해서도 가우시안 분포를 가정했을때, 사후확률을 최대화 시키는 것은 규제화부분을 포함시켜서 $$\mathbf w$ 구하는 것과 동일하다.  
+t에 관해서 가우시안 분포를 가정했을때, 최대우도를 만들어내는 $$\mathbf w$$가 결국 제곱합 오차함수를 푸는 해와 동일.  
+추가적으로 $$\mathbf w$$에 관해서도 가우시안 분포를 가정했을때, 사후확률을 최대화 시키는 것은 규제화부분을 포함시켜서 $$\mathbf w$$ 구하는 것과 동일하다.  
 
 ## Bayesian Curve Fitting
-이제까지 $$t$$의 예측 분포를 구하기 위해 여전히 $$\mathbf w$의 점추정에 의존해 왔다. 완전한 베이지안 방법은 $$\mathbf w$의 분포로부터 확률의 기본법칙만을 사용해서 $$t$$의 예측분포를 유도한다.  
+이제까지 $$t$$의 예측 분포를 구하기 위해 여전히 $$\mathbf w$$의 점추정에 의존해 왔다. 완전한 베이지안 방법은 $$\mathbf w$$의 분포로부터 확률의 기본법칙만을 사용해서 $$t$$의 예측분포를 유도한다.  
 \\[ p(t\mid x, \mathbf X, \mathbf t) = \int\ p(t\mid x,\mathbf w)p(\mathbf w\mid \mathbf X, \mathbf t)d\mathbf w \\]  
 
 이 예측분포도 가우시안 분포고, 평균벡터와 공분산 행렬을 구할 수 있다.  
