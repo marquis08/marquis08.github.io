@@ -84,7 +84,7 @@ p(correct) &= \sum_{k=1}^{K}p(\mathbf x \in \mathcal{R_{k}}, \mathcal{C_{k}}) \\
 &= \sum_{k=1}^{K}\int_{\mathcal{R_{k}}}p(\mathbf x, \mathcal{C_{k}})dx \\\\
 \end{align}$$  
 
-$$pred(x) = \argmax_{k}p(C_{k}\mid x)$$  
+$$pred(x) = \arg\max_{k}p(C_{k}\mid x)$$  
 
 ## Objective of Decision Theory (Classification)
 결합확률분포 $$p(\mathbf x, C_{k})$$가 주어졌을 때 최적의 결정영역들 $$\mathcal{R_{1}},...,\mathcal{R_{K}}$$를 찾는 것  
@@ -170,18 +170,104 @@ $$\begin{align}
 
 - 위 식에서 $$= \sum_{k=1}^{K}\ p(C_{k}\mid\mathbf x) - p(C_{j}\mid \mathbf x)$$ 이 부분이 잘 이해가 안된다. 대각이 0인건 알겠으나 어떻게 이렇게 변환되는지 모르겠다.  
 
+### 예제: 의료진단
+$$C_{k} \in \{1,2\} \Leftrightarrow \{sick, healthy\}$$  
+
+$$L = \begin{bmatrix}0 & 100\\1 & 0\end{bmatrix}$$  
+
+L[1,1] = 0: sick & diagnosed as sick  
+L[1,2] = 100: sick & diagnosed as healthy  
+
+이 경우 기대손실(expected loss):  
+
+$$\begin{align}
+\mathbb E[L] &= \int_{\mathcal{R_{2}}}L_{1,2}p(\mathbf x, C_{1})d\mathbf x + \int_{\mathcal{R_{1}}}L_{2,1}p(\mathbf x, C_{2})d\mathbf x \\\\
+&= \int_{\mathcal{R_{2}}}100\times p(\mathbf x, C_{1})d\mathbf x + \int_{\mathcal{R_{1}}}p(\mathbf x, C_{2})d\mathbf x \\\\
+\end{align}$$  
+
+행 = Groundtruth  
+열 = Prediction(Diagnosis)  
+
+$$\int_{\mathcal{R_{2}}}L_{1,2}p(\mathbf x, C_{1})d\mathbf x$$: predicted as healthy($$\mathcal{R_{2}}$$), but groundtruth is sick($$C_{1}$$)  
+since $$L_{1,2}$$ = 100, $$\ \int_{\mathcal{R_{2}}}L_{1,2}p(\mathbf x, C_{1})d\mathbf x = \int_{\mathcal{R_{2}}}100\times\ p(\mathbf x, C_{1})d\mathbf x$$.  
+
+from this j = 1:  
+$$\hat C(\mathbf x) = \arg\min_{j}\sum_{k=1}^{K}\ L_{kj}p(C_{k}\mid\mathbf x)$$  
+
+$$L_{11} = 0, L_{21} = 1$$  
+
+$$\begin{align}
+\sum_{k=1}^{K}\ L_{k,1}p(C_{k}\mid\mathbf x) & = L_{11}p(C_{1}\mid \mathbf x) + L_{21}p(C_{2}\mid \mathbf x)\\
+&= p(C_{2}\mid \mathbf x) \\\\
+\end{align}$$  
+
+j = 2:  
+
+$$\begin{align}
+\sum_{k=1}^{K}\ L_{k,2}p(C_{k}\mid\mathbf x) & = L_{12}p(C_{1}\mid \mathbf x) + L_{22}p(C_{2}\mid \mathbf x)\\
+&= 100\times\ p(C_{1}\mid \mathbf x) \\\\
+\end{align}$$  
+
+thus:  
+$$p(C_{2}\mid \mathbf x), 100\times\ p(C_{1}\mid \mathbf x)$$  
+
+건강하다($$C_{2}$$)고 판단하기 위한 조건은:  
+$$p(C_{2}\mid \mathbf x)> 100\times\ p(C_{1}\mid \mathbf x)$$  
+sick의 확률보다 100크게 나와야 한다.  
+
+> 안전하게 진단을 하기 위해서(오진단의 리스크를 줄이기 위해), 손실행렬을 모델안에 포함시켜서 결정을 내리는 것이 좋을 것이다.
+
 
 ## Regression
+목표값 $$t \in \mathcal{R}$$  
+
+손실함수: $$L(t,y(\mathbf x)) = \{y(\mathbf x)-t\}^{2}$$  
+
+손실값의 기댓값인 $$E[L]$$를 최소화시키는 함수 $$y(\mathbf x)$$를 구하는 것이 목표.  
+
+$$\begin{align}
+F[y] = E[L] &= \int_{\mathcal{R}}\int_{\mathcal{X}}\{ y(\mathbf x) - t \}^{2}p(\mathbf x, t)d\mathbf x dt \\
+&= \int_{\mathcal{X}}\left(  \int_{\mathcal{R}}\{ y(\mathbf x) - t \}^{2}p(\mathbf x, t)dt  \right)d\mathbf x \\
+&= \int_{\mathcal{X}}\left(  \int_{\mathcal{R}}\{ y(\mathbf x) - t \}^{2}p(t\mid \mathbf x)dt  \right)p(\mathbf x)d\mathbf x \\
+\end{align}$$  
+
+결론:  
+$$\mathbf x$$를 위한 최적의 예측값은 $$y(\mathbf x) = \mathbb E_{t}[t\mid x]$$임을 보일 것이다.  
+
+$$\mathbb E_{t}[t\mid x]$$: x가 주어졌을 때 t의 기댓값.  
+
+![lambda](/assets/images/regression-loss.png){: .align-center .img-50}  
+
+위 그림에서 우리가 알고 있는 것은 $$x_{0}$$가 주어졌을 때 t의 조건부확률 $$p(t\mid x_{0})$$ 이고, 이것의 기댓값은 $$y(x_{0})$$이다.  
+
+
 ## Methods for Decision Problems
 ### Classification
+#### 확률모델에 의존하는 경우
+- 생성모델(generative model): 먼저 각 클래스 $$C_{k}$$에 대해 분포 $$p(\mathbf x\mid C_{k})$$와 사전확률 $$p(C_{k})$$를 구한 다음 베이즈 정리를 사용해서 사후확률 $$p(C_{k}\mid \mathbf x)$$를 구한다.  
+
+$$p(C_{k}\mid \mathbf x) = \frac{p(\mathbf x\mid C_{k})p(C_{k})}{p(\mathbf x)}$$  
+
+$$p(\mathbf x)$$는 다음과 같이 구할 수 있다.  
+
+$$p(\mathbf x) = \sum_{k}p(\mathbf x\mid C_{k})p(C_{k})$$  
+
+사후확률이 주어졌기 때문에 분류를 위한 결정은 쉽게 이루어질 수 있다. 결합분포에서 데이터를 샘플링해서 '생성'할 수 있으므로 이런 방식을 생성모델이라고 부른다.  
+- 식별모델(discriminative model): 모든 분포를 다 계산하지 않고 오직 사후확률 $$p(C_{k}\mid \mathbf x)$$를 구한다. 위와 동일하게 결정이론을 적용할 수 있다.  
+
+#### 판별함수에 의존하는 경우
+확률모델에 의존하지 않는 모델  
+- 판별함수(discriminant function): 입력 $$\mathbf x$$을 클래스로 할당하는 판별함수(discriminant function)을 찾는다. 확률값은 계산하지 않는다.  
+
 ### Regression
+- 결합분포$$p(\mathbf x, t)$$를 구하는 추론(inference)문제를 먼저 푼 다음 조건부확률분포 $$p(t\mid \mathbf x)$$를 구한다. 그리고 주변화(marginalize)를 통해 $$\mathbb E_{t}[t\mid x]$$를 구한다.  
+- 조건부확률분포 $$p(t\mid \mathbf x)$$를 구하는 추론문제를 푼 다음 주변화(marginalize)를 통해 $$\mathbb E_{t}[t\mid x]$$를 구한다.  
+- $$y(\mathbf x)$$를 직접적으로 구한다.  
 
 
-
-
-
-
-
+# Optional
+## Euler-Lagrange Equation
+## 손실함수의 분해
 
 # Appendix
 ## MathJax
@@ -196,8 +282,17 @@ $$\mathcal{R}$$
 $$\arg\min_{j}$$:  
 ```
 $$\arg\min_{j}$$
+```  
+matrix with bracket:
+$$L = \begin{bmatrix}a & b\\c & d\end{bmatrix}$$
 ```
-
+$$L = \begin{bmatrix}a & b\\c & d\end{bmatrix}$$  
+```
+matrix with curly braces:  
+$$\begin{Bmatrix}aaa & b\cr c   & ddd \end{Bmatrix}$$
+```
+$$\begin{Bmatrix}aaa & b\cr c   & ddd \end{Bmatrix}$$
+```
 
 
 가변 괄호 with escape curly brackets    
@@ -210,4 +305,6 @@ $$\left\{-\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} \right\}$$
 ## References
 > Drawing Graph with PPT: <https://www.youtube.com/watch?v=MQEBu9NnCuI>  
 > Decision Theory: <http://norman3.github.io/prml/docs/chapter01/5.html>  
-> Pattern Recognition and Machine Learning: <http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf>  
+> Pattern Recognition and Machine Learning: <https://tensorflowkorea.files.wordpress.com/2018/11/bishop-pattern-recognition-and-machine-learning-2006.pdf>  
+<!-- <http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf>  
+> -->
