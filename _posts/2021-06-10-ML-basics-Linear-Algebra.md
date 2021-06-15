@@ -531,15 +531,22 @@ U에 벡터x를 곱한 후 l2 norm 계산
 ### 벡터의 집합($$\{x_1,x_2,\ldots,x_n\}$$)에 대한 생성(span)
 $$\mathrm{span}(\{x_1,x_2,\ldots,x_n\}) = \left\{ v : v = \sum_{i=1}^n\alpha_i x_i, \alpha_i \in \mathbb{R} \right\}$$  
 
+
 ### 행렬의 치역 (range)
 행렬 $$A\in \mathbb{R}^{m\times n}$$의 치역 $$\mathcal{R}(A)$$는 A의 모든 열들에 대한 생성(span)이다. $$\mathcal{R}(A) = \{ v\in \mathbb{R}^m : v = Ax, x\in \mathbb{R}^n\}$$  
 
 ### 영공간 (nullspace)
 행렬 $$A\in \mathbb{R}^{m\times n}$$의 영공간(nullspace) $$\mathcal{N}(A)$$는 $$A$$와 곱해졌을 때 0이 되는 모든 벡터들의 집합이다. $$\mathcal{N}(A) = \{x\in \mathbb{R}^n : Ax = 0\}$$
 
+> 치역은 차원이 m인 벡터들의 집합이고 영공간은 차원이 n인 벡터들의 집합이다. 이 두개의 차원이 다르다. 
+> 그런데 $$A^{T}$$의 치역($$\mathcal{R}(A^T)$$)과 A의 영공간($$\mathcal{N}(A)$$)은 같은 차원이다.  
+
 중요한 성질:  
 
 $$\{w : w = u + v, u\in \mathcal{R}(A^T), v \in \mathcal{N}(A)\} = \mathbb{R}^n ~\mathrm{and}~ \mathcal{R}(A^T) \cap \mathcal{N}(A) = \{0\}$$  
+- 전체공간($$\mathbb{R}^n$$)에서 임의의 점을 하나 선택을 하면 그 점을 $$\mathcal{R}(A^T)$$과 $$\mathcal{N}(A)$$에 속하는 두 개의 원소의 합($$u + v$$)으로 나타낼 수 있다.  
+- 임의의 점을 이런식으로 decompose할 수 있다는 점이다.  
+- $$\mathcal{R}(A^T) \cap \mathcal{N}(A)$$ 하면 $$\mathbb{R}^{n}$$이라는 전체 공간이 만들어 진다.  
 
 $$\mathcal{R}(A^T)$$와 $$\mathcal{N}(A)$$를 직교여공간(orthogonal complements)라고 부르고 $$\mathcal{R}(A^T) = \mathcal{N}(A)^\perp$$라고 표시한다.  
 
@@ -610,7 +617,8 @@ $$A = \begin{bmatrix} 1 &\ 3 \\ 3 &\ 2 \end{bmatrix}$$
 평행사변형 $$S$$의 넓이는 7인데 이 값은 $$A$$의 행렬식 $$|A|=-7$$의 절대값과 일치함을 알 수 있다.
 
 ### 행렬식의 중요한 성질들  
-- $$|I|=1$$
+
+- \\(\vert I\vert=1\\)
 - $$A$$의 하나의 행에 $$t\in \mathbb{R}$$를 곱하면 행렬식은 $$t\vert A\vert$$  
 
 $$\begin{align*} \left|~\begin{bmatrix} - & ta_1^T & -\\ - & a_2^T & -\\ & \vdots &\\ - & a_n^T & - \end{bmatrix}~\right| = t|A| \end{align*}$$  
@@ -628,9 +636,16 @@ $$\begin{align*} \left|~\begin{bmatrix} - & a_2^T & -\\ - & a_1^T & -\\ & \vdots
 정방행렬 $$A\in \mathbb{R}^{n\times n}$$와 벡터 $$x\in \mathbb{R}^n$$가 주어졌을 때, scalar값 $$x^TAx$$를 이차형식(quadratic form)이라고 부른다. 다음과 같이 표현할 수 있다.  
 
 $$x^TAx = \sum_{i=1}^n x_i(Ax)_i = \sum_{i=1}^n x_i \left(\sum_{j=1}^n A_{ij}x_j\right) = \sum_{i=1}^n\sum_{j=1}^n A_{ij}x_ix_j$$  
+
+![quadratic-forms](/assets/images/quadratic-forms.png){: .align-center .img-40}  
+
 다음이 성립함을 알 수 있다.  
 
 $$x^TAx = (x^TAx)^T = x^TA^Tx = x^T\left(\frac{1}{2}A + \frac{1}{2}A^T\right)x$$  
+
+![quadratic-forms-2](/assets/images/quadratic-forms-2.png){: .align-center .img-40}  
+
+> $$A+A^{T}$$인 행렬은 symmetric이다. 임의의 행렬 A가 주어졌을 때 이차형식의 값은 그 행렬 A의 symmetric한 부분에 의존한다는 점.  
 
 따라서 이차형식에 나타나는 행렬을 대칭행렬로 가정하는 경우가 많다.  
 
@@ -650,8 +665,11 @@ $$x^TAx = (x^TAx)^T = x^TA^Tx = x^T\left(\frac{1}{2}A + \frac{1}{2}A^T\right)x$$
 
 $$Ax = \lambda x, x\neq 0$$  
 
-을 만족하는 $$\lambda \in \mathbb{C}$$를 $$A$$의 고유값(eigenvalue) 그리고 $$x\in \mathbb{C}^n$$을 연관된 고유벡터(eigenvector)라고 부른다.
+을 만족하는 $$\lambda \in \mathbb{C}$$를 $$A$$의 고유값(eigenvalue) 그리고 $$x\in \mathbb{C}^n$$을 연관된 고유벡터(eigenvector)라고 부른다.  
 
+> Eigenvectors: 선형변환(T)이 일어난 후에도 **방향**이 변하지 않는 영벡터가 아닌 벡터.  
+> Eigenvalues: Eigenvectors의 길이가 변하는 배수(scale), reversed나 scaled가 될 수 있지만 방향은 변하지 않는다.  
+> They make for interesting basis vectors. Basis vectors whos transformation matrices are maybe computationally more simpler or ones that make for better coordinate systems. 
 numpy.linalg 모듈의 eig 함수를 사용하여 고유값과 고유벡터를 구할 수 있다.  
 
 ```python
@@ -679,10 +697,10 @@ Out[53]:array([-3.63474211, -8.57660525, -7.75854663])
 
 ### 고유값, 고유벡터의 성질들
 
-- $$\mathrm{tr}A = \sum_{i=1}^n \lambda_i$$
+- \\(\mathrm{tr}A = \sum_{i=1}^n \lambda_i\\)
 - $$|A| = \prod_{i=1}^n \lambda_i$$
-- $$\mathrm{rank}(A)$$는 0이 아닌 $$A$$의 고유값의 개수와 같다.
-- $$A$$가 non-singular일 때, $$1/\lambda_i$$는 $$A^{-1}$$의 고유값이다(고유벡터 $$x_i$$와 연관된). 즉, $$A^{-1}x_i = (1/\lambda_i)x_i$$이다.
+- \\(\mathrm{rank}(A)\\)는 0이 아닌 $$A$$의 고유값의 개수와 같다.
+- \\(A\\)가 non-singular일 때, $$1/\lambda_i$$는 $$A^{-1}$$의 고유값이다(고유벡터 $$x_i$$와 연관된). 즉, $$A^{-1}x_i = (1/\lambda_i)x_i$$이다.
 대각행렬 $$D = \mathrm{diag}(d_1,\ldots,d_n)$$의 고유값들은 $$d_1,\ldots,d_n$$이다.
 
 ```python
@@ -747,11 +765,16 @@ $$(\nabla_x^2 f(x))_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j}$$
 ### 중요한 공식들
 
 $$x, b\in \mathbb{R}^n$$, $$A\in \mathbb{S}^n$$일 때 다음이 성립한다.  
+x, b는 vector, A는 대칭행렬이라고 가정했을때,  
 
-- $$\nabla_x b^Tx = b$$  
-- $$\nabla_x x^TAx = 2Ax$$  
-- $$\nabla_x^2 x^TAx = 2A$$  
-- $$\nabla_A \log |A| = A^{-1}$$ ($$A\in\mathbb{S}_{++}^n$$인 경우)  
+- $$\nabla_x b^Tx = b$$: $$b^T$$를 x에 대해서 gradient를 구한다.  
+- $$\nabla_x x^TAx = 2Ax$$: 이차형식에서 x에 대해서 gradient를 구한다.  
+- $$\nabla_x^2 x^TAx = 2A$$: $$2Ax$$를 다시 한번 x에 대해서 미분한다.   
+- $$\nabla_A \log \vert A\vert = A^{-1}(A\in\mathbb{S}_{++}^n)$$인 경우: 행렬 A에 대해서 gradient를 구한다. A의 행렬식을 A로 gradient를 구하게 되면  
+
+$$b^Tx$$대신에 $$bx$$에 대해서 미분한다고 하면, $$(bx)^{'}=b$$가 된다.  
+
+이차형식 $$\nabla_x x^TAx = 2Ax$$ 대신에, $$(ax^2)'$$ 에 대해서 미분하게 되면 $$2ax$$가 된다.
 
 ## 적용예제들
 ### 최소제곱법 (Least Squares)
@@ -764,14 +787,22 @@ $$\| Ax - b\|_2^2$$
 
 $$\begin{align*} \| Ax - b\|_2^2 &= (Ax - b)^T(Ax - b)\\ &= x^TA^TAx - 2b^TAx + b^Tb \end{align*}$$  
 
-$$\begin{align*} \nabla_x (x^TA^TAx - 2b^TAx + b^Tb) &= \nabla_x x^TA^TAx - \nabla_x 2b^TAx + \nabla_x b^Tb\\ &= 2A^TAx - 2A^Tb \end{align*}$$
+![Least-Squares](/assets/images/Least-Squares.png){: .align-center .img-60}  
+
+$$\begin{align*} \nabla_x (x^TA^TAx - 2b^TAx + b^Tb) &= \nabla_x x^TA^TAx - \nabla_x 2b^TAx + \nabla_x b^Tb\\ &= 2A^TAx - 2A^Tb \end{align*}$$  
+x에 관한 부분만 남겨놓기 때문에 $$b^Tb$$는 사라지고 $$2A^TAx - 2A^Tb$$만 남게 된다.  
+이차형식 부분인 $$\nabla_x x^TA^TAx$$을 미분하게 되면 위에서 나왔듯이, $$2A^TAx$$가 되고  
+$$\nabla_x 2b^TAx$$ 이것도 역시 미분하게 되면 $$2A^Tb$$가 된다.  
 
 0으로 놓고 $$x$$에 관해 풀면 $$x = (A^TA)^{-1}A^Tb$$  
 
 ### 고유값과 최적화문제 (Eigenvalues as Optimization)
 
-다음 형태의 최적화문제를 행렬미분을 사용해 풀면 고유값이 최적해가 되는 것을 보일 수 있다.
-$$\max_{x\in \mathbb{R}^n} x^TAx \mathrm{~~~~subject~to~} \|x\|_2^2=1$$
+다음 형태의 최적화문제를 행렬미분을 사용해 풀면 고유값이 최적해가 되는 것을 보일 수 있다.  
+$$\max_{x\in \mathbb{R}^n} x^TAx \mathrm{~~~~subject~to~} \|x\|_2^2=1$$  
+
+$$x^TAx$$ 을 최대화 시키는 문제에서 제약조건이 $$\|x\|_2^2=1$$ (x의 l2 norm이 1이다.)
+
 
 제약조건이 있는 최소화문제는 Lagrangian을 사용해서 해결
 $$\mathcal{L}(x, \lambda) = x^TAx - \lambda x^Tx$$
@@ -779,10 +810,17 @@ $$\mathcal{L}(x, \lambda) = x^TAx - \lambda x^Tx$$
 다음을 만족해야 함.
 $$\nabla_x \mathcal{L}(x, \lambda) = \nabla_x ( x^TAx - \lambda x^Tx) = 2A^Tx - 2\lambda x = 0$$
 
-따라서 최적해 $$x$$는 $$Ax = \lambda x$$를 만족해야 하므로 $$A$$의 고유벡터만이 최적해가 될 수 있다. 고유벡터 $$u_i$$는
-$$u_i^TAu_i = \sum_{j=1}^n \lambda_j y_j^2 = \lambda_i$$
+따라서 최적해 $$x$$는 $$Ax = \lambda x$$를 만족해야 하므로 $$A$$의 고유벡터만이 최적해가 될 수 있다. 고유벡터 $$u_i$$는  
+$$u_i^TAu_i = \sum_{j=1}^n \lambda_j y_j^2 = \lambda_i$$  
 
 을 만족하므로($$y=U^Tu_i$$), 최적해는 가장 큰 고유값에 해당하는 고유벡터이다.  
+
+고유값, 고유벡터와 대칭행렬에서 나온  
+$$x^TAx = = \sum_{i=1}^n \lambda_i y_i^2$$  
+$$y=U^Tx$$인데 우리가 알아야할 것은 $$y_j$$의 값이다.  
+
+![eigenvalues-optimization](/assets/images/eigenvalues-optimization.png){: .align-center .img-60}  
+
 
 ## Autoencoder와 Principal Components Analysis (PCA)
 
@@ -847,28 +885,16 @@ $$\begin{align*} R &= \begin{bmatrix} - & g(f(x_1))^T & -\\ & \vdots &\\ - & g(f
 $$\begin{align*} \mathop{\mathrm{argmin}}_{D} \|E\|_F^2 &= \mathop{\mathrm{argmin}}_{D} \| X - XDD^T\|_F^2\\ &= \mathop{\mathrm{argmin}}_{D} \mathrm{tr}\left( \left(X - XDD^T\right)^T\left(X - XDD^T\right) \right)\\ &= \mathop{\mathrm{argmin}}_{D} \mathrm{tr} \left( X^TX - X^TXDD^T - DD^TX^TX + DD^TX^TXDD^T \right)\\ &= \mathop{\mathrm{argmin}}_{D} \mathrm{tr} \left( X^TX \right) - \mathrm{tr} \left( X^TXDD^T \right) - \mathrm{tr} \left( DD^TX^TX \right) + \mathrm{tr} \left( DD^TX^TXDD^T \right)\\ &= \mathop{\mathrm{argmin}}_{D} - \mathrm{tr} \left( X^TXDD^T \right) - \mathrm{tr} \left( DD^TX^TX \right) + \mathrm{tr} \left( DD^TX^TXDD^T \right)\\ &= \mathop{\mathrm{argmin}}_{D} - 2\mathrm{tr} \left( X^TXDD^T \right) + \mathrm{tr} \left( DD^TX^TXDD^T \right)\\ &= \mathop{\mathrm{argmin}}_{D} - 2\mathrm{tr} \left( X^TXDD^T \right) + \mathrm{tr} \left( X^TXDD^TDD^T \right)\\ &= \mathop{\mathrm{argmin}}_{D} - 2\mathrm{tr} \left( X^TXDD^T \right) + \mathrm{tr} \left( X^TXDD^T \right)\\ &= \mathop{\mathrm{argmin}}_{D} - \mathrm{tr} \left( X^TXDD^T \right)\\ &= \mathop{\mathrm{argmin}}_{D} - \mathrm{tr} \left( D^TX^TXD \right)\\ &= \mathop{\mathrm{argmax}}_{D} \mathrm{tr} \left( D^TX^TXD\right)\\ &= \mathop{\mathrm{argmax}}_{d_1,\ldots,d_l} \sum_{i=1}^l d_i^TX^TXd_i \end{align*}$$  
 
 $$d_i^Td_i = 1$$이므로 벡터들 $$d_1,\ldots,d_l$$이 $$X^TX$$의 가장 큰 $$l$$개의 고유값에 해당하는 고유벡터들일 때  
+
 $$\sum_{i=1}^l d_i^TX^TXd_i$$이 최대화된다.
 
-
-
-
-
-대각합 풀이식
-
-영공간의 성질과 직교여공간
-
-2차 형식 풀이식 추가하기
-
-최소제곱법 풀이식 추가하기
-
-autoencoder 풀이식 추가
-
-
-
-
-
+![autoencoder-argmax](/assets/images/autoencoder-argmax.png){: .align-center .img-60}  
 
 # Appendix
+## Basis of a Subspace
+![basis-1](/assets/images/basis-1.png){: .align-center }  
+![basis-2](/assets/images/basis-2.png){: .align-center }  
+
 ## MathJax
 
 $${\sim}A$$  
@@ -916,4 +942,6 @@ $$\left\{-\frac{1}{2\sigma^{2}} \sum_{n=1}^{N}(x_{n}-\mu)^{2} \right\}$$
 
 > Pattern Recognition and Machine Learning: <https://tensorflowkorea.files.wordpress.com/2018/11/bishop-pattern-recognition-and-machine-learning-2006.pdf>  
 > rank(a) == rank(transpose A) : <https://www.youtube.com/watch?v=tqqVOWm9YsU>  
+> eigenvalue, eigenvector: <https://www.youtube.com/watch?v=PhfbEr2btGQ>  
+> basis of subspace: <https://www.youtube.com/watch?v=zntNi3-ybfQ>  
 
