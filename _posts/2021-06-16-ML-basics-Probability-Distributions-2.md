@@ -337,9 +337,9 @@ $$= b\exp\{ -\frac{1}{2}(\boldsymbol{x}_{a} - ?)^{T}\Lambda_{aa}(\boldsymbol{x}_
 
 가우시안 분포의 지수부는 다음과 같이 전개된다는 것이 중요한 포인트이다.  
 
-$$\begin{align} -\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{T}\Sigma^{-1}(\boldsymbol{x}-\boldsymbol{\mu}) &= -\frac{1}{2}(\boldsymbol{x}^{T}-\boldsymbol{\mu}^{T})\Sigma^{-1}(\boldsymbol{x}-\boldsymbol{\mu})\\ &= -\frac{1}{2}(\boldsymbol{x}^{T}\Sigma^{-1}-\boldsymbol{\mu}^{T}\Sigma^{-1})(\boldsymbol{x}-\boldsymbol{\mu})\\ &= -\frac{1}{2}(\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{x}-\boldsymbol{\mu}^{T}\Sigma^{-1}\boldsymbol{x}-\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{\mu}+\boldsymbol{\mu}^{T}\Sigma^{-1}\boldsymbol{\mu})\\ &= -\frac{1}{2}\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{x}+\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{\mu} + const   \end{align}$$  
+$$\begin{align} -\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{T}\Sigma^{-1}(\boldsymbol{x}-\boldsymbol{\mu}) &= -\frac{1}{2}(\boldsymbol{x}^{T}-\boldsymbol{\mu}^{T})\Sigma^{-1}(\boldsymbol{x}-\boldsymbol{\mu})\\ &= -\frac{1}{2}(\boldsymbol{x}^{T}\Sigma^{-1}-\boldsymbol{\mu}^{T}\Sigma^{-1})(\boldsymbol{x}-\boldsymbol{\mu})\\ &= -\frac{1}{2}(\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{x}-\boldsymbol{\mu}^{T}\Sigma^{-1}\boldsymbol{x}-\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{\mu}+\boldsymbol{\mu}^{T}\Sigma^{-1}\boldsymbol{\mu})\\ &= -\frac{1}{2}\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{x}+\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{\mu} + \text{const}   \end{align}$$  
 
-여기서 상수부 $$const$$는 $$\boldsymbol{x}$$와 독립된 항들을 모은 것이다. 따라서 어떤 복잡한 함수라도 지수부를 정리했을 때 $$-\frac{1}{2}\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{x}+\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{\mu} + const$$의 형태가 된다면 이 함수는 공분산 행렬 $$\Sigma$$와 평균벡터 $$\boldsymbol{\mu}$$를 가지는 가우시안 분포임을 알 수 있다.  $$\boldsymbol{x}$$에 관한 이차항과 일차항의 계수를 살피면 된다는 것이다.  
+여기서 상수부 $$\text{const}$$는 $$\boldsymbol{x}$$와 독립된 항들을 모은 것이다. 따라서 어떤 복잡한 함수라도 지수부를 정리했을 때 $$-\frac{1}{2}\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{x}+\boldsymbol{x}^{T}\Sigma^{-1}\boldsymbol{\mu} + \text{const}$$의 형태가 된다면 이 함수는 공분산 행렬 $$\Sigma$$와 평균벡터 $$\boldsymbol{\mu}$$를 가지는 가우시안 분포임을 알 수 있다.  $$\boldsymbol{x}$$에 관한 이차항과 일차항의 계수를 살피면 된다는 것이다.  
 
 $$-\frac{1}{2}(\boldsymbol{x}_{a}-\boldsymbol{\mu}_{a})^{T}\Lambda_{aa}(\boldsymbol{x}_{a}-\boldsymbol{\mu}_{a})-\frac{1}{2}(\boldsymbol{x}_{a}-\boldsymbol{\mu}_{a})^{T}\Lambda_{ab}(\boldsymbol{x}_{b}-\boldsymbol{\mu}_{b})-\frac{1}{2}(\boldsymbol{x}_{b}-\boldsymbol{\mu}_{b})^{T}\Lambda_{ba}(\boldsymbol{x}_{a}-\boldsymbol{\mu}_{a})-\frac{1}{2}(\boldsymbol{x}_{b}-\boldsymbol{\mu}_{b})^{T}\Lambda_{bb}(\boldsymbol{x}_{b}-\boldsymbol{\mu}_{b})$$에서 $$\boldsymbol{x}_{a}$$의 이차항은  
 
@@ -372,12 +372,12 @@ $$p(\boldsymbol{x}_{a}) = \int p(\boldsymbol{x}_{a}, \boldsymbol{x}_{b})d\boldsy
 
 전략은 다음과 같다.  
 
-$$\begin{align} p(\boldsymbol{x}_{a}) &= \int p(\boldsymbol{x}_{a}, \boldsymbol{x}_{b})d\boldsymbol{x}_{b} \\ &= \int\alpha\exp\left\{ -\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{T}\Sigma^{-1}(\boldsymbol{x}-\boldsymbol{\mu}) \right\} d\boldsymbol{x}_{b} \\ &= \int\alpha\exp\{ f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})+g(\boldsymbol{x}_{a})+const \}d\boldsymbol{x}_{b} \\ &= \int\alpha\exp\{ f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})-\tau+\tau+g(\boldsymbol{x}_{a})+const \}d\boldsymbol{x}_{b}\\ &= \int\alpha\exp\{ f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})-\tau\}\exp\{\tau+g(\boldsymbol{x}_{a})+const \}d\boldsymbol{x}_{b} \\ &= \alpha\exp\{\tau+g(\boldsymbol{x}_{a})+const \}\int\exp\{f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})-\tau\}d\boldsymbol{x}_{b} \\ &= \alpha\beta\exp\{\tau+g(\boldsymbol{x}_{a})+const \} \end{align}$$  
+$$\begin{align} p(\boldsymbol{x}_{a}) &= \int p(\boldsymbol{x}_{a}, \boldsymbol{x}_{b})d\boldsymbol{x}_{b} \\ &= \int\alpha\exp\left\{ -\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{T}\Sigma^{-1}(\boldsymbol{x}-\boldsymbol{\mu}) \right\} d\boldsymbol{x}_{b} \\ &= \int\alpha\exp\{ f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})+g(\boldsymbol{x}_{a})+\text{const} \}d\boldsymbol{x}_{b} \\ &= \int\alpha\exp\{ f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})-\tau+\tau+g(\boldsymbol{x}_{a})+\text{const} \}d\boldsymbol{x}_{b}\\ &= \int\alpha\exp\{ f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})-\tau\}\exp\{\tau+g(\boldsymbol{x}_{a})+\text{const} \}d\boldsymbol{x}_{b} \\ &= \alpha\exp\{\tau+g(\boldsymbol{x}_{a})+\text{const} \}\int\exp\{f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})-\tau\}d\boldsymbol{x}_{b} \\ &= \alpha\beta\exp\{\tau+g(\boldsymbol{x}_{a})+\text{const} \} \end{align}$$  
 
 
-- 위에서 함수 $$f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})$$는 원래 지수부를 $$\boldsymbol{x}_{a},\boldsymbol{x}_{b}$$파티션을 통해 전개한 식 중에서 $$\boldsymbol{x}_{b}$$을 포함한 모든 항들을 모은 식이다. 그리고 $$g(\boldsymbol{x}_{a})$$는 $$f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})$$에 포함된 항들을 제외한 항들 중 $$\boldsymbol{x}_{a}$$를 포함한 모든 항들을 모은식이다. $$const$$는 나머지 항들을 모은 식이다.
+- 위에서 함수 $$f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})$$는 원래 지수부를 $$\boldsymbol{x}_{a},\boldsymbol{x}_{b}$$파티션을 통해 전개한 식 중에서 $$\boldsymbol{x}_{b}$$을 포함한 모든 항들을 모은 식이다. 그리고 $$g(\boldsymbol{x}_{a})$$는 $$f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})$$에 포함된 항들을 제외한 항들 중 $$\boldsymbol{x}_{a}$$를 포함한 모든 항들을 모은식이다. $$\text{const}$$는 나머지 항들을 모은 식이다.
 - $$f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})-\tau$$는 $$\boldsymbol{x}_{b}$$을 위한 완전제곱식이다.
-- $$\alpha\exp\{\tau+g(\boldsymbol{x}_{a})+const\}$$는 $$\boldsymbol{x}_{b}$$와 독립적이므로 적분식 밖으로 나갈 수 있다.
+- $$\alpha\exp\{\tau+g(\boldsymbol{x}_{a})+\text{const}\}$$는 $$\boldsymbol{x}_{b}$$와 독립적이므로 적분식 밖으로 나갈 수 있다.
 - $$\tau+g(\boldsymbol{x}_{a})$$를 $$\boldsymbol{x}_{a}$$의 완전제곱식으로 만들면 $$\boldsymbol{x}_{b}$$의 평균벡터와 공분산행렬을 구할 수 있다.
 
 파티션을 위한 이차형식을 다시 살펴본다.  
@@ -403,11 +403,11 @@ where $$\boldsymbol{m} = \Lambda_{bb}\boldsymbol{\mu}_{b} - \Lambda_{ba}(\boldsy
 
 $$\int\exp\{f(\boldsymbol{x}_{b},\boldsymbol{x}_{a})-\tau\}d\boldsymbol{x}_{b} = \int\exp\left\{ -\frac{1}{2}(\boldsymbol{x}_{b}-\Lambda_{bb}^{-1}\boldsymbol{m})^{T}\Lambda_{bb}(\boldsymbol{x}_{b}-\Lambda_{bb}^{-1}\boldsymbol{m}) \right\}d\boldsymbol{x}_{b}$$  
 
-이 값은 공분산 $$\Lambda_{bb}$$에만 종속되고 $$\boldsymbol{x}_{a}$$에 독립적이므로 $$\alpha\beta\exp\{\tau+g(\boldsymbol{x}_{a})+const\}$$의 지수부에만 집중하면 된다.  
+이 값은 공분산 $$\Lambda_{bb}$$에만 종속되고 $$\boldsymbol{x}_{a}$$에 독립적이므로 $$\alpha\beta\exp\{\tau+g(\boldsymbol{x}_{a})+\text{const}\}$$의 지수부에만 집중하면 된다.  
 
-마지막으로 $$\tau+g(\boldsymbol{x}_{a})+const$$를 살펴보자.  
+마지막으로 $$\tau+g(\boldsymbol{x}_{a})+\text{const}$$를 살펴보자.  
 
-$$\begin{align}\tau+g(\boldsymbol{x}_{a})+const &= \frac{1}{2}\boldsymbol{m}^{T}\Lambda_{bb}^{-1}\boldsymbol{m} - \frac{1}{2}\boldsymbol{x}_{a}^{T}\Lambda_{aa}\boldsymbol{x}_{a} + \boldsymbol{x}_{a}^{T}(\Lambda_{aa}\boldsymbol{\mu}_{a} + \Lambda_{ab}\boldsymbol{\mu}_{b})+const \\ &= -\frac{1}{2}\boldsymbol{x}_{a}^{T}(\Lambda_{aa}-\Lambda_{ab}\Lambda_{bb}^{-1}\Lambda_{ba})\boldsymbol{x}_{a} + \boldsymbol{x}_{a}^{T}(\Lambda_{aa}-\Lambda_{ab}\Lambda_{bb}^{-1}\Lambda_{ba})\boldsymbol{\mu}_{a}+const  \end{align}$$  
+$$\begin{align}\tau+g(\boldsymbol{x}_{a})+\text{const} &= \frac{1}{2}\boldsymbol{m}^{T}\Lambda_{bb}^{-1}\boldsymbol{m} - \frac{1}{2}\boldsymbol{x}_{a}^{T}\Lambda_{aa}\boldsymbol{x}_{a} + \boldsymbol{x}_{a}^{T}(\Lambda_{aa}\boldsymbol{\mu}_{a} + \Lambda_{ab}\boldsymbol{\mu}_{b})+\text{const} \\ &= -\frac{1}{2}\boldsymbol{x}_{a}^{T}(\Lambda_{aa}-\Lambda_{ab}\Lambda_{bb}^{-1}\Lambda_{ba})\boldsymbol{x}_{a} + \boldsymbol{x}_{a}^{T}(\Lambda_{aa}-\Lambda_{ab}\Lambda_{bb}^{-1}\Lambda_{ba})\boldsymbol{\mu}_{a}+\text{const}  \end{align}$$  
 
 따라서 공분산은  
 
@@ -441,7 +441,7 @@ $$p(\boldsymbol{y}\vert \boldsymbol{x}) = \mathcal{N}(\boldsymbol{y}\vert \bolds
 
 먼저 $$\boldsymbol{z} = \begin{bmatrix} \boldsymbol{x} \cr \boldsymbol{y} \end{bmatrix}$$를 위한 결합확률분포를 구하자. 이 결합확률분포를 구하고 나면 $$p(\boldsymbol{y}$$와 $$p(\boldsymbol{x}\vert \boldsymbol{y})$$는 앞에서 얻은 결과에 의해 쉽게 유도할 수 있다. 먼저 로그값을 생각해보자.  
 
-$$\begin{align}\ln p(\boldsymbol{z}) &= \ln p(\boldsymbol{x}) + \ln p(\boldsymbol{y}\vert \boldsymbol{x}) \\ &= -\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{T}\Lambda(\boldsymbol{x}-\boldsymbol{\mu}) -\frac{1}{2}(\boldsymbol{y}-\boldsymbol{Ax}-\boldsymbol{b})^{T}\boldsymbol{L}(\boldsymbol{y}-\boldsymbol{Ax}-\boldsymbol{b})+const   \end{align}$$  
+$$\begin{align}\ln p(\boldsymbol{z}) &= \ln p(\boldsymbol{x}) + \ln p(\boldsymbol{y}\vert \boldsymbol{x}) \\ &= -\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{T}\Lambda(\boldsymbol{x}-\boldsymbol{\mu}) -\frac{1}{2}(\boldsymbol{y}-\boldsymbol{Ax}-\boldsymbol{b})^{T}\boldsymbol{L}(\boldsymbol{y}-\boldsymbol{Ax}-\boldsymbol{b})+\text{const}   \end{align}$$  
 
 $$\boldsymbol{z}$$의 이차항은 다음과 같다.  
 
