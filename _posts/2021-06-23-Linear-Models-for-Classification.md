@@ -39,27 +39,53 @@ $$y(\boldsymbol{x}) \ge 0$$ 인 경우 이를 $$\mathcal{C}_1$$으로 판별하�
 결정 경계 (decision boundary)
 
 \- $$y(\boldsymbol{x})=0$$  
-\- $$D-1$$차원의 hyperplane ($$\boldsymbol{x}$$가 $$D$$차원의 입력벡터일 때)
+\- $$D-1$$차원의 hyperplane ($$\boldsymbol{x}$$가 $$D$$차원의 입력벡터일 때)  
+
+> $$y(\boldsymbol{x})=0$$을 만족시키는 $$\boldsymbol{x}$$의 집합을 결정 경계라고 함.  
 
 결정 경계면 위의 임의의 두 점 $$\boldsymbol{x}_A$$와 $$\boldsymbol{x}_B$$
 
 \- $$y(\boldsymbol{x}_A)=y(\boldsymbol{x}_B)=0$$  
-\- $$\boldsymbol{w}^T(\boldsymbol{x}_A - \boldsymbol{x}_B)=0$$ => $$\boldsymbol{w}$$는 결정 경계면에 수직
+\- $$\boldsymbol{w}^T(\boldsymbol{x}_A - \boldsymbol{x}_B)=0$$ => $$\boldsymbol{w}$$는 결정 경계면에 수직  
+
+> 임의의 두 점 $$\boldsymbol{x}_A$$와 $$\boldsymbol{x}_B$$에 대해서 위의 식이 성립하기 때문에, Decision Boundary에 있는 모든 두 개의 점에 대해서 벡터 $$\boldsymbol{w}$$는 결정 경게면에 수직임.  
 
 원점에서 결정경계면까지의 거리
 
 벡터 $$\boldsymbol{w}_{\perp}$$를 원점에서 결정 경계면에 대한 사영(projection)이라고 하자.   
 
+> $$\boldsymbol{w}$$의 단위벡터 ($$\frac{\boldsymbol{w}}{\Vert  \boldsymbol{w}\Vert }$$)에 $$r$$을 곱했을때 projection vector ($$\boldsymbol{w}_{\perp}$$)가 됨. 이 r를 구하면 결정경계와 원점의 거리가 됨.  
+
+> projection vector ($$\boldsymbol{w}_{\perp}$$)가 결정경계 위에 있기 때문에 $$y(\boldsymbol{w}_{\perp}) = 0$$가 됨.  
+
+> $$\boldsymbol{w}^T\boldsymbol{w}$$은 l2 norm의 제곱 ($$\Vert \boldsymbol{w}\Vert_{2}^{2}$$)이다.
+
 $$\begin{align} &\ r\frac{\boldsymbol{w}}{\Vert  \boldsymbol{w}\Vert } = \boldsymbol{w}_{\perp}\\ &\ y(\boldsymbol{w}_{\perp}) = 0\\ &\ \boldsymbol{w}^T\boldsymbol{w}_{\perp} + w_0 = 0\\ &\ \frac{\boldsymbol{w}^T\boldsymbol{w}}{\Vert \boldsymbol{w}\Vert }r + w_0 = 0\\ &\ \Vert \boldsymbol{w}\Vert  r + w_0 = 0\\ &\  r = -\frac{w_0}{\Vert \boldsymbol{w}\Vert } \end{align}$$
 
 따라서 $$w_0$$은 결정 경계면의 위치를 결정한다.
 
-\- $$w_0\lt0$$이면 결정 경계면은 원점으로부터 $$\boldsymbol{w}$$가 향하는 방향으로 멀어져있다.  
-\- $$w_0\gt0$$이면 결정 경계면은 원점으로부터 $$\boldsymbol{w}$$의 반대 방향으로 멀어져있다.
+\- $$w_0\lt0$$이면 결정 경계면은 **원점으로부터** $$\boldsymbol{w}$$가 향하는 방향으로 멀어져있다.  
+\- $$w_0\gt0$$이면 결정 경계면은 **원점으로부터** $$\boldsymbol{w}$$의 반대 방향으로 멀어져있다.  
+
+> 여기서 중요한 부분은 결정 경계의 위치가 어디에 있느냐임. 헷갈릴 수도 있지만. bias 값이 결정경계면의 위치를 결정하는 파라미터라는 것임.   
+
+![w-and-decision-boundary](/assets/images/w-and-decision-boundary.png){: .align-center .img-50}  
 
 예제: $$y(x_1, x_2) = x_1 + x_2 - 1$$
 
-또한 $$y(\boldsymbol{x})$$값은 $$\boldsymbol{x}$$와 결정 경계면 사이의 부호화된 거리와 비례한다.
+또한 $$y(\boldsymbol{x})$$값은 $$\boldsymbol{x}$$와 결정 경계면 사이의 **부호화된 거리**와 비례한다.  
+
+> $$\boldsymbol{x}-\boldsymbol{x}_\perp$$이 벡터는 $$\boldsymbol{w}$$와 방향이 같지만 길이는 r인 단위벡터임. 이것을 다시 써보면 $$\boldsymbol{x}-\boldsymbol{x}_\perp = r\frac{\boldsymbol{w}}{\Vert \boldsymbol{w}\Vert }$$라는 말임.  
+
+> $$\boldsymbol{x} = \boldsymbol{x}_\perp + r\frac{\boldsymbol{w}}{\Vert \boldsymbol{w}\Vert }$$ 여기에 $$\boldsymbol{w}^{T}$$를 곱하고 bias인 $$w_{0}$$을 더해줌.  
+
+> $$\boldsymbol{w}^{T}\boldsymbol{x}+w_{0} = \boldsymbol{w}^{T}\boldsymbol{x}_\perp + w_{0} + r\frac{\boldsymbol{w}^{T}\boldsymbol{w}}{\Vert \boldsymbol{w}\Vert }$$  
+
+> $$\boldsymbol{x}_\perp$$이 결정경계 위에 있기 때문에 $$\boldsymbol{x}_\perp + w_{0}$$ 이 부분이 0이 됨. 또한 $$\frac{\boldsymbol{w}^{T}\boldsymbol{w}}{\Vert \boldsymbol{w}\Vert }$$은 $$\Vert \boldsymbol{w}\Vert$$이 됨. 왼쪽에 있는 항은 $$y(\boldsymbol{x})$$이 됨. 
+
+> 따라서 $$y(\boldsymbol{x}) = r\Vert \boldsymbol{w}\Vert$$이 됨. $$r$$ 곱하기 $$\boldsymbol{w}$$의 l2 norm.  
+
+> 다시 정리하면, $$r=\frac{y(\boldsymbol{x})}{\Vert \boldsymbol{w}\Vert }$$이 되는 것임.  
 
 임의의 한 점 $$\boldsymbol{x}$$의 결정 경계면에 대한 사영을 $$\boldsymbol{x}_\perp$$이라고 하자.  
 
@@ -67,11 +93,15 @@ $$\boldsymbol{x}=\boldsymbol{x}_\perp + r\frac{\boldsymbol{w}}{\Vert \boldsymbol
 
 $$r=\frac{y(\boldsymbol{x})}{\Vert \boldsymbol{w}\Vert }$$  
 
+> 좀 전에는 bias에 의해 결정경계면의 위치가 결정되었다면, 이번에는 $$y(\boldsymbol{x})$$에 의해 $$\boldsymbol{x}$$의 위치가 결정됨.  
+
 \- $$y(\boldsymbol{x}) \gt 0$$이면 $$\boldsymbol{x}$$는 결정 경계면을 기준으로 $$\boldsymbol{w}$$가 향하는 방향에 있다.  
 \- $$y(\boldsymbol{x}) \lt 0$$이면 $$\boldsymbol{x}$$는 결정 경계면을 기준으로 $$-\boldsymbol{w}$$가 향하는 방향에 있다.  
 \- $$y(\boldsymbol{x})$$의 절대값이 클 수록 더 멀리 떨어져 있다.
 
-가짜입력(dummy input) $$x_0=1$$을 이용해서 수식을 단순화
+가짜입력(dummy input) $$x_0=1$$을 이용해서 수식을 단순화  
+
+> dummy input을 사용했다는 의미로 tilde 심볼을 사용함.  
 
 \- $$\widetilde{\boldsymbol{w}}=(w_0, \boldsymbol{w})$$  
 \- $$\widetilde{\boldsymbol{x}}=(x_0, \boldsymbol{x})$$  
@@ -79,22 +109,33 @@ $$r=\frac{y(\boldsymbol{x})}{\Vert \boldsymbol{w}\Vert }$$
 
 ![geometry-of-a-linear-discriminant-function](/assets/images/geometry-of-a-linear-discriminant-function.png){: .align-center}  
 
-다수의 클래스  
+## 다수의 클래스  
 
-$$y_k(\boldsymbol{x})=\boldsymbol{w}_k^T\boldsymbol{x}+w_{k0}$$
+$$y_k(\boldsymbol{x})=\boldsymbol{w}_k^T\boldsymbol{x}+w_{k0}$$  
 
-$$k=1,\ldots,K$$
+> 각각의 클래스 $$k$$ 마다 weight vector인 $$\boldsymbol{w}_k$$를 학습해야 함.  
+
+$$k=1,\ldots,K$$  
 
 위와 같은 판별함수는 $$j{\neq}k$$일 때 $$y_k(\boldsymbol{x})\gt y_j(\boldsymbol{x})$$를 만족하면 $$\boldsymbol{x}$$를 클래스 $$\mathcal{C}_k$$로 판별하게 된다.  
 
 # 분류를 위한 최소제곱법 (Least squares for classification)
+
+> 그렇다면 파라미터 $$\boldsymbol{w}$$를 어떻게 학습할 수 있을까? 간단하게 하는 법은 최소제곱법. 선형회귀에서는 목표값이 실수값으로 주어졌기 때문에, 자연스럽게 될 수 있지만, 분류에서는 실수값이긴 하지만, 만약에 2개의 클래스라면 0 or 1 으로 실수값의 목표값으로 변환시키는 방식으로 함.  
+
+> 결론적으로는 분류에는 별로 좋지 않은 방식이다.  
+
 $$y_k(\boldsymbol{x})=\boldsymbol{w}_k^T\boldsymbol{x}+w_{k0}$$  
 
 $$k=1,\ldots,K$$  
 
 아래와 같이 행렬 $$\widetilde{\boldsymbol{W}}$$을 사용하여 간편하게 나타낼 수 있다.  
 
-$$y(\boldsymbol{x}) = \widetilde{\boldsymbol{W}}^T\widetilde{\boldsymbol{x}}$$
+$$y(\boldsymbol{x}) = \widetilde{\boldsymbol{W}}^T\widetilde{\boldsymbol{x}}$$  
+
+> $$~~ \widetilde{\boldsymbol{W}} = \begin{bmatrix} \vert\\ \cdots \widetilde{\boldsymbol{w}}_k \cdots\\ \vert \end{bmatrix}$$인데, K=3인 경우, $$y_1(\boldsymbol{x})=\widetilde{\boldsymbol{w}}_{1}^T\widetilde{\boldsymbol{x}}$$, $$y_2(\boldsymbol{x})=\widetilde{\boldsymbol{w}}_{2}^T\widetilde{\boldsymbol{x}}$$, $$y_3(\boldsymbol{x})=\widetilde{\boldsymbol{w}}_{3}^T\widetilde{\boldsymbol{x}}$$ 이 각각의 값들은 scalar값인데 이 것을 하나의 표현할 것임.  
+
+> $$y(\boldsymbol{x}) = \begin{bmatrix} \widetilde{\boldsymbol{w}}_{1}^T\widetilde{\boldsymbol{x}}\\ \widetilde{\boldsymbol{w}}_{2}^T\widetilde{\boldsymbol{x}}\\ \widetilde{\boldsymbol{w}}_{3}^T\widetilde{\boldsymbol{x}}\\ \end{bmatrix} = \begin{bmatrix} - \widetilde{\boldsymbol{w}}_{1}^T - \\ - \widetilde{\boldsymbol{w}}_{2}^T - \\ - \widetilde{\boldsymbol{w}}_{3}^T - \\ \end{bmatrix}\widetilde{\boldsymbol{x}} = \widetilde{\boldsymbol{W}}^T\widetilde{\boldsymbol{x}}$$ 이런식으로 표현되는 것임.  
 
 $$\widetilde{\boldsymbol{W}}$$의 $$k$$번째 열은 $$\widetilde{\boldsymbol{w}}_k = (w_{k0}, \boldsymbol{w}_k^T)^T$$이다.
 
@@ -104,21 +145,37 @@ $$\widetilde{\boldsymbol{W}}$$의 $$k$$번째 열은 $$\widetilde{\boldsymbol{w}
 
 $$E_D(\widetilde{\boldsymbol{W}}) = \frac{1}{2}\mathrm{tr}\left\{ \left(\widetilde{\boldsymbol{X}}\widetilde{\boldsymbol{W}}-\boldsymbol{T} \right)^T \left(\widetilde{\boldsymbol{X}}\widetilde{\boldsymbol{W}}-\boldsymbol{T} \right) \right\}$$  
 
+> 유의할점은 K>2 일 경우 \widetilde{\boldsymbol{W}}가 행렬이라는 점이다. 각각의 열이 하나의 클래스에 대응함.  
+
+> 선형대수에서 했던 PCA와 유사함  
+
+> 다른식으로 정리하면, $$E_D(\widetilde{\boldsymbol{W}}) = \frac{1}{2}\Vert\widetilde{\boldsymbol{X}}\widetilde{\boldsymbol{W}} \Vert_{F}^{2}$$: 행렬과 행렬의 차이에 Frobenius norm을 제곱한 것.(식을 간편하게 하기 위해 1/2 곱해줌) 이것이 $$E_D(\widetilde{\boldsymbol{W}}) = \frac{1}{2}\mathrm{tr}\left\{ \left(\widetilde{\boldsymbol{X}}\widetilde{\boldsymbol{W}}-\boldsymbol{T} \right)^T \left(\widetilde{\boldsymbol{X}}\widetilde{\boldsymbol{W}}-\boldsymbol{T} \right) \right\}$$ 이 것과 동일함.  
+
+> <https://marquis08.github.io/devcourse2/linearalgebra/mathjax/ML-basics-Linear-Algebra/#%EB%8C%80%EA%B0%81%ED%95%A9-trace>  
+
+> 제곱합 에러를 생각할때, 행렬의 Frobenius norm을 최소화 시킨다라는 것을 생각.
+
 로 표현할 수 있다.  
 
-아래와 같이 유도할 수 있다.  
+아래와 같이 유도할 수 있다. **Design Matrix**  
 
 $$\widetilde{\boldsymbol{X}} = \begin{bmatrix} \vdots\\ - \widetilde{\boldsymbol{x}}_n^T -\\ \vdots \end{bmatrix},~~ \widetilde{\boldsymbol{W}} = \begin{bmatrix} \vert\\ \cdots \widetilde{\boldsymbol{w}}_k \cdots\\ \vert \end{bmatrix},~~ \boldsymbol {T}= \begin{bmatrix} \vdots\\ - \boldsymbol {T}_n^T -\\ \vdots \end{bmatrix}$$  
 
+> $${T}= \begin{bmatrix} \vdots\\ - \boldsymbol {T}_n^T -\\ \vdots \end{bmatrix}$$는 각각의 행은 K개의 값들을 가진 벡터임.  
+
 $$\begin{align} E_D(\widetilde{\boldsymbol{W}}) &\ = \frac{1}{2}\sum_{n=1}^N\sum_{k=1}^K \left(\widetilde{\boldsymbol{x}}_n^T\widetilde{\boldsymbol{w}}_k - \boldsymbol {T}_{nk}\right)^2\\ &\ = \frac{1}{2}\sum_{n=1}^N \left( \widetilde{\boldsymbol{x}}_n^T \widetilde{\boldsymbol{W}} - \boldsymbol {T}_n^T \right) \left( \widetilde{\boldsymbol{x}}_n^T \widetilde{\boldsymbol{W}} - \boldsymbol {T}_n^T \right)^T\\ &\ = \frac{1}{2}\sum_{n=1}^N \mathrm{tr}\left\{ \left( \widetilde{\boldsymbol{x}}_n^T \widetilde{\boldsymbol{W}} - \boldsymbol {T}_n^T \right) \left( \widetilde{\boldsymbol{x}}_n^T \widetilde{\boldsymbol{W}} - \boldsymbol {T}_n^T \right)^T \right\}\\ &\ = \frac{1}{2}\sum_{n=1}^N \mathrm{tr}\left\{ \left( \widetilde{\boldsymbol{x}}_n^T \widetilde{\boldsymbol{W}} - \boldsymbol {T}_n^T \right)^T \left( \widetilde{\boldsymbol{x}}_n^T \widetilde{\boldsymbol{W}} - \boldsymbol {T}_n^T \right) \right\}\\ &\ = \frac{1}{2}\mathrm{tr}\left\{ \sum_{n=1}^N \left( \widetilde{\boldsymbol{x}}_n^T \widetilde{\boldsymbol{W}} - \boldsymbol {T}_n^T \right)^T \left( \widetilde{\boldsymbol{x}}_n^T \widetilde{\boldsymbol{W}} - \boldsymbol {T}_n^T \right) \right\}\\ &\ = \frac{1}{2}\mathrm{tr}\left\{ \left(\widetilde{\boldsymbol{x}}\widetilde{\boldsymbol{W}}-\boldsymbol {T} \right)^T \left(\widetilde{\boldsymbol{x}}\widetilde{\boldsymbol{W}}-\boldsymbol {T} \right) \right\} \end{align}$$  
 
-마지막 과정  
+마지막 과정
 
-$$\begin{align} {\boldsymbol A} &= \boldsymbol{X}\boldsymbol{W} - \boldsymbol{T} = \begin{bmatrix} \vdots\\ - \boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T-\\ \vdots \end{bmatrix}\\ {\boldsymbol A}^T{\boldsymbol A} &= \begin{bmatrix} \vert\\ \cdots \left(\boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T\right)^T\cdots\\ \vert \end{bmatrix} \begin{bmatrix} \vdots\\ - \boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T-\\ \vdots \end{bmatrix}\\ &= \sum_{n=1}^N \left( \boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T \right)^T \left( \boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T \right) \end{align}$$
+> 이 부분도 PCA 할대 했던 것임.  
+
+$$\begin{align} {\boldsymbol A} &= \boldsymbol{X}\boldsymbol{W} - \boldsymbol{T} = \begin{bmatrix} \vdots\\ - \boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T-\\ \vdots \end{bmatrix}\\ {\boldsymbol A}^T{\boldsymbol A} &= \begin{bmatrix} \vert\\ \cdots \left(\boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T\right)^T\cdots\\ \vert \end{bmatrix} \begin{bmatrix} \vdots\\ - \boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T-\\ \vdots \end{bmatrix}\\ &= \sum_{n=1}^N \left( \boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T \right)^T \left( \boldsymbol{x}_n^T \boldsymbol{W} - \boldsymbol {T}_n^T \right) \end{align}$$  
 
 $$\widetilde{\boldsymbol{W}}$$에 대한 $$E_D(\widetilde{\boldsymbol{W}})$$의 최솟값을 구하면  
 
-$$\widetilde{\boldsymbol{W}}=(\widetilde{\boldsymbol{X}}^T\widetilde{\boldsymbol{X}})^{-1}\widetilde{\boldsymbol{X}}^T\boldsymbol {T}=\widetilde{\boldsymbol{X}}^{\dagger}\boldsymbol{T}$$
+$$\widetilde{\boldsymbol{W}}=(\widetilde{\boldsymbol{X}}^T\widetilde{\boldsymbol{X}})^{-1}\widetilde{\boldsymbol{X}}^T\boldsymbol {T}=\widetilde{\boldsymbol{X}}^{\dagger}\boldsymbol{T}$$  
+
+> $$\widetilde{\boldsymbol{X}}^{\dagger}$$ $$\boldsymbol{X}$$의 pseudo inverse에 목표값 행렬을 곱한 것이 에러함수를 최소화 시키는 $$\boldsymbol{W}$$임.
 
 따라서 판별함수는 다음과 같다.  
 
