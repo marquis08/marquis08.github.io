@@ -567,7 +567,7 @@ $$\Sigma_{ML} = \frac{1}{N}\sum_{i=1}^{N}(\boldsymbol{x}_{n}-\boldsymbol{\mu})(\
 
 > $$\boldsymbol{S}$$를 대입해주면 $$\Sigma_{ML}$$ 이 된다.  
 
-위의 식 유도를 위해 아래의 기본벅인 선형대수 결과를 사용하였다.  
+위의 식 유도를 위해 아래의 기본적인 선형대수 결과를 사용하였다.  
 
 - \\(\vert \boldsymbol{A}^{-1}\vert = l/\vert \boldsymbol{A}\vert\\)
 - \\(\boldsymbol{x}^{T}\boldsymbol{Ax} = tr(\boldsymbol{x}^{T}\boldsymbol{Ax}) = tr(\boldsymbol{xx}^{T}\boldsymbol{A}) \\)
