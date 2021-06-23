@@ -45,7 +45,8 @@ $$\phi_{j}(x) = \sigma\left(\frac{x-\mu_{j}}{s}  \right)$$
 
 $$\sigma(a) = \frac{1}{1+\exp(-a)}$$  
 
-그림
+![basis-functions](/assets/images/basis-functions.png){: .align-center}  
+
 
 # 최대우도와 최소제곱법 (Maximum Likelihood and Least Squares)
 에러함수가 가우시안 노이즈를 가정할 때 최대우도로부터 유도될 수 있다는 것을 살펴본 적이 있다. 조금 더 자세히 살펴보자.  
@@ -130,8 +131,7 @@ $$Proj(\boldsymbol{t};\boldsymbol{A})$$ 은 행렬 $$\boldsymbol{A}$$  의 치�
 
 $$Proj(\boldsymbol{t};\boldsymbol{A}) =  \arg\min\ _{v\in \mathcal{R}(\boldsymbol{A})}\Vert\boldsymbol{t}-\boldsymbol{v} \Vert_{2} = \boldsymbol{A}(\boldsymbol{A}^{T}\boldsymbol{A})^{-1}\boldsymbol{A}^{T}\boldsymbol{t}$$  
 
-![그림 여기에](){}  
-
+![geometrical-least-squares](/assets/images/geometrical-least-squares.png){: .align-center}  
 
 
 # 온라인 학습 (Sequantial Learning)
@@ -178,7 +178,7 @@ Lasso 모델($$q=1$$)
 
 $$\sum_{j=1}^{M}\vert\boldsymbol{w}_{j} \vert^{q} \leq\eta$$  
 
-![그림](){: .align-center}  
+![unregularized-error-function-for-quadratic-regularizer](/assets/images/unregularized-error-function-for-quadratic-regularizer.png){: .align-center}  
 
 # 편향-분산 분해(Bias-Variance Decomposition)
 모델이 과적합되는 현상에 대한 이론적인 분석  
