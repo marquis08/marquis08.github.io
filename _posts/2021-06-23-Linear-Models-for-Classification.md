@@ -738,6 +738,9 @@ $$y_{nk} = y_k(\phi_n)$$, $$\boldsymbol {T}$$는 $$t_{nk}$$를 원소로 가지�
 
 $$E(\boldsymbol{w}_1, ..., \boldsymbol{w}_K) = - \ln p(\boldsymbol {T}\vert \boldsymbol{w}_1, ...,\boldsymbol{w}_K) = - \sum_{n=1}^{N} \sum_{k=1}^{K} t_{nk}\ln(y_{nk})$$  
 
+> 구해야할 파라미터 $$\boldsymbol{w}$$의 개수는 k개의 벡터임. 각각의 $$\boldsymbol{w}$$의 벡터들의 최소값을 찾아야 하는데, $$\boldsymbol{w}_j$$에 대한 gradient를 구해서, 최적의 해를 구하고, $$j$$의 값이 1일때부터 k일때까지를 구하면, 최적의 파라미터들을 다 찾는 것이 됨.  
+
+
 $$\boldsymbol{w}_j$$에 대한 gradient를 구한다. 먼저 하나의 샘플 $$\phi_n$$에 대한 에러  
 
 $$E_n(\boldsymbol{w}_1,\ldots,\boldsymbol{w}_K) = - \sum_{k=1}^{K} t_{nk}\ln(y_{nk})$$  
@@ -750,9 +753,28 @@ $$\nabla_{ \boldsymbol{w}_j }E(\boldsymbol{w}_1, ...,\boldsymbol{w}_K) = \sum_{n
 
 \- $$E_n$$와 $$\boldsymbol{w}_j$$의 관계는 오직 $$a_{nj}$$에만 의존한다($$a_{nk}, k\neq j$$는 $$\boldsymbol{w}_j$$의 함수가 아니다).  
 \- $$E_n$$은 $$y_{n1},\ldots,y_{nK}$$의 함수이다.  
-\- $$y_{nk}$$는 $$a_{n1},\ldots,a_{nK}$$의 함수이다.
+\- $$y_{nk}$$는 $$a_{n1},\ldots,a_{nK}$$의 함수이다.  
+
+>  
+> ![multiclass-error-figure](/assets/images/multiclass-error-figure.png){: .align-center .img-80}  
+>  
+> $$p(\mathcal{C}_k\vert \phi) = y_k(\phi) = \frac{\exp(a_k)}{\sum_j \exp(a_j)}$$ 이렇게 소프트 맥스 함수형식으로 표현되어 있는데, 분자에는 $$\exp(a_k)$$가 있는데, 분모에는 모든 $$a$$의 변수들이 더해져 있음. 그래서 $$y_k(\phi) = p(\mathcal{C}_k\vert \phi_n)$$는 단지 $$a_k$$의 관한 함수가 아니라 모든 $$a$$에 관한 함수임.  
+>  
+> 각각의 $$y_n1 \tilde y_nK$$의 변수가 $$a$$와 관련이 있음을 의미함.  
+> 그림에서 $$\boldsymbol{w}$$의 차원은 $$M$$임을 기억해야 함.  
+>  
+> 에러함수를 $$\boldsymbol{w}$$로 미분할 때 어떻게 chain rule을 쓸것인가를 결정하기 위해 도식화해봄.  
+> 그림에서 보면, $$\boldsymbol{w}_j$$는 반드시 $$\boldsymbol{a}_n$$만을 통과해야 에러함수에 도달이 가능함. $$\boldsymbol{a}_n$$에 도달한 후로는 에러함수로 가기 위해서는 K개의 길이 존재함. 이것이 chain rule을 결정함. 
+>  
 
 $$\begin{align} \nabla_{ \boldsymbol{w}_j }E_n &\ = \frac{\partial E_n}{\partial a_{nj}} \frac{\partial a_{nj}}{\partial \boldsymbol{w}_j}\\ &\ = \frac{\partial E_n}{\partial a_{nj}}\phi_n\\ &\ = \sum_{k=1}^K \left( \frac{\partial E_n}{\partial y_{nk}} \frac{\partial y_{nk}}{\partial a_{nj}} \right)\phi_n\\ &\ = \phi_n \sum_{k=1}^K \left\{ - \frac{t_{nk}}{y_{nk}}y_{nk}(I_{kj}-y_{nj}) \right\}\\ &\ = \phi_n \sum_{k=1}^K t_{nk}(y_{nj} - I_{kj})\\ &\ = \phi_n \left( y_{nj}\sum_{k=1}^K t_{nk} - \sum_{k=1}^K t_{nk}I_{kj} \right)\\ &\ = \phi_n (y_{nj} - t_{nj}) \end{align}$$  
+
+> $$E_n$$을 $$\boldsymbol{w}_j$$에 관해서 미분할 것임. $$\boldsymbol{w}_j$$는 $$M$$차원의 벡터임을 잊지말자.  
+>  
+> $$\frac{\partial E_n}{\partial a_{nj}} \frac{\partial a_{nj}}{\partial \boldsymbol{w}_j}$$: $$\boldsymbol{w}_j$$는 $$a_{nj}$$를 통해서만 $$E_n$$에 관계를 가질 수 있음. 따라서 $$a_{nj}$$에 대해서 chain rule을 적용한 것임.    
+> $$\frac{\partial a_{nj}}{\partial \boldsymbol{w}_j}$$ = $$\phi_n$$과 같음을 그림에서도 확인함. 왜냐면 $$a_{nj} = \boldsymbol{w}_j^{T}\phi_n$$이기 때문.  
+>  
+> $$a_{nj}$$와 $$E_n$$의 관계는 내일하자.
 
 따라서  
 
