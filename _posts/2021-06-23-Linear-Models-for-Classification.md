@@ -598,7 +598,7 @@ $$\phi$$가 $$M$$ 차원이라면 구해야 할 파라미터($$\boldsymbol{w}$$)
 > 특히, 공분산 행렬에 나타나는 파라미터들을 구해야 하는데 M에 대해서 quadratic.  
 > 로지스틱 회귀에서는 M의 liear개수의 파라미터만 구해도 됨.  
 
-### 최대우도해
+### 최대우도해 <a id="func-compute-cost"></a>
 
 \- 데이터셋: $$\{\phi_n, t_n\}$$, $$n=1,\ldots,N$$  
 \- $$t_n \in \{0, 1\}$$  
@@ -760,7 +760,7 @@ $$\nabla_{ \boldsymbol{w}_j }E(\boldsymbol{w}_1, ...,\boldsymbol{w}_K) = \sum_{n
 >  
 > $$p(\mathcal{C}_k\vert \phi) = y_k(\phi) = \frac{\exp(a_k)}{\sum_j \exp(a_j)}$$ 이렇게 소프트 맥스 함수형식으로 표현되어 있는데, 분자에는 $$\exp(a_k)$$가 있는데, 분모에는 모든 $$a$$의 변수들이 더해져 있음. 그래서 $$y_k(\phi) = p(\mathcal{C}_k\vert \phi_n)$$는 단지 $$a_k$$의 관한 함수가 아니라 모든 $$a$$에 관한 함수임.  
 >  
-> 각각의 $$y_n1 \tilde y_nK$$의 변수가 $$a$$와 관련이 있음을 의미함.  
+> 각각의 $$y_n1 \tilde y_{nk}$$의 변수가 $$a$$와 관련이 있음을 의미함.  
 > 그림에서 $$\boldsymbol{w}$$의 차원은 $$M$$임을 기억해야 함.  
 >  
 > 에러함수를 $$\boldsymbol{w}$$로 미분할 때 어떻게 chain rule을 쓸것인가를 결정하기 위해 도식화해봄.  
@@ -769,29 +769,111 @@ $$\nabla_{ \boldsymbol{w}_j }E(\boldsymbol{w}_1, ...,\boldsymbol{w}_K) = \sum_{n
 
 $$\begin{align} \nabla_{ \boldsymbol{w}_j }E_n &\ = \frac{\partial E_n}{\partial a_{nj}} \frac{\partial a_{nj}}{\partial \boldsymbol{w}_j}\\ &\ = \frac{\partial E_n}{\partial a_{nj}}\phi_n\\ &\ = \sum_{k=1}^K \left( \frac{\partial E_n}{\partial y_{nk}} \frac{\partial y_{nk}}{\partial a_{nj}} \right)\phi_n\\ &\ = \phi_n \sum_{k=1}^K \left\{ - \frac{t_{nk}}{y_{nk}}y_{nk}(I_{kj}-y_{nj}) \right\}\\ &\ = \phi_n \sum_{k=1}^K t_{nk}(y_{nj} - I_{kj})\\ &\ = \phi_n \left( y_{nj}\sum_{k=1}^K t_{nk} - \sum_{k=1}^K t_{nk}I_{kj} \right)\\ &\ = \phi_n (y_{nj} - t_{nj}) \end{align}$$  
 
+> 위 식을 전개 👇  
 > $$E_n$$을 $$\boldsymbol{w}_j$$에 관해서 미분할 것임. $$\boldsymbol{w}_j$$는 $$M$$차원의 벡터임을 잊지말자.  
 >  
-> $$\frac{\partial E_n}{\partial a_{nj}} \frac{\partial a_{nj}}{\partial \boldsymbol{w}_j}$$: $$\boldsymbol{w}_j$$는 $$a_{nj}$$를 통해서만 $$E_n$$에 관계를 가질 수 있음. 따라서 $$a_{nj}$$에 대해서 chain rule을 적용한 것임.    
+> $$\frac{\partial E_n}{\partial a_{nj}} \frac{\partial a_{nj}}{\partial \boldsymbol{w}_j}$$  
+>  
+> $$\boldsymbol{w}_j$$는 $$a_{nj}$$를 통해서만 $$E_n$$에 관계를 가질 수 있음. 따라서 $$a_{nj}$$에 대해서 chain rule을 적용한 것임.    
 > $$\frac{\partial a_{nj}}{\partial \boldsymbol{w}_j}$$ = $$\phi_n$$과 같음을 그림에서도 확인함. 왜냐면 $$a_{nj} = \boldsymbol{w}_j^{T}\phi_n$$이기 때문.  
 >  
-> $$a_{nj}$$와 $$E_n$$의 관계는 내일하자.
+> $$a_{nj}$$와 $$E_n$$의 관계는 $$K$$개의 $$y_n$$변수를 통해서 가기 때문에 이 경로에 대한 합을 다 적어줘야함.(chain rule)  
+> 
+> $$\Longrightarrow \sum_{k=1}^K \left( \frac{\partial E_n}{\partial y_{nk}} \frac{\partial y_{nk}}{\partial a_{nj}} \right)$$  
+>  
+> 이렇게 표현할 수 있음.  
+  
+> $$\phi_n$$는 수식앞으로 보내고 나머지 부분을 다시 정리하면,  
+>  
+> $$\frac{\partial E_n}{\partial y_{nk}}$$  
+> 
+> 이 부분은 간단함. $$E_n(\boldsymbol{w}_1,\ldots,\boldsymbol{w}_K) = - \sum_{k=1}^{K} t_{nk}\ln(y_{nk})$$ 이 식에서 $$y_{nk}$$에 대해서 미분하면 단순히 $$\frac{1}{y_{nk}}$$이 곱해지는 것임.  
+> 따라서,  
+>  
+> $$- \frac{t_{nk}}{y_{nk}}$$  
+  
+> $$\frac{\partial y_{nk}}{\partial a_{nj}}$$  
+>  
+> 이 부분은 2가지의 경우로 나눠서 생각하면 됨.  
+>    
+> (1). $$k\neq j$$  
+> 
+> $$\frac{\partial y_{nk}}{\partial a_{nj}}$$  
+>  
+> 이렇게 미분할 때, $$y$$와 $$a$$의 관계는 $$y_k(\phi) = \frac{\exp(a_k)}{\sum_j \exp(a_j)}$$ 이런 식의 함수관계임.  
+> 풀어서 써보면 이러한 형태임로 바꿔줄 수 있음(k대신 l을 사용).  
+>  
+> $$y_{nk} = \frac{\exp(a_{nk})}{\sum_l \exp(a_{nl})} = \exp(a_{nk})\times \{ \exp(a_{n1})+\ldots+\exp(a_{nl}) \}^{-1}$$  
+>  
+> 이제,  
+> $$k\neq j$$인 경우 $$\frac{\partial y_{nk}}{\partial a_{nj}}$$ 에서 분자와 분모는 서로 다른 변수임. 분자부분을 미분할 때 상수처럼 취급함.  
+> 따라서,  
+> $$\exp(a_{nk})\times \{ \exp(a_n1)+\ldots+\exp(a_{nl}) \}^{-1}$$에서 $$a_nj$$가 나타나는 부분은 분모 $$\{ \exp(a_n1)+\ldots+\exp(a_{nl}) \}^{-1}$$의 하나의 항으로 나타남.  
+>  
+> 미분을 하면,  
+>  
+> $$\begin{align}  \frac{\partial y_{nk}}{\partial a_{nj}} &= - \frac{\exp(a_{nk})}{\{ \sum_{l}\exp(a_{nl}) \}^2}\exp(a_nj) \\ &= \frac{\exp(a_{nk})}{\sum_{l}\exp(a_{nl})}\times (-\frac{\exp(a_nj)}{\sum_{l}\exp(a_{nl})}) \\ &= y_{nk}\times (- y_{nj}) \end{align}$$
+>  
+> (2). $$k=j$$  
+>
+>  
+> $$\begin{align}  \frac{\partial y_{nk}}{\partial a_{nj}} &= \frac{\exp(a_nj)}{\sum_{l}\exp(a_{nl})} - \frac{\exp(a_nj)^2}{\{\sum_{l}\exp(a_{nl})\}^2} \\ &= \frac{\exp(a_nj)}{\sum_{l}\exp(a_{nl})}( 1 - \frac{\exp(a_nj)}{\sum_{l}\exp(a_{nl})}  ) \\ &= y_{nk}\times ( 1 - y_{nj}) &\ \mathrm{by}~ y_{nk} = \frac{\exp(a_{nk})}{\sum_l \exp(a_{nl})},\ k=j \implies y_{nk} = y_{nj} \end{align}$$  
+>  
+> $$y_{nk} = \exp(a_{nk})\times \{ \exp(a_{n1})+\ldots+\exp(a_{nl}) \}^{-1}$$ 이기 때문에, 이것을 $$a_{nj}$$에 대해 미분하는데,  
+>> 두 함수의 곱이 있을 때, 함수 $$f(x)$$와 $$g(x)$$가 곱해져 있을때 그것을 미분을 하면, $$f(x)$$를 미분한 것에 $$g(x)$$를 곱하고 + $$f(x)$$곱하기 $$g(x)$$를 미분한 것으로 계산됨.([Appendix 참조](#Derivative-of-the-product-of-two-functions))  
+>  
+> 따라서, 
+> $$f(x)$$인 $$\exp(a_{nk})$$를 $$a_{nj}$$에 대해서 미분하면, $$k=j$$이고 지수함수이기 때문에 $$\exp(a_{nj})$$가 그대로 내려오고($$f(x)'$$) $$g(x)$$인 $$\{ \exp(a_{n1})+\ldots+\exp(a_{nl}) \}^{-1}$$ 을 그대로 곱해주게 되면,  
+>  
+> $$\frac{\exp(a_nj)}{\sum_{l}\exp(a_{nl})}$$  
+>  
+> 이 결과가 됨.  
+> $$g(x)$$인 $$\{ \exp(a_{n1})+\ldots+\exp(a_{nl}) \}^{-1}$$를 $$a_{nj}$$에 대해서 미분하고, $$f(x) = \exp(a_{nk})$$를 그대로 곱해주면,  
+>  
+> $$- \frac{\exp(a_nj)^2}{\{\sum_{l}\exp(a_{nl})\}^2}$$  
+> 
+> 이 결과가 나옴.  
+>  
+> 위 의 2가지 경우를 하나의 식으로 나타내면,  
+>  
+> $$y_{nk}(I_{kj}-y_{nj})$$  
+>  
+> 단위행렬($$I_{kj}$$)를 사용해서 표현이 가능함. $$\begin{Bmatrix} k\neq j \implies 0 \\ k=j \implies 1 \end{Bmatrix}$$  
+  
+> $$\left\{ - \frac{t_{nk}}{y_{nk}}y_{nk}(I_{kj}-y_{nj}) \right\}$$  
+>  
+> 이 식을 정리하면 $$t_{nk}(y_{nj}-I_{kj})$$ 가 됨.  
+> $$\phi_n \sum_{k=1}^K t_{nk}(y_{nj} - I_{kj})$$ 을 풀어서 곱으로 나누어주면 $$\left( y_{nj}\sum_{k=1}^K t_{nk} - \sum_{k=1}^K t_{nk}I_{kj} \right)$$ 이 됨.  
+> $$y_{nj}\sum_{k=1}^K t_{nk}$$에서 $$y_{nj}$$는 $$k$$값과 상관없이 때문에 $$\sum$$ 밖으로 나옴.  
+> 남은 부분인 $$\sum_{k=1}^K t_{nk}$$은 하나의 데이터데 대해서 그때의 타겟 벡터의 원소들을 다 합한 것과 같고 이 값은 결국 1임 (목표값은 하나의 데이터에 대해 반드시 1개의 클래스만 1이 될 수 있기 때문에).  
+> $$\sum_{k=1}^K t_{nk}I_{kj}$$ 이 경우도, 결국 $$j$$번째 원소만 남고 나머지는 전부 0이 되기 때문에 $$t_{nj}$$만 남게 됨.  
+>  
+> 최종적으로 하나의 데이터 기저함수를 사용한 $$\phi_n$$에 대해서 에러를 구해서, 그 에러에 $$\boldsymbol{w}_j$$에 대한 gradient($$\nabla$$)는 $$\phi_n (y_{nj} - t_{nj})$$가 되는 것임.  
+>  
+> 과정은 복잡했지만, 결과로 나온 gradient는 생각보다 단순한 형태..  
+>  
+> $$\phi_n (y_{nj} - t_{nj})$$: $$\phi_n$$은 입력벡터이고, 예측값($$y_{nj}$$)과 타겟값($$t_{nj}$$)의 차이를 곱해서 이루어지게 됨.  
+>  
 
-따라서  
+따라서 <a id="gradient-formula"></a>  
 
 $$\nabla_{ \boldsymbol{w}_j }E(\boldsymbol{w}_1, ...,\boldsymbol{w}_K) = \sum_{n=1}^{N} (y_{nj}-t_{nj})\phi_n$$  
+
+> 행렬로 표현하면, 더 간단하게 표현이 가능함.  
+> $$\Phi^{T}(\boldsymbol{y}-\boldsymbol{t})$$: $$\Phi$$는 Design Matrix  
+> $$\Phi^{T} = \begin{bmatrix} \vert \ \ \\ \boldsymbol{\phi}_{1} \cdots\\ \vert \ \ \end{bmatrix}$$  
+> $$\Phi^{T}$$라는 열벡터로 표현된 행렬에 벡터 $$(\boldsymbol{y}-\boldsymbol{t})$$를 곱하는 형태임.  
+>  
+> 위의 합의 형태를 행렬로 간단하게 표현이 가능함.  
 
 # 실습  
 
 ## Gradient Descent (batch)
 ```python
-In [ ]:
-
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_classification
 import seaborn as sns
-
-In [ ]:
 
 X, t = make_classification(n_samples=500, n_features=2, n_redundant=0, n_informative=1,
                              n_clusters_per_class=1, random_state=14)
@@ -801,12 +883,10 @@ t = t[:,np.newaxis]
 sns.set_style('white')
 sns.scatterplot(X[:,0],X[:,1],hue=t.reshape(-1));
 
-In [ ]:
-
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-In [ ]:
+
 
 def compute_cost(X, t, w):
     N = len(t)
@@ -814,9 +894,17 @@ def compute_cost(X, t, w):
     epsilon = 1e-5
     cost = (1/N)*(((-t).T @ np.log(h + epsilon))-((1-t).T @ np.log(1-h + epsilon)))
     return cost
+```  
+> [compute cost](#func-compute-cost)  
+> $$E(\boldsymbol{w})= - \ln{p(\boldsymbol {T}\vert \boldsymbol{w})} = - \sum_{n=1}^{N}\left\{t_n\ln{y_n}+(1-t_n)\ln(1-y_n)\right\}$$와 동일한 함수임.  
+> 코드에서는 $$\frac{1}{N}$$을 곱하는 형태로 적용한 것임.  
+> $$\frac{1}{N}$$을 곱하는 것이 numerical하게 안정적임. N값이 크게 되면 gradient가 크기 때문에 gradient값이 한꺼번에 많이 움직이는 상황이 발생하기 때문. $$\frac{1}{N}$$ 해주면 안정적으로 optimization이 가능함.  
+> `h = sigmoid(X @ w)`: h는 벡터임 broadcasting 되면서, 시그모이드 함수에 들어가는 벡터의 각각의 원소에 대해서 대응하는 로지스틱 시그모이드 함수 값을 원소로 가지게 됨.  
+> `epsilon = 1e-5`: 로그 값은 안정적으로 구하기 위해서 더해줌.  
+> $$y_{n}$$이 코드에서는 `h + epsilon`인 것임.  
 
-In [ ]:
 
+```python
 def gradient_descent(X, t, w, learning_rate, iterations):
     N = len(t)
     cost_history = np.zeros((iterations,1))
@@ -826,14 +914,24 @@ def gradient_descent(X, t, w, learning_rate, iterations):
         cost_history[i] = compute_cost(X, t, w)
 
     return (cost_history, w)
+```  
 
-In [ ]:
-
+> 파라미터 w = w - `learning_rate`*gradient 임.  
+> 앞에서 $$\boldsymbol{x}$$라는 원래의 인풋을 쓰기도 했고 기저함수 $$\phi$$를 쓰기도 했지만, 위 코드에서는 기저함수를 통과하지 않은 원래의 $$\boldsymbol{x}$$를 사용했음.  
+> 이 $$\boldsymbol{x}$$도 Design Matrix라고 부를 수 있음.  
+>  
+> gradient 식과 비교해봄. [gradient](#gradient-formula)  
+> $$\triangledown E(\boldsymbol{w}) = \sum_{n=1}^N (y_n - t_n)\phi_n = \Phi^{T}(\boldsymbol{y}-\boldsymbol{t})$$: $$\Phi$$는 Design Matrix  
+> $$\Phi^{T} = \begin{bmatrix} \vert \ \ \\ \boldsymbol{\phi}_{1} \cdots\\ \vert \ \ \end{bmatrix}$$  
+> 여기선 Design Matrix가 $$\boldsymbol{x}$$ 이기 때문에, $$\boldsymbol{x}^{T}\times$$  (`sigmoid(X @ w)` = $$\boldsymbol{y}$$)-$$\boldsymbol{t}$$ 의 형태가 되는 것임.  
+    
+```python
 def predict(X, w):
     return np.round(sigmoid(X @ w))
-
-In [ ]:
-
+```  
+> 0 or 1로 출력하도록 만들어줌.  
+    
+```python
 N = len(t)
 
 X = np.hstack((np.ones((N,1)),X))
@@ -858,18 +956,27 @@ plt.title("Convergence Graph of Cost Function")
 plt.xlabel("Number of Iterations")
 plt.ylabel("Cost")
 plt.show()
+```  
+> Dummy input을 사용하기 위해 `X = np.hstack((np.ones((N,1)),X))` 1을 열로 하나 추가한 것임.  
+>> Dummy input을 사용하는 이유?  
+>  
+> `(cost_history, w_optimal) = gradient_descent(X, t, w, learning_rate, iterations)`  
+> 여기서 전체 데이터 (X)를 **한꺼번에** gradient를 업데이트를 하는 것이기 때문에 **batch** 업데이트라고 부름.  
+> 딥러닝에서 주로 사용하는 **batch**는 사실 **mini-batch**를 줄여서 하는 말임.  
+> 여기서는 전체 데이터를 다 사용해서 업데이트 한다는 의미임.  
+>  
+> `(cost_history, w_optimal)`  
+> 여기서 optimal은 진짜 optimal이 아니라 최종적으로 얻어지는 $$\boldsymbol{W}$$임 (충분히 학습하면 최종적으로 나오는 $$\boldsymbol{W}$$가 optimal이라는 가정하에 붙인 것임)  
 
-In [ ]:
-
-## Accuracy
-
+## Accuracy  
+```python
 y_pred = predict(X, w_optimal)
 score = float(sum(y_pred == t))/ float(len(t))
 
 print(score)
-
-In [ ]:
-
+```  
+### Draw a decision boundary
+```python
 slope = -(w_optimal[1] / w_optimal[2])
 intercept = -(w[0] / w_optimal[2])
 
@@ -881,23 +988,31 @@ ax.autoscale(False)
 x_vals = np.array(ax.get_xlim())
 y_vals = intercept + (slope * x_vals)
 plt.plot(x_vals, y_vals, c="k");
+```  
 
-Stochastic Gradient Descent
-In [ ]:
+## Stochastic Gradient Descent
+> 파라미터를 업데이트 할때 데이터 전체를 사용하는 것이 아니라 데이터 하나 만을 사용하는 방법.  
 
+```python
 def sgd(X, t, w, learning_rate, iterations):
     N = len(t)
     cost_history = np.zeros((iterations,1))
 
     for i in range(iterations):
-        i = i % N
+        i = i % N # 처음 위치로 
         w = w - learning_rate * (X[i, np.newaxis].T * (sigmoid(X[i] @ w) - t[i]))
         cost_history[i] = compute_cost(X[i], t[i], w)
 
     return (cost_history, w)
+```  
+> batch(전체): `w = w - (learning_rate/N) * (X.T @ (sigmoid(X @ w) - t))`  
+> sgd: `w = w - learning_rate * (X[i, np.newaxis].T * (sigmoid(X[i] @ w) - t[i]))`  
+> i-th 데이터만 사용해서 업데이트  
+> batch로 했을 때는 `iterations = 1000`으로 **전체 데이터를 1000번 읽은** 효과  
+> sgd에서 `iterations = 1000`으로 하면, **읽은 샘플의 개수가 1000개**인 것임.  
 
-In [ ]:
-
+    
+```python
 X, t = make_classification(n_samples=500, n_features=2, n_redundant=0, n_informative=1,
                              n_clusters_per_class=1, random_state=14)
 
@@ -927,19 +1042,20 @@ plt.title("Convergence Graph of Cost Function")
 plt.xlabel("Number of Iterations")
 plt.ylabel("Cost")
 plt.show()
-
-In [ ]:
+```  
 
 ## Accuracy
-
+```python
 y_pred = predict(X, w_optimal)
 score = float(sum(y_pred == t))/ float(len(t))
 
 print(score)
+```
 
-Mini-batch Gradient Descent
-In [ ]:
+# Mini-batch Gradient Descent
+> 배치 사이즈를 조절해서 함.  
 
+```python
 def batch_gd(X, t, w, learning_rate, iterations, batch_size):
     N = len(t)
     cost_history = np.zeros((iterations,1))
@@ -948,10 +1064,10 @@ def batch_gd(X, t, w, learning_rate, iterations, batch_size):
     t_shuffled = t[shuffled_indices]
 
     for i in range(iterations):
-        i = i % N
+        i = i % N # 태초마을
         X_batch = X_shuffled[i:i+batch_size]
         t_batch = t_shuffled[i:i+batch_size]
-        # batch가 epoch 경계를 넘어가는 경우, 앞 부분으로 채워줌
+        # batch가 epoch 경계를 넘어가는 경우, 앞 부분으로 채워줌 
         if X_batch.shape[0] < batch_size:
             X_batch = np.vstack((X_batch, X_shuffled[:(batch_size - X_batch.shape[0])]))
             t_batch = np.vstack((t_batch, t_shuffled[:(batch_size - t_batch.shape[0])]))
@@ -959,9 +1075,11 @@ def batch_gd(X, t, w, learning_rate, iterations, batch_size):
         cost_history[i] = compute_cost(X_batch, t_batch, w)
 
     return (cost_history, w)
-
-In [ ]:
-
+```  
+> 데이터를 shuffle 해줌.(배치 사이즈 만큼 읽기 때문에 특정 batch에서의 영향을 줄이기 위해)  
+> `if X_batch.shape[0] < batch_size:` 이것은 pytorch에서 `dataloader(droplast=True)`로 사용하면 에러없이 가능함.  
+    
+```python
 X, t = make_classification(n_samples=500, n_features=2, n_redundant=0, n_informative=1,
                              n_clusters_per_class=1, random_state=14)
 
@@ -991,22 +1109,24 @@ plt.title("Convergence Graph of Cost Function")
 plt.xlabel("Number of Iterations")
 plt.ylabel("Cost")
 plt.show()
-
-In [ ]:
+```  
 
 ## Accuracy
-
+```python
 y_pred = predict(X, w_optimal)
 score = float(sum(y_pred == t))/ float(len(t))
 
 print(score)
-```
+```  
 
+> 딥러닝에서는 mini-batch를 보통사용함.  
+> SGD 같은 경우 민감하게 반응하기 때문에.  
 
 # Appendix
+## Derivative of the product of two functions <a id="Derivative-of-the-product-of-two-functions"></a>
+$$f(x) = g(x)h(x) \Rightarrow f'(x)=g'(x)h(x)+g(x)h'(x)$$  
 
 ## MathJax
-
 left align:  
 
 $$\begin{align} &\ A = AAAA \\ &\ AAAAA = A \\ &\  AAA = AA \end{align}$$  
