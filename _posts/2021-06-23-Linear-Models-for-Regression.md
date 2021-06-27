@@ -23,7 +23,7 @@ $$\boldsymbol{x}$$에 대해 비선형인 함수를 만들고 싶다면?
 
 $$y(\boldsymbol{x}, \boldsymbol{w}) = w_{0}+\sum_{j=1}^{M-1}w_{j}\phi_{j}(\boldsymbol{x})$$  
 
-> 편의상 w_{0}를 따로 쓰지 않고, $$\phi_{0}(\boldsymbol{x}) = 1$$로 정의를 하면 아래와 같이 간단하게 나타낼 수 있다.
+> 편의상 $$w_{0}$$를 따로 쓰지 않고, $$\phi_{0}(\boldsymbol{x}) = 1$$로 정의를 하면 아래와 같이 간단하게 나타낼 수 있다.
 
 $$y(\boldsymbol{x}, \boldsymbol{w}) = \sum_{j=0}^{M-1}w_{j}\phi_{j}(\boldsymbol{x}) = \boldsymbol{w}^{T}\phi(\boldsymbol{x})$$  
 
@@ -52,10 +52,10 @@ $$\phi_{j}(x) = \sigma\left(\frac{x-\mu_{j}}{s}  \right)$$
 $$\sigma(a) = \frac{1}{1+\exp(-a)}$$  
 
 > 시그모이드에서도 $$\mu_{j}$$와 $$s$$는 위치와 옆으로 퍼진 정도를 결정한다.  
-
+>  
 > $$\sum_{j=1}^{M-1}w_{j}\phi_{j}(\boldsymbol{x})$$여기에서 $$\boldsymbol{x}$$가 벡터, 반드시 $$\phi$$함수가 하나의 scalar값일 필요는 없고 벡터를 input으로 받아서 scalar 값을 되돌려줘도 된다는 점.  
 > 예를 들어, $$x = (x_1, x_2)^T$$일때, $$\phi_1(x_1,x_2) = x_1^2$$, $$\phi_2(x_1,x_2) = x_2^2$$, $$\phi_3(x_1,x_2) = x_1 x_2$$ 이런식으로 나타낼 수 있다.  
-
+>  
 > 따라서 기저함수 안에 들어가는 $$\boldsymbol{x}$$는 원래 input $$\boldsymbol{x}$$ 전체가 될 수 있음.  
 
 ![basis-functions](/assets/images/basis-functions.png){: .align-center}  
@@ -102,7 +102,7 @@ $$\mathbb{E}[t\vert \boldsymbol{x}] = \int tp(t\vert \boldsymbol{x})dt = y(\bold
 
 $$p(\boldsymbol{t}\vert \boldsymbol{X}, \boldsymbol{w}, \beta) = \prod_{n=1}^{N}\mathcal{N}(t_{n}\vert \boldsymbol{w}^{T}\phi(\boldsymbol{x}_{n}), \beta^{-1})$$  
 
-> 출력값 \boldsymbol{t}에 대해서 확률을 계산하게 되면, N개의 t가 독립적이기 때문에, N개의 가우시안 분포를 곱해주게 된다. 
+> 출력값 $$\boldsymbol{t}$$에 대해서 확률을 계산하게 되면, N개의 t가 독립적이기 때문에, N개의 가우시안 분포를 곱해주게 된다. 
 > 그리고 로그를 씌우게 되면 아래의 식이 된다.  
 
 로그 우도함수는  
@@ -132,7 +132,7 @@ $$\boldsymbol{w}_{ML} = (\Phi^{T}\Phi)^{-1}\Phi^{T}\boldsymbol{t}$$
 위 식을 normal equations라고 부른다.  
 
 > N개의 행과 M개의열이 있다. 각각의 행은 하나의 data point를 의미, 각각의 데이터는 M개의 기저함수를 가지게 된다. 기저함수를 통해서 M개의 element가 생성됨.  
-> 이런 행렬 \phi를 design matrix라고 부른다.    
+> 이런 행렬 $$\phi$$를 design matrix라고 부른다.    
 
 $$\Phi = \begin{pmatrix} \phi_{0}(\boldsymbol{x}_{1}) & \phi_{1}(\boldsymbol{x}_{1}) & \ldots & \phi_{M-1}(\boldsymbol{x}_{1}) \cr \phi_{0}(\boldsymbol{x}_{2}) & \phi_{1}(\boldsymbol{x}_{2}) &\ldots & \phi_{M-1}(\boldsymbol{x}_{2}) \cr \vdots & \vdots & \ddots & \vdots \cr \phi_{0}(\boldsymbol{x}_{N}) & \phi_{1}(\boldsymbol{x}_{N}) & \ldots & \phi_{M-1}(\boldsymbol{x}_{N}) \end{pmatrix}$$  
 
@@ -157,7 +157,7 @@ $$\begin{align}  &\ \frac{1}{2}\Vert \Phi\boldsymbol{w}\approx \boldsymbol{t}\Ve
 
 > $$\frac{1}{2}\boldsymbol{w}^{T}\Phi^{T}\Phi\boldsymbol{w} - \boldsymbol{t}^{T}\Phi\boldsymbol{w}$$ 이 식을 미분하는데, 선형대수에서 배운 공식 중에서 $$\nabla_x x^TAx = 2Ax$$를 활용하면 됨. 즉, x에 관해서 미분할 때 이러한 이차형식 형태로 주어지면 2Ax로 gradient를 구하는게 가능하다.  
 > 행렬미분의 중요한 공식들: <http://127.0.0.1:4000/devcourse2/linearalgebra/mathjax/ML-basics-Linear-Algebra/#%EC%A4%91%EC%9A%94%ED%95%9C-%EA%B3%B5%EC%8B%9D%EB%93%A4>  
-
+>  
 > 따라서 $$\frac{1}{2}\boldsymbol{w}^{T}\Phi^{T}\Phi\boldsymbol{w} = \Phi^{T}\Phi\boldsymbol{w}$$가 됨.  
 > $$\boldsymbol{t}^{T}\Phi\boldsymbol{w}$$ 이 부분은 transpose를 하면 됨.  
 
@@ -189,7 +189,7 @@ $$\boldsymbol{w}_{0} = \bar t - \sum_{j=1}^{M-1}\boldsymbol{w}_{j}\bar{\phi_{j}}
 $$\bar t = \frac{1}{N}\sum_{n=1}^{N}t_{n},\  \bar{\phi_{j}} = \frac{1}{N}\sum_{n=1}^{N}\phi(\boldsymbol{x}_{n})$$  
 
 > $$\bar t$$: target 값의 평균, $$\bar{\phi_{j}}$$: 하나의 기저함수를 N개의 데이터에 대해 평균을 낸 값.  
-
+>  
 > $$\boldsymbol{w}_{0}$$은 target 값의 평균과 $$\sum_{j=1}^{M-1}\boldsymbol{w}_{j}\bar{\phi_{j}}$$ 사이의 차이를 보정하는 역할
 
 ### ML - $$\beta$$(precision)
@@ -223,11 +223,11 @@ $$Proj(\boldsymbol{t};\boldsymbol{A})$$ 은 행렬 $$\boldsymbol{A}$$  의 치�
 $$Proj(\boldsymbol{t};\boldsymbol{A}) =  \arg\min\ _{v\in \mathcal{R}(\boldsymbol{A})}\Vert\boldsymbol{t}-\boldsymbol{v} \Vert_{2} = \boldsymbol{A}(\boldsymbol{A}^{T}\boldsymbol{A})^{-1}\boldsymbol{A}^{T}\boldsymbol{t}$$  
 
 > $$A$$대신에 $$\Phi$$를 사용하면, $$\Phi(\Phi^{T}\Phi)^{-1}\Phi^{T}\boldsymbol{t} = \boldsymbol{w}_{ML}$$의 형태가 나타난 것을 볼 수 있음.  
-
+>  
 > 결국 $$\Phi$$가 주어졌을 때, 목표값 벡터에 가장 가깝게 갈 수 있는 벡터를 구한 것이 됨.  
-
+>  
 > span 대신에 design matrix $$\Phi$$에 대해서 수직으로 내렸을 때 $$y$$가 되는데 이 $$y$$를 구하기 위한 공식이 $$\Phi(\Phi^{T}\Phi)^{-1}\Phi^{T}\boldsymbol{t}$$ 이 것임.  
-
+>  
 > $$\boldsymbol{w}_{ML}$$와 $$\Phi(\Phi^{T}\Phi)^{-1}\Phi^{T}\boldsymbol{t}$$를 곱합 것이 이 그림에서 $$y$$를 표현한 것.  
 
 ![geometrical-least-squares](/assets/images/geometrical-least-squares.png){: .align-center}  
@@ -240,17 +240,17 @@ Stochastic gradient decent
 에러함수가 $$\boldsymbol{E} = \sum_{n}\boldsymbol{E}_{n}$$ 이라고 하자.  
 
 > 에러 함수를 각각의 샘플에 대한 에러들의 합으로 표현 함.  
-
+>  
 > 제곱합 에러를 사용한다면, $$\boldsymbol{E} = \frac{1}{2}\sum_{n=1}^{N}( \boldsymbol{t}_{n} - \boldsymbol{w}^{T}\phi_{n} )^2$$
-
+>  
 > 여기서 $$\phi_{n} = \phi(\boldsymbol{x}_{n})$$ 이고 $$\boldsymbol{x}_{n}$$이 주어졌을 때 기저함수의 output값이다.  
-
+>  
 > $$\boldsymbol{E}_{n} = \frac{1}{2}( \boldsymbol{t}_{n} - \boldsymbol{w}^{T}\phi_{n} )^2$$  
-
+>  
 > 일반적인 Gradient의 경우에는 파라미터를 업데이트 할 때, $$\boldsymbol{E}_{n}$$이 아니라 에러함수 전체에 대해서 함.  
-
+>  
 > SGD 같은 경우 하나의 n 값에 대해서 함.  
-
+>  
 > gradient를 구하면, $$\nabla\boldsymbol{E}_{n} = (\boldsymbol{t}_{n} - \boldsymbol{w}^{T}\phi_{n})(- \phi_{n})$$ 되고 이것을 아래의 식에 넣으면 업데이트 룰이 완성됨.  
 
 $$\boldsymbol{w}^{\tau+1}=\boldsymbol{w}^{\tau} - \eta\nabla\boldsymbol{E}_{n}$$  
@@ -332,9 +332,9 @@ $$\boldsymbol{E}(\boldsymbol{w}) = \frac{1}{2}\sum_{n=1}^{N}\{ t_{n} - \boldsymb
 Lasso 모델($$q=1$$)  
 
 > 규제화된 에러함수를 최소화 시키려고 할 때, optimization 문제를 constrained optimization 문제로 바꿔서 생각할 수 있음.  
-
+>  
 > $$\frac{1}{2}\sum_{j=1}^{M}\vert\boldsymbol{w}_{j} \vert^{q}$$을 라그랑지안이라고 생각하면, 이 부분을 $$\sum_{j=1}^{M}\vert\boldsymbol{w}_{j} \vert^{q} \leq\eta$$ 이러한 부등식을 만족시키는 제약조건으로 생각할 수 있음.   
-
+>  
 > 이러한 제약조건을 만족하면서, 제약이 없는 앞의 항 $$\frac{1}{2}\sum_{n=1}^{N}\{ t_{n} - \boldsymbol{w}^{T}\phi(\boldsymbol{x}_{n}) \}^2$$ 을 최소화시키는 해를 찾는 문제로 전환시켜 생각할 수 있음.  
 
 - Constrained minimization 문제로 나타낼 수 있다.  
@@ -344,19 +344,19 @@ $$\sum_{j=1}^{M}\vert\boldsymbol{w}_{j} \vert^{q} \leq\eta$$
 ![unregularized-error-function-for-quadratic-regularizer](/assets/images/unregularized-error-function-for-quadratic-regularizer.png){: .align-center}  
 
 > $$w_{1}$$, $$w_{2}$$ 2개의 parameter만 있다고 가정.  
-
+>  
 > 파란 contour 위에 있는 $$w_{1}$$, $$w_{2}$$ 점들은, 동일한 에러함수 값을 가진다는 의미. 규제화가 없는 부분을 보여주고 있음.  
-
+>  
 > 중간에 파란 점으로 갈 수 록 에러가 줄어든다고 보면 됨. 제약조건이 없다면 최적해는 파란점이 될텐데, 제약조건을 만족시키려면 $$w_{1}$$, $$w_{2}$$ 값이 칠해진 영역에 내에 있어야 함.  
-
+>  
 > 따라서, constraint region과 contour가 만나는 부분이 제약조건을 만족시키면서 에러가 최소화되는 최적의 해가 발생하는 지점이다.  
 
 ![l2-constraint](/assets/images/l2-constraint.png){: .align-center .img-20}  
 
 > 위의 그림처럼 에러지점이 최소인 곳을 향해서 가지만 제약조건 안에 있어야 한다는 것임.  
-
+>  
 > l1의 경우 사각형의 꼭지점이 최소화 지점인데, 이것이 의미하는 것은 어떤 $$w$$의 값이 0이 된다는 의미 이다. **Figure 3.4**에서 l1의 경우는 $$w_{1}$$의 값이 0이 되는 지점이 최소화가 되는 지점인 것이다.  
-
+>  
 > l1 norm을 사용하는 경우, sparse 한 모델이 얻어지게 됨. sparse하다는 의미는 파라미터들 중에 여러개의 값이 0이 됨.  
 
 # 편향-분산 분해(Bias-Variance Decomposition)
@@ -393,17 +393,17 @@ $$\mathbb{E}[\boldsymbol{L}(\mathcal{D})] = \int \{y(\boldsymbol{x};\mathcal{D})
 $$\frac{1}{\boldsymbol{L}}\sum_{l=1}^{L} \left[ \int \{y(\boldsymbol{x};\mathcal{D}^{(i)})-h(\boldsymbol{x})\}^2 p(\boldsymbol{x})d\boldsymbol{x} + noise \right] = \int \mathbb{E}_{\mathcal{D}} \left[ \{y(\boldsymbol{x};\mathcal{D})-h(\boldsymbol{x}) \}^2 \right] p(\boldsymbol{x})d\boldsymbol{x} + noise$$  
 
 > 합 부분에 적분안으로 들어간다고 생각하면, $$\mathbb{E}_{\mathcal{D}}$$, 즉 $$\mathcal{D}$$에 관한 기댓값으로 생각할 수 있음.  
-
+>  
 > 기댓값 안에 있는 제곱부분에 대해서 먼저 생각해보자.  
-
+>  
 > $$\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right]$$( D가 주어졌을때 y함수의 $$\mathcal{D}$$에 관한 기댓값 ) 이 것을 더하고 빼는 연산을 추가함.  
 
 $$\begin{align}&\ \{y(\boldsymbol{x};\mathcal{D}) -\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right] +\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right] -h(\boldsymbol{x}) \}^2 \\ &= \{y(\boldsymbol{x};\mathcal{D}) -\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right]\}^2 + \{\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right] - h(\boldsymbol{x})\}^2 + 2\{y(\boldsymbol{x};\mathcal{D}) -\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right]\}\{\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right] - h(\boldsymbol{x})\}  \end{align}$$  
 
 > 교차항인 $$2\{y(\boldsymbol{x};\mathcal{D}) -\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right]\}\{\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right] - h(\boldsymbol{x})\}$$은 사라지게 됨.  
-
+>  
 > $$\{\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right] - h(\boldsymbol{x})\}^2$$ 이 부분은 $$\mathcal{D}$$에 관한 함수가 아니기 때문에($$\mathcal{D}$$에 관해서 기댓값을 구하고 되면 그 뒤에는 더이상 $$\mathcal{D}$$에 관한 함수가 아닌게 되버림) $$ \{\mathbb{E}_{\mathcal{D}} \left[y(\boldsymbol{x};\mathcal{D})\right]-h(\boldsymbol{x})\}^2$$ 이렇게 그대로 내려왔고, $$h(\boldsymbol{x})$$ 역시 $$\mathcal{D}$$에 의존성이 없기 때문에 그대로.  
-
+>  
 > $$\{y(\boldsymbol{x};\mathcal{D}) -\boldsymbol{E}_{\mathcal{D}}\left[y(\boldsymbol{x};\mathcal{D})\right]\}^2$$ 이 부분은 기댓값을 적용하게 되면, $$\mathbb{E}_{\mathcal{D}}\left[ \{y(\boldsymbol{x};\mathcal{D}) - \mathbb{E}_{\mathcal{D}}\left[  y(\boldsymbol{x};\mathcal{D}) \right]\}^2 \right]$$ 이런식으로 $$\mathbb{E}_{\mathcal{D}}$$ 기댓값이 붙어서 내려오게 된 것임.  
 
 따라서  
@@ -427,7 +427,7 @@ $$\text{variance} = \int \mathbb{E}_{\mathcal{D}} \left[\{  y(\boldsymbol{x};\ma
 $$\text{noise} = \int\int \{h(\boldsymbol{x})-t\}^2 p(\boldsymbol{x},t)d\boldsymbol{x}$$  
 
 > 모델의 자유도가 높을 수록 편향 값이 낮게 나오는 경향이 있음. 모델의 자유도가 높다는 것은 모델의 복잡도가 높다는 것과 같음. linear한 모델의 경우 편향이 높은 경향을 보임.  
-
+>  
 > 반대로 분산의 경우 커지는 경향이 있음. 즉, 다른 데이터셋이 주어졌을 때 그 데이터셋에 대한 민감도가 높은 경향을 보임.  
 
 ## 예제  
@@ -439,11 +439,11 @@ $$h(\boldsymbol{x}) = \sin(2\pi x)$$
 $$\begin{align}\bar y(x) &= \frac{1}{L}\sum_{l=1}^{L}y^{(l)}(x) \\ (\text{bias})^2 &= \frac{1}{N}\sum_{n=1}^{N}\{ \bar y(x_{n})-h(x_{n})  \}^2 \\ \text{variance} &= \frac{1}{N}\sum_{n=1}^{N}\frac{1}{L}\sum_{l=1}^{L}\{ y^{(l)}(x_{n})-\bar y(x_{n})  \}^2 \end{align}$$  
 
 > 100개의 데이터셋 L, 각각의 데이터셋에 25개의 데이터가 존재한다고 가정. (L=100, N=25)  
-
+>  
 > 규제화와 가우시안 기저함수를 사용했을 때의 학습 결과이다. $$\lambda$$ 값이 클수록 규제화가 많이 되기 때문에 모델의 자유도가 낮다. 반대로 $$\lambda$$ 작을수록 규제화가 작기 때문에 모델의 자유도(복잡도)가 높다.       
-
+>  
 > 오른쪽 그래프에서 red line: $$\bar y(x)$$, green line: $$h(\boldsymbol{x})$$  
-
+>  
 > 그래프에서 첫번째 행에서, $$\lambda$$가 크기 때문에 모델의 자유도가 낮은 경우, 왼쪽의 그래프를 보면, 각각의 데이터셋에 대해서 예측값들이 서로 비슷함. 이는 분산이 작음을 알 수 있음. 하지만 평균값이 h(x)로부터 많이 떨어져 있기 때문에, 편향은 큼.  
 
 ![bias-variance-1](/assets/images/bias-variance-1.png){: .align-center}
@@ -452,14 +452,14 @@ $$\begin{align}\bar y(x) &= \frac{1}{L}\sum_{l=1}^{L}y^{(l)}(x) \\ (\text{bias})
 - 별개의 테스트 데이터셋에 대한 결과  
 
 > x축이 $$\lambda$$인 것을 보면, 왼쪽으로 갈 수록 자유도는 증가하고 오른쪽으로 갈 수록 자유도는 줄어듬.  
-
+>  
 > $$(\text{bias})^2 + \text{variance}$$가 최소인 부분과 test error가 최소인 부분이 거의 동일함을 알 수 있음.  
 
 ![squared-bias-variance](/assets/images/squared-bias-variance.png){: .align-center}  
 
 # 베이지안 선형회귀 (Bayesian Linear Regression)
 > 제한적인 데이터가 주어졌을 때, 빈도주의적 방법으로 접근하게 되면 모델의 불확실성을 나타내기가 힘든 것을 알 수 있음.  
-
+>  
 > 베이지안 방식을 사용하게 되면, 모델의 파라미터를 학습하면서 파라미터의 분포까지 학습을 하게 됨. 주어진 데이터가 작더라도, 학습한 모델의 불확실성을 잘 나타낼 수 있음.  
 
 - 파라미터 $$\boldsymbol{w}$$ 의 사전확률을 다음과 같은 가우시안 분포라고 하자.  
@@ -471,17 +471,17 @@ $$p(\boldsymbol{w}) = \mathcal{N}(\boldsymbol{w}\vert \boldsymbol{m}_{0}, \bolds
 $$\begin{align} p(\boldsymbol{t}\vert \boldsymbol{w}) &= p(t_{1},\cdots,t_{N}\vert \boldsymbol{w}) \\ &= \prod_{n=1}^{N}\mathcal{N}(t_{n}\vert \boldsymbol{w}^{T}\phi(\boldsymbol{x}_{n}), \beta^{-1}) \\ &= \mathcal{N}(\boldsymbol{t}\vert \Phi\boldsymbol{w}, \beta^{-1}\boldsymbol{I}) \end{align}$$  
 
 > 선형모델의 출력값 ($$\boldsymbol{w}^{T}\phi(\boldsymbol{x}_{n})$$) 이 평균이 됨  
-
+>  
 > $$\prod_{n=1}^{N}\mathcal{N}(t_{n}\vert \boldsymbol{w}^{T}\phi(\boldsymbol{x}_{n}), \beta^{-1})의 지수부 \Rightarrow -\frac{\beta}{2}\sum_{n=1}^{N}(t_{n} - \boldsymbol{w}^{T}\phi(\boldsymbol{x}_{n}))^2 = \frac{\beta}{2}\Vert \boldsymbol{t} - \Phi\boldsymbol{w}\Vert_{2}^2$$  
-
+>  
 > $$= -\frac{\beta}{2}(\boldsymbol{t} - \Phi\boldsymbol{w})^{T}(\boldsymbol{t} - \Phi\boldsymbol{w})$$ 이 부분이 지수부이기 때문에 이차형식으로 정리.  
-
+>  
 > $$= -\frac{1}{2}(\boldsymbol{t} - \Phi\boldsymbol{w})^{T}(\beta\boldsymbol{I})(\boldsymbol{t} - \Phi\boldsymbol{w})$$ 이렇게 이차형식으로 정리.  
-
+>  
 > 중간에 있는 $$(\beta\boldsymbol{I})$$ 이 공분산의 역행렬 ($$\Sigma^{-1}$$)이 됨. 즉, 이 가우시안 분포의 공분산은 $$\beta^{-1}\boldsymbol{I}$$.  
-
+>  
 > 따라서 $$(\boldsymbol{t} - \Phi\boldsymbol{w})$$ 이 식에서 $$\Phi\boldsymbol{w}$$ 이 부분이 가우시안 분포에서의 평균벡터이고, 공분산도 $$\beta^{-1}\boldsymbol{I}$$ 이렇게 되면서 행렬이 되었음.  
-
+>  
 > 사전확률과 우도를 구했기 때문에 사후확률 ($$p(\boldsymbol{w}\vert \boldsymbol{t})$$)을 구할 것 임.  
 
 ***
@@ -510,20 +510,20 @@ $$\begin{align} p(\boldsymbol{w}\vert \boldsymbol{t})&=\mathcal{N}(\boldsymbol{w
 > $$p(\boldsymbol{w}\vert \boldsymbol{t})=\mathcal{N}(\boldsymbol{w}\vert \boldsymbol{m}_{N}, \boldsymbol{S}_{N})$$  
 > $$\boldsymbol{w}$$ 의 사후확률이 언제 최대가 될까?  
 > $$\boldsymbol{m}_{N}$$에 해당하는 부분이 가우시안 함수의 값을 최대화시키는 $$\boldsymbol{w}$$ 값이 됨.  
-
+>  
 > w의 사전확률을 특정한 경우를 가정했을 때, 평균벡터의 값들이 앞에서 봤던 특별한 경우들로 나타나는 경우가 있음.  
 > 사전확률의 공분산이 $$\boldsymbol{S}_{0} = \alpha^{-1}\boldsymbol{I}, \alpha \rightarrow 0$$ 알파의 값이 0에 가까워질 때, $$\alpha^{-1}\boldsymbol{I}$$ 이 것은 대각행렬이라 주 대각선 값이 무한히 커짐. 
-
+>  
 > 위에서 $$\boldsymbol{S}_{N}^{-1}=\boldsymbol{S}_{0}^{-1} + \beta\Phi^{T}\Phi$$을 보면 $$\boldsymbol{S}_{0}^{-1}$$이 존재하는데, 알파가 0으로 가까워질 때 $$\boldsymbol{S}_{0}$$ 이 식은 무한히 커진다고 했음. 근데 이것의 역행렬은 그럼 0에 가까워 질 것임.  
-
+>  
 > 그래서 결국 $$\boldsymbol{S}_{N}^{-1} \rightarrow \beta\Phi^{T}\Phi$$로 수렴을 할 것임.  
-
+>  
 > $$\boldsymbol{S}_{N} = (\beta\Phi^{T}\Phi)^{-1} = \frac{1}{\beta}(\Phi^{T}\Phi)^{-1}$$ 이 되기때문에 이것을 $$\boldsymbol{S}_{N}\{ \boldsymbol{S}_{0}^{-1}\boldsymbol{m}_{0} + \beta\Phi^{T}\boldsymbol{t}\}$$ 이 식에 대입을 하면 됨.  
-
+>  
 > $$\boldsymbol{S}_{N}\{ \boldsymbol{S}_{0}^{-1}\boldsymbol{m}_{0} + \beta\Phi^{T}\boldsymbol{t}\}$$ 여기서도 $$\boldsymbol{S}_{0}^{-1}$$은 0에 가까워 지기 때문에, 결국 $$\frac{1}{\beta}(\Phi^{T}\Phi)^{-1}\beta\Phi^{T}\boldsymbol{t}$$가 됨.  
-
+>  
 > 베타는 cancel out, 남는 식은 $$(\Phi^{T}\Phi)^{-1}\Phi^{T}\boldsymbol{t}$$ 이렇게 되는데 이것은 normal equations 다. 이것은 빈도주의 방법인 Maximum Likelihood 방법을 사용했을 때 얻어지는 $$\boldsymbol{w}$$의 솔루션.  
-
+>  
 > 이렇듯 사전확률에서 특정한 가정을 했을 때, 사후확률이 최대화가 되는 $$\boldsymbol{w}$$ 값과 동일한 결과를 얻을 수 있음.  
 
 다음과 같은 사전확률을 사용하면 식이 단순화된다.  
@@ -541,11 +541,11 @@ $$\begin{align} p(\boldsymbol{w}\vert \boldsymbol{t}) &= \mathcal{N}(\boldsymbol
 $$\ln p(\boldsymbol{w}\vert \boldsymbol{t}) = -\frac{\beta}{2}\sum_{n=1}{N}\{ \boldsymbol{t}_{n} - \boldsymbol{w}^{T}\phi(\boldsymbol{x}_{n}) \}^2 - \frac{\alpha}{2}\boldsymbol{w}^{T}\boldsymbol{w} + \text{const}$$  
 
 > 위의 식도 자주 본 식인데, 앞의 항은 제곱합 에러, 뒷항은 규제화항이다.  
-
+>  
 > 이런 형태의 사전확률을 가정하게 되면, 사후확률을 최대화 시키는 $$\boldsymbol{w}$$의 값은 규제화가 포함되었을 때 에러를 최소화 시키는 값과 같아진다는 것임.  
-
+>  
 > 베이지안 선형회귀를 사용하게 되면, 단순하게 제곱합에러함수를 사용한다거나 규제화항을 포함한 에러를 사용할 때 얻어지는 해들이 단순히 베이지안 모델의 특수한 경우에 불과하다는 점.  
-
+>  
 > 베이지안 모델이 훨씬더 일반적이고 강력한 방법론임을 알 수 있음.  
 
 - 예측분포  
@@ -553,9 +553,9 @@ $$\ln p(\boldsymbol{w}\vert \boldsymbol{t}) = -\frac{\beta}{2}\sum_{n=1}{N}\{ \b
 새로운 입력 $$\boldsymbol{x}$$ 가 주어졌을 때 $$\boldsymbol{t}$$  를 예측  
 
 > $$\boldsymbol{t}$$: 학습데이터를 관측한 값, $$t$$: scalar, 새로운 예측값  
-
+>  
 > $$p(\boldsymbol{x})$$, $$p(\boldsymbol{y}\vert \boldsymbol{x})$$ 을 알고 있을 때, 이것으로부터 $$\boldsymbol{y}$$의 주변확률($$p(\boldsymbol{y}$$)을 계산하는 공식은 $$p(\boldsymbol{y}) \rightarrow \int p(\boldsymbol{y}\vert \boldsymbol{x})p(\boldsymbol{x})d\boldsymbol{x}$$ 이 적분을 하는 것이다.  
-
+>  
 > 위의 공식을 활용해서 $$t$$에 대해 적용하면 아래의 식이 된다.  
 
 $$p(t\vert \boldsymbol{t}, \alpha, \beta) = \int p(t\vert \boldsymbol{w}, \beta)p(\boldsymbol{w}\vert \boldsymbol{t}, \alpha, \beta)d\boldsymbol{w}$$  
