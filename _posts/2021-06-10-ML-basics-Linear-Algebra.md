@@ -669,8 +669,8 @@ $$Ax = \lambda x, x\neq 0$$
 
 > Eigenvectors: 선형변환(T)이 일어난 후에도 **방향**이 변하지 않는 영벡터가 아닌 벡터.  
 > Eigenvalues: Eigenvectors의 길이가 변하는 배수(scale), reversed나 scaled가 될 수 있지만 방향은 변하지 않는다.  
-> They make for interesting basis vectors. Basis vectors whos transformation matrices are maybe computationally more simpler or ones that make for better coordinate systems. 
-numpy.linalg 모듈의 eig 함수를 사용하여 고유값과 고유벡터를 구할 수 있다.  
+> They make for interesting basis vectors. Basis vectors whos transformation matrices are maybe computationally more simpler or ones that make for better coordinate systems.  
+> numpy.linalg 모듈의 eig 함수를 사용하여 고유값과 고유벡터를 구할 수 있다.  
 
 ```python
 In [49]:A
@@ -697,10 +697,10 @@ Out[53]:array([-3.63474211, -8.57660525, -7.75854663])
 
 ### 고유값, 고유벡터의 성질들
 
-- \\(\mathrm{tr}A = \sum_{i=1}^n \lambda_i\\)
-- $$|A| = \prod_{i=1}^n \lambda_i$$
-- \\(\mathrm{rank}(A)\\)는 0이 아닌 $$A$$의 고유값의 개수와 같다.
-- \\(A\\)가 non-singular일 때, $$1/\lambda_i$$는 $$A^{-1}$$의 고유값이다(고유벡터 $$x_i$$와 연관된). 즉, $$A^{-1}x_i = (1/\lambda_i)x_i$$이다.
+- $$\mathrm{tr}A = \sum_{i=1}^n \lambda_i$$.
+- $$|A| = \prod_{i=1}^n \lambda_i$$.
+- $$\mathrm{rank}(A)$$는 0이 아닌 $$A$$의 고유값의 개수와 같다.
+- $$A$$가 non-singular일 때, $$1/\lambda_i$$는 $$A^{-1}$$의 고유값이다(고유벡터 $$x_i$$와 연관된). 즉, $$A^{-1}x_i = (1/\lambda_i)x_i$$이다.
 대각행렬 $$D = \mathrm{diag}(d_1,\ldots,d_n)$$의 고유값들은 $$d_1,\ldots,d_n$$이다.
 
 ```python
