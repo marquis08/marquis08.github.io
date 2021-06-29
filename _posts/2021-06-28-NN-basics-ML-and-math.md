@@ -367,6 +367,9 @@ $$e^{logit}$$을 사용하면 높은 점수는 아주 높게 되고 낮은 점�
 >  
 > $$\boldsymbol{J} = \begin{pmatrix} 2 & 2x_2 \\ -2x_1 & 3 \\ 4x_2 & 4x_1 \end{pmatrix}\ \ \ \boldsymbol{J}\vert_{2,1}^{T} = \begin{pmatrix} 2 & 2 \\ -4 & 3 \\ 4 & 8 \end{pmatrix}$$  
 
+> 자코비안이 말하고자 하는 것은 미소 영역에서 ‘비선형 변환’을 ‘선형 변환으로 근사’ 시킨 것.  
+
+
 
 ## Appendix
 ### Positive Definite Matrices
