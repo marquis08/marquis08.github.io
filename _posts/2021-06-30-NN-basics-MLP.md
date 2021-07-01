@@ -137,11 +137,11 @@ $$\Theta_{t} - \rho g,\  g = \frac{\partial J(\Theta)}{\partial \Theta}$$
     - 그래디언트를 구할 때 신경망에서 연속해서 일어나는 연쇄법칙을 오류역전파할때 활용한다.
     - $${\partial E \above 1pt \partial w_{ij}} = {\partial E \above 1pt \partial o_j}{\partial o_j \above 1pt \partial net_j}{\partial net_j \above 1pt \partial w_ij}$$.
     - 체인룰(연쇄법칙)을 통해 끝에서부터 나오는 오류(손실함수)를 내가 원하는 위치까지 보낼 수 있다. 
-- 목적함수를 다시 쓰면, $$J(\Theta) = {1 \above 1pt 2}\left \| y - o(\Theta) \right \|_{2}^{2}$$(2층 퍼셉트론의 경우 $$\Theta = {U^1, U^2}$$)
+- 목적함수를 다시 쓰면, $$J(\Theta) = {1 \above 1pt 2}\left \| y - o(\Theta) \right \|_{2}^{2}$$(2층 퍼셉트론의 경우 $$\Theta = {\boldsymbol{U}^1, \boldsymbol{U}^2}$$)
 - 이 목적함수의 최저점을 찾아주는 **경사하강법**(2층 퍼셉트론의 경우)
-    - $$U^1 = U^1 - \rho \{\partial J \above 1pt \partial U^1\}$$.
-    - $$U^2 = U^2 - \rho \{\partial J \above 1pt \partial U^2\}$$.
-    - $$X -> U^1_ -> U^2 -> J(\Theta)$$으로 연산이 순차적으로 진행된다.
+    - $$\boldsymbol{U}^1 = \boldsymbol{U}^1 - \rho \frac{\partial J}{\partial \boldsymbol{U}^1}$$.
+    - $$\boldsymbol{U}^2 = \boldsymbol{U}^2 - \rho \frac{\partial J}{\partial \boldsymbol{U}^2}$$.
+    - $$X -> \boldsymbol{U}^1_ -> \boldsymbol{U}^2 -> J(\Theta)$$으로 연산이 순차적으로 진행된다.
     - 이걸 역으로 미분하여 체인룰을 통해 오류역전파를 사용하여 내가 원하는 위치의 것을 활용할 수 있다.
 - **오류 역전파** 알고리즘
     - **출력의 오류**를 **역방향(오른쪽에서 왼쪽으로)으로 전파하며 경사도를 계산**하는 알고리즘
@@ -152,7 +152,7 @@ $$\Theta_{t} - \rho g,\  g = \frac{\partial J(\Theta)}{\partial \Theta}$$
     - x, y, z가 서로 스칼라라고 하자. 두 입력이 들어와서 처리를 해서 내보내는 것을 생각해보자.  
     - ![backprop-figure](/assets/images/backprop-figure.png)  
     - L은 loss(z-실제값),이것을 내가 원하는 위치(가중치)의 미분을 구한다. 
-    - z에서 구하고 싶으면 L을 z에 대해 미분하고, x에서 구하고 싶으면 L을 z에 대해 미분한 것 * z를 x에 대해 미분한 것(체인룰!)
+    - z에서 구하고 싶으면 L을 z에 대해 미분하고, x에서 구하고 싶으면 (L을 z에 대해 미분한 것) * (z를 x에 대해 미분한 것)(체인룰)
     - Downstream gradient는 연산을 통과시키기 이전에 있었던 값이다.  
 - **단일 노드**역전파
 ![backprop-single](/assets/images/backprop-single.png)  
