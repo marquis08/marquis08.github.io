@@ -192,10 +192,10 @@ $$\Theta_{t} - \rho g,\  g = \frac{\partial J(\Theta)}{\partial \Theta}$$
                 - Gradient: $$\nabla_{y}z$$
                 - 최종적으로는, $$ ({\partial y \above 1pt \partial x})^T \nabla_{y}z = \nabla_{x}z$$
             - 예제.
-                - ![backprop-backprop-with-vectors-1](/assets/images/backprop-with-vectors-1.png)  
-                - ![backprop-backprop-with-vectors-2](/assets/images/backprop-with-vectors-2.png)  
+                - ![backprop-with-vectors-1](/assets/images/backprop-with-vectors-1.png)  
+                - ![backprop-with-vectors-2](/assets/images/backprop-with-vectors-2.png)  
         - **Matrix인 경우**
-            - ![backprop-backprop-with-matrices](/assets/images/backprop-with-matrices.png)  
+            - ![backprop-with-matrices](/assets/images/backprop-with-matrices.png)  
 
 - 행렬 표기 : GPU를 사용한 **고속 행렬 연산**에 적합. 
   
