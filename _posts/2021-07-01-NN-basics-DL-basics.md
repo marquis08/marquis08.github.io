@@ -107,9 +107,3 @@ $$p(x)$$에 대한 모델 (분별 모델은 $$p(y)$$)
 # Appendix
 ## Reference
 > CNN cs231n: <http://cs231n.stanford.edu/slides/2021/lecture_9.pdf>  
-> multilayer-neural-networks: <https://slideplayer.com/slide/15275455/>  
-> cs231n slides: <http://cs231n.stanford.edu/slides/2021/>  
-> slides: <http://cs231n.stanford.edu/slides/2021/lecture_4.pdf>
-> activatoin and gradient: <https://adityassrana.github.io/blog/theory/2020/08/26/Weight-Init.html>  
-> slide: <http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture4.pdf>  
-> {% include video id="d14TUNcbn1k" provider="youtube" %}  
