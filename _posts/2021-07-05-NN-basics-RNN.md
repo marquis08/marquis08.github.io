@@ -266,9 +266,10 @@ Uninterrupted Gradient Flow!
 - 현재 DL 기반 기계 번역 방법이 주류
 - LSTM을 사용하여 번역 과정 자체를 통째로 학습
     - LSTM 2개를 사용(encoder, decoder)
+    - 가변 길이의 문장을 고정 길이의 특징 벡터로 변환후 가변 길이 문장 생성  
     - Encoder는 $$\boldsymbol{x}$$를 $$\boldsymbol{h}_Ts$$라는 feature vector로 변환후 Decoder로 $$\boldsymbol{h}_Ts$$를 가지고 문장 생성.
     - ![/assets/images/transformer.gif](/assets/images/transformer.gif){: .align-center}  
-    - 가변 길이의 문장을 고정 길이의 특징 벡터로 변환후 가변 길이 문장 생성  
+    
 
 ### 영상 주석 생성
 - 영상 속 물체를 검출하고 인식, 물체의 속성과 행위, 물체 간의 상호작용을 알아내는 일
