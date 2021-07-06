@@ -113,10 +113,10 @@ Star Schema, Denormalized Schema
 - 데이터 엔지니어가 관리
     - 한 단계 더 발전하면 Spark와 같은 대용량 분산처리 시스템이 일부로 추가됨.  
 
-![data-infra](/assets/images/data-infra.png){: .align-center}  
+![data-infra](/assets/images/data-infra.png){: .align-center .img-70}  
 
 ## 데이터 순환 구조
-![data-cycle](/assets/images/data-cycle.png){: .align-center}  
+![data-cycle](/assets/images/data-cycle.png){: .align-center .img-70}  
 
 # Cloud AWS
 - 클라우드의 정의
