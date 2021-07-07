@@ -52,7 +52,8 @@ NLL의 경우 target값의 index와 예측값의 index만을 사용
 
 특징별로 독립적으로 적용.  
 - 정규분포를 활용해서 Normalization.
-- Max & Min Scaler
+- Max & Min Scaler  
+
 ## One Hot Encoding
 
 
