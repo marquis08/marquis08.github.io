@@ -192,6 +192,8 @@ FROM raw_data.user_session_channel;
     - `SELECT 0+NULL`
 
 ## COUNT 함수 제대로 이해하기
+테이블: count_test  
+- {%raw%}
 |value|
 |------|
 |NULL|
@@ -201,8 +203,8 @@ FROM raw_data.user_session_channel;
 |0|
 |4|
 |3|
+{%endraw%}  
 
-테이블: count_test
 
 - SELECT COUNT(1) FROM count_test &rArr; 7
     - count all
