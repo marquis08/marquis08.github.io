@@ -82,7 +82,7 @@ In probability theory, a normalizing constant is a constant by which an everywhe
 베이즈 정리에서 $$P(\mathbb E)$$ 가 normalizing constant 라고 보면된다.  
 
 
-## Marginal Probaility istribution & Conditional Probaility Distribution
+## Marginal Probaility Distribution & Conditional Probaility Distribution
 Marginal stands for the marginal of the table.  
 Marginal probability doesn’t tell about the specific probability(i.e. each cell.)  
 
