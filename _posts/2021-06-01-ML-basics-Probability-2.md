@@ -88,6 +88,8 @@ Marginal probability doesn’t tell about the specific probability(i.e. each cel
 
 ![lambda](/assets/images/marginal-conditional.png){: .align-center}  
 
+
+
 # Functions of Random Variables
 ## Joint PDF
 k차원의 확률변수 벡터 $$\mathbf x = (x_{1} , … , x_{k})$$ 가 주어졌을때,  
