@@ -11,7 +11,7 @@ toc_label : "Contents"
 
 # Setup the docker via Repository
 ## 1. Update the apt package index and install packages to allow apt to use a repository over HTTPS:
-```
+```sh
 $ sudo apt-get update
 $ sudo apt-get install \
     apt-transport-https \
@@ -22,17 +22,17 @@ $ sudo apt-get install \
 ```
 
 Error: WARNING: unsafe ownership on homedir '/home/user/.gnupg'
-```
+```sh
 $ sudo gpgconf --kill dirmngr
 $ sudo chown -R $USER ~/.gnupg
 ```
 ## 2. Add Docker’s official GPG key:
-```
+```sh
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
 
 ## 3. Use the following command to set up the stable repository. To add the nightly or test repository, add the word nightly or test (or both) after the word stable in the commands below. Learn about nightly and test channels.
-```
+```sh
 $ echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -40,13 +40,13 @@ $ echo \
 
 # Install Docker Engine
 ## 1. Update the apt package index, and install the latest version of Docker Engine and containerd, or go to the next step to install a specific version:
-```
+```sh
 $ sudo apt-get update
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
 ## 2. Verify that Docker Engine is installed correctly by running the hello-world image.
-```
+```sh
 $ sudo docker run hello-world
 ```
 
@@ -75,11 +75,11 @@ For more examples and ideas, visit:
 
 # Docker add & remove user authorization
 ## add
-```
+```sh
 $ sudo usermod -aG docker [your-user]
 ```  
 ## Remove
-```
+```sh
 $ sudo deluser [your-user] docker 
 ```
 
@@ -117,14 +117,14 @@ $ sudo rm -rf /var/lib/docker
     - 공식 사이트에서 install 할때 출력해봤음.  
 
 - `docker images`: 현재 도커 머신에 존재하는 이미지 목록을 출력합니다.
-    ```
+    ```sh
     (base)  yilgukseo  ~/DL  sudo docker images
     REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
     hello-world   latest    d1165f221234   4 months ago   13.3kB
     ```  
 
 - `docker ps -a`: 현재 도커 머신에 존재하는 컨테이너를 출력합니다.
-    ```
+    ```sh
     (base)  yilgukseo  ~/DL  sudo docker ps -a
     CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
     fad8e07c603f   hello-world   "/hello"   9 minutes ago   Exited (0) 9 minutes ago             eloquent_poincare
@@ -137,7 +137,7 @@ $ sudo rm -rf /var/lib/docker
 
 - `docker run -it python`: 파이썬 이미지를 다운로드 받아서 실행해주는 명령어입니다.
   - `-it` 옵션은 표준 입출력을 이용해 컨테이너에 명령어를 입력할 수 있게 해줍니다.
-    ```
+    ```sh
     (base)  yilgukseo  ~/DL  sudo docker run -it python
     Unable to find image 'python:latest' locally
     latest: Pulling from library/python
@@ -168,7 +168,7 @@ $ sudo rm -rf /var/lib/docker
 - `docker exec -it (컨테이너 ID) bash`: 실행 중인 컨테이너에 배시(Bash) 쉘로 접속하는 명령어입니다.
 
 - `sudo docker stop container_id`: stop container
-    ```
+    ```sh
     (base)  ✘ yilgukseo  ~/DL  sudo docker ps -a
     CONTAINER ID   IMAGE         COMMAND     CREATED          STATUS                      PORTS     NAMES
     0a645f33513a   python        "python3"   11 minutes ago   Up About a minute                     busy_wescoff
@@ -184,7 +184,7 @@ $ sudo rm -rf /var/lib/docker
       - start는 빨리 되는데 Stop 은 시간이 좀 더 소요됨
     - Container name으로도 되는지 확인
       - 됨.
-        ```
+        ```sh
         (base)  yilgukseo  ~/DL  sudo docker ps -a             
         CONTAINER ID   IMAGE         COMMAND     CREATED          STATUS                      PORTS     NAMES
         0a645f33513a   python        "python3"   16 minutes ago   Up 1 second                           busy_wescoff
