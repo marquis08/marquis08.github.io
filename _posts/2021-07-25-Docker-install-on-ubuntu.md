@@ -92,16 +92,7 @@ $ sudo apt-get purge docker-ce
 $ sudo rm -rf /var/lib/docker
 ```
 
-# Docker commands
-현재 돌아가고 있는 컨테이너를 확인하는 명령어입니다.
-```
-docker ps
-```  
 
-현재 도커 머신에 설치된 도커 이미지를 확인하는 명령어입니다.
-```
-docker images
-```
 
 # Docker Software
 - 도커 엔진(Docker Engine): 특정한 소프트웨어를 도커 컨테이너로 만들고 실행하게 해주는 데몬(Daemon)을 의미합니다. 도커 엔진과 도커 클라이언트 사이에는 REST API가 사용됩니다. REST API 서버에 요청을 보내는 것이 도커 클라이언트입니다.
@@ -112,16 +103,15 @@ docker images
 
 - 도커 머신(Docker Machine): 로컬 및 원격지 서버에 도커 엔진을 설치하고, 다양한 환경 설정을 자동으로 수행해주는 클라이언트를 의미합니다.
 
-## Commands
-- 도커 버전확인
-    ```
-    docker --version
-    ```
 
-- 상세한 버전 확인
-    ```
-    sudo docker info
-    ```
+# Docker commands
+- `docker ps`: 현재 돌아가고 있는 컨테이너를 확인하는 명령어입니다.
+
+- `docker images`: 현재 도커 머신에 설치된 도커 이미지를 확인하는 명령어입니다.
+
+- `docker --version`: 도커 버전확인
+
+- `sudo docker info`: 상세한 버전 확인
 
 - `docker run hello-world`: 도커에서 헬로우 월드(Hello World)를 띄우는 명령어입니다. 우리 눈에는 보이지 않지만 다음의 과정이 포함되는 겁니다.
     - 공식 사이트에서 install 할때 출력해봤음.  
@@ -207,6 +197,13 @@ docker images
         fad8e07c603f   hello-world   "/hello"    29 minutes ago   Exited (0) 28 minutes ago               eloquent_poincare
         ```
 
+- `docker rm [-option] [container ID]`: 컨테이너 삭제
+
+- `docker rm $(docker ps -a -q -f status=exited)`: 중지된 컨테이너 삭제
+
+- `docker rm $(docker ps -qa)`: 모든 컨테이너 삭제
+
+official docker commands: <https://docs.docker.com/engine/reference/commandline/docker/>  
 
 # Appendix
 ## Reference
