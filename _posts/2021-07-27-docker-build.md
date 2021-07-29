@@ -9,40 +9,50 @@ toc_sticky: true
 toc_label : "Index"
 ---
 
-# Build Docker Image, run container, start container, and stop container
+# Build Docker Image & run, start, stop and exit container
 - by using shell command
 ```sh
-sudo bash docker/build.sh
+$ bash docker/build.sh
 ```
 
 - or by using dockerfile directly
 ```sh
-sudo docker build Dockerfile
+$ docker build Dockerfile
 ```
 
-- After built, run docker.
+- After built, run docker.(tagged_name: Image name)
 ```sh
-sudo docker run tagged_name
+$ docker run tagged_name
 ```
 
 - start container
 ```sh
-sudo docker container start container_id
+$ docker container start container_id
 ```
 
-- access to /bin/bash
-```
-sudo docker exec -it container_id \bin\bash
+- access to bash shell
+```sh
+$ docker exec -it container_id bash
 ```
 
 - stop docker container
-```
-sudo docker stop container_id
+```sh
+$ docker stop container_id
 ```
 
 - exit docker container in interactive responsive shell
 ```
 ctrl + d
+```
+
+- stop all running containers
+```sh
+$ docker stop $(docker ps -a -q)
+```
+
+- Show docker disk usage
+```sh
+$ docker system df
 ```
 
 
