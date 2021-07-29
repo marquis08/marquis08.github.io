@@ -40,6 +40,12 @@ sudo docker exec -it container_id \bin\bash
 sudo docker stop container_id
 ```
 
+- exit docker container in interactive responsive shell
+```
+ctrl + d
+```
+
+
 
 # Keep running Docker container
 - add `ENTRYPOINT` in `Dockerfile` as last line.
