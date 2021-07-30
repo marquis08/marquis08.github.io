@@ -117,7 +117,7 @@ $$C_{NB} = \arg\max_{c_{j}\in C}P(C_j)\prod_{i\in \text{positions}}P(x_i\vert c_
   - m은 몇번째 단어인가를 나타냄. l은 L개의 상태 중 하나를 나타냄
   - 결국 $$\prod_{l=1}^{L}\mu_{kml}^{x_{ml}}$$은 l이 1이 되는 인덱스만 살아남고 나머지는 0이 됨.
 - $$a_k = \ln P(x\vert C_k)P(C_k)$$에 $$P(x\vert C_k)$$를 대입하면
-  - $$a_k = \ln P(C_k) + \sum_{m=1}^{M}\sum_{l=1}^{L} \underbrace{x_{ml}}_{\text{input}}\underbrace{\ln \mu_{kml}}_{\text{parameter}}$$ 이 됨.
+  - $$a_k = \ln P(C_k) + \sum\limits_{\rm m=1}^{\rm M}\sum\limits_{\rm l=1}^{\rm L} \underbrace{x_{ml}}_{\text{input}}\underbrace{\ln \mu_{kml}}_{\text{parameter}}$$ 이 됨.
 - 이 확률적 생성모델이 가지는 decision surface는 $$a_k$$에 의해서 결정되는데, 이 $$a_k$$가 위의 식처럼 $$x$$에 관한 선형식으로 표현 되는 것.
 - 하지만, 이 식은 NB와 완벽하게 일치하는 식은 아님.
 - NB 같은경우 Bag of words 를 추가적으로 적용하면 간략화됨.
@@ -149,8 +149,8 @@ $$C_{NB} = \arg\max_{c_{j}\in C}P(C_j)\prod_{i\in \text{positions}}P(x_i\vert c_
   - Bag of words을 적용하면, $$\mu_{13}\cdot\mu_{14}\cdot\mu_{12}$$
 
 ### 모델의 파라미터는 어떻게 학습해야 하나
-- Log likelihood: $$\sum_{m=1}^{M}\sum_{l=1}^{L}x_{ml}\ln\mu_{kl}$$
-- Constraint: $$\sum_{l=1}^{L}\mu_{kl} = 1$$
+- Log likelihood: $$\sum\limits_{\rm m=1}^{\rm M}\sum\limits_{\rm l=1}^{\rm L}x_{ml}\ln\mu_{kl}$$
+- Constraint: $$\sum\limits_{\rm l=1}^{\rm L}\mu_{kl} = 1$$
 - $$\mu_{kl} = P(x_{l} = 1\vert C_k)$$
 - Bigram Language Model 에서 MLE를 구하는 상황과 동일함.  
   - $$P(a\vert b) = \alpha_{ab}, \sum_{a\in V}\alpha_{ab} = 1$$
@@ -161,14 +161,14 @@ $$C_{NB} = \arg\max_{c_{j}\in C}P(C_j)\prod_{i\in \text{positions}}P(x_i\vert c_
       - $$N_{\text{doc}}$$: the total number of documents
       - $$\text{doccount(C = c_j)}$$: the number of documents in training data with *class j*
   - $$\hat{P}(w_i\vert c_j)$$
-    - $$\hat{P}(w_i\vert c_j) = \frac{\text{count}(w_i, c_j)}{\sum_{w\in V}\text{count}(w, c_j)}$$
+    - $$\hat{P}(w_i\vert c_j) = \frac{\text{count}(w_i, c_j)}{\sum\limits_{\rm w\in V}\text{count}(w, c_j)}$$
     - $$\text{count}(w_i, c_j)$$: 문서들 중에 해당 클래스를 가진 문서들을 모아서 하나의 문서로 병합, 그 문서에 나타나는 해당 단어의 개수
     - $$\sum_{w\in V}\text{count}(w, c_j)$$: 하나의 문서로 만든 것에 있는 모든 단어의 개수.
 - 문제점: zero 확률
-  - Imagine we are trying to estimate the likelihood of the word “fantastic” given class positive, but suppose there are no training documents that both contain the word “fantastic” and are classified as positive. Perhaps the word “fantastic” happens to occur (sarcastically?) in the class negative. In such a case the proobability for this feature will be zero.
-    - $$\hat{P(\text{"fantastic"}\vert \text{positive})} = \frac{\text{count("fantastic", positive)}}{\sum_{w\in V}\text{count(w, positive)}} = 0$$
+  - Imagine we are trying to estimate the likelihood of the word “fantastic” given class positive, but suppose there are no training documents that both contain the word “fantastic” and are classified as positive. Perhaps the word “fantastic” happens to occur (sarcastically?) in the class negative. In such a case the proobability for this feature will be zero.  
+    - $$\hat{P(\text{"fantastic"}\vert \text{positive})} = \frac{\text{count("fantastic", positive)}}{\sum\limits_{\rm w\in V}\text{count(w, positive)}} = 0$$
   - Simplest Solution: Laplace(add-1) smoothing
-    - $$\hat{P(w_i\vert c)} = \frac{\text{count}(w_i, c)+1}{\sum_{w\in V}(\text{count}(w, c)+1)} = \frac{\text{count}(w_i, c)+1}{\sum_{w\in V}(\text{count}(w, c))+\vert V\vert}$$
+    - $$\hat{P(w_i\vert c)} = \frac{\text{count}(w_i, c)+1}{\sum\limits_{\rm w\in V}(\text{count}(w, c)+1)} = \frac{\text{count}(w_i, c)+1}{\sum\limits_{\rm w\in V}(\text{count}(w, c))+\vert V\vert}$$
 - 알고리즘
   - ![train-naive-bayes.png](\assets\images\train-naive-bayes.png){: .align-center .img-70} 
 
