@@ -9,6 +9,9 @@ toc_sticky: true
 toc_label : "Contents"
 ---
 
+# 도커에서 Container 포트와 Host 포트의 개념
+
+
 # if 8888 port is already in use
 ```sh
 docker run -d -v `pwd`:/whale_test -it --name dev_jup --gpus all -p 8890:8890 --restart=always mydocker
@@ -82,8 +85,10 @@ jupyter lab --allow-root --ip 0.0.0.0
 
 
 
-
-> <https://89douner.tistory.com/96>  
-> <https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker>  
-> <https://jybaek.tistory.com/812>  
-> <https://anweh.tistory.com/68>
+# Appendix
+## Reference
+> docker with pytorch and jupyter: <https://89douner.tistory.com/96>  
+> nvidia-docker installation: <https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker>  
+> Docker 컨테이너 안에 jupyter 접속하기: <https://jybaek.tistory.com/812>  
+> docker container with jupyter lab<https://anweh.tistory.com/68>  
+> host port and container port: <https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=alice_k106&logNo=220278762795>
