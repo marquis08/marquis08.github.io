@@ -1,0 +1,77 @@
+---
+date: 2021-07-31 16:33
+title: "Docker gpu and jupyter lab"
+categories: Docker
+tags: Docker
+# 목차
+toc: true  
+toc_sticky: true 
+toc_label : "Contents"
+---
+
+# Summary
+```sh
+docker run -d -v `pwd`:/whale_test -it --name dev_jup --gpus all -p 8888:8888 --restart=always mydocker
+```
+```sh
+docker exec -it container_id bash
+```
+```sh
+conda install -c conda-forge jupyterlab
+```
+```sh
+jupyter lab --allow-root --ip 0.0.0.0
+```
+
+
+# nvidia-docker (not necessarily)
+```sh
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+```
+
+```sh
+sudo apt-get update
+```
+
+```sh
+sudo apt-get install -y nvidia-docker2
+```
+
+```sh
+sudo systemctl restart docker
+```
+
+```sh
+sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
+```
+
+# run Docker (with or without nvidia-docker)
+```sh
+nvidia-docker run -d -v `pwd`:/whale_test -it --name dev123 --gpus all -p 8888:8888 --restart=always mydocker
+```
+
+```sh
+docker run -d -v `pwd`:/whale_test -it --name dev123 --gpus all -p 8888:8888 --restart=always mydocker
+```
+
+# Install jupyter lab in container
+```sh
+conda install -c conda-forge jupyterlab
+```
+
+
+# Jupyter lab 
+```sh
+jupyter lab --allow-root --ip 0.0.0.0
+```
+
+
+
+
+
+> <https://89douner.tistory.com/96>  
+> <https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker>  
+> <https://jybaek.tistory.com/812>  
+> <https://anweh.tistory.com/68>
