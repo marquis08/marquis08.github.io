@@ -16,7 +16,17 @@ python tools/train.py configs/_base_/deepfashion_dev1.py --work-dir working_test
 ```
 
 
-# Inference with json included
+# Inference to generate json file
+```sh
+python tools/test.py configs/_base_/deepfashion_dev1.py \ 
+working_test/epoch_9.pth \
+--format-only --eval-options "jsonfile_prefix=./result_epoch9"
+```
+<https://github.com/dacon-ai/K-fashion-baseline/blob/master/docs/getting_started.md>
+<https://github.com/open-mmlab/mmdetection/blob/master/docs/tutorials/robustness_benchmarking.md>  
+
+
+# Inference with shof resulting images
 
 ```sh
 python tools/test.py configs/_base_/deepfashion_dev1.py \
