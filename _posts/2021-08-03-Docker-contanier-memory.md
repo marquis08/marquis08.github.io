@@ -1,8 +1,8 @@
 ---
 date: 2021-08-03 20:28
 title: "Docker Container memory shortage"
-categories: NLP
-tags: NLP
+categories: Docker
+tags: Docker
 # 목차
 toc: true  
 toc_sticky: true 

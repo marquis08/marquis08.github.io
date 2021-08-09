@@ -1,8 +1,8 @@
 ---
 date: 2021-08-03 15:54
 title: "Docker Remote-Containers: Attach to running container"
-categories: NLP
-tags: NLP
+categories: Docker
+tags: Docker
 # 목차
 toc: true  
 toc_sticky: true 

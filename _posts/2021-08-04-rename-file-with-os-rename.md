@@ -1,8 +1,8 @@
 ---
 date: 2021-08-04 16:21
 title: "Rename files with Python using os.rename"
-categories: tmux
-tags: tmux
+categories: linux os
+tags: linux os
 # 목차
 toc: true  
 toc_sticky: true 
