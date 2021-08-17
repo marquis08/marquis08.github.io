@@ -15,7 +15,7 @@ Error Message:
 해결책으로는 
 
 
---ipc 혹은 --shm-size를 사용해서 docker run 하면됨
+--ipc 혹은 --shm-size를 사용해서 docker run 하면된다.  
 
 ipc에 대해서 잠깐 검색해봤는데 잠깐으로는 부족할 것 같아서
 
