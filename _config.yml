@@ -284,5 +284,6 @@ defaults:
       related: true
       mathjax: true
       show_date: true
+      sidebar_main: true
 
 remote_theme : mmistakes/minimal-mistakes
