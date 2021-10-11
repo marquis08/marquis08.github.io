@@ -1,0 +1,11 @@
+---
+title: "프로그래머스 인공지능 데브코스"
+layout: archive
+permalink: categories/DevCourse2
+author_profile: true
+sidebar_main: true
+---
+
+
+{% assign posts = site.categories.DevCourse2 %}
+{% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
