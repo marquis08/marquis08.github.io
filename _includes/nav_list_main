@@ -19,7 +19,7 @@
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "DevCourse2" %}
-                        <li><a href="/categories/DevCourse2" class="">DevCourse2 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/DevCourse2" class="">DevCourse2 🎓 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -27,7 +27,23 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Docker" %}
-                        <li><a href="/categories/Docker" class="">Docker ({{category[1].size}})</a></li>
+                        <li><a href="/categories/Docker" class="">Docker 🐋 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Algorithm</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Algorithm" %}
+                        <li><a href="/categories/Algorithm" class="">Algorithm 🤔 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Backend</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Backend" %}
+                        <li><a href="/categories/Backend" class="">Backend 🤔 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
