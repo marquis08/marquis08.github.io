@@ -63,6 +63,38 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        <span class="nav__sub-title">GAN </span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "GAN" %}
+                        <li><a href="/categories/GAN" class="">GAN 🤔 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Git </span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Git" %}
+                        <li><a href="/categories/Git" class="">Git 🤔 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">GitLab </span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "GitLab" %}
+                        <li><a href="/categories/GitLab" class="">GitLab 🤔 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">GoogleDataAnalytics </span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "GoogleDataAnalytics" %}
+                        <li><a href="/categories/GoogleDataAnalytics" class="">GoogleDataAnalytics 🤔 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
   </ul>
 </nav>
