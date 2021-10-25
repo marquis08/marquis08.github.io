@@ -18,8 +18,71 @@
                 <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
-                    {% if category[0] == "DevCourse2" %}
-                        <li><a href="/categories/DevCourse2" class="">DevCourse2 ({{category[1].size}})</a></li>
+                    {% if category[0] == "DevCourse2_DL_Math" %}
+                        <li><a href="/categories/DevCourse2_DL_Math" class="">Math ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DevCourse2_Flask" %}
+                        <li><a href="/categories/DevCourse2_Flask" class="">Flask ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DevCourse2_Django" %}
+                        <li><a href="/categories/DevCourse2_Django" class="">Django ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DevCourse2_ML_Basics" %}
+                        <li><a href="/categories/DevCourse2_ML_Basics" class="">ML_Basics ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DevCourse2_Assignment" %}
+                        <li><a href="/categories/DevCourse2_Assignment" class="">Assignment ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "LiveSession" %}
+                        <li><a href="/categories/LiveSession" class="">LiveSession ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DevCourse2_NN_Basics" %}
+                        <li><a href="/categories/DevCourse2_NN_Basics" class="">NN_Basics ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DevCourse2_SQL" %}
+                        <li><a href="/categories/DevCourse2_SQL" class="">SQL ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DevCourse2_Spark" %}
+                        <li><a href="/categories/DevCourse2_Spark" class="">Spark ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DevCourse2_NLP" %}
+                        <li><a href="/categories/DevCourse2_NLP" class="">NLP ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
