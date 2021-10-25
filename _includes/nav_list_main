@@ -110,7 +110,7 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">GoogleDataAnalytics 💭 </span>
+        <span class="nav__sub-title">Coursera 💭 </span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "GoogleDataAnalytics" %}
@@ -118,40 +118,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Algorithm 🤔 </span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Algorithm" %}
-                        <li><a href="/categories/Algorithm" class="">Algorithm ({{category[1].size}})</a></li>
+                    {% if category[0] == "GAN_Specialization" %}
+                        <li><a href="/categories/GAN_Specialization" class="">GAN Specialization ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Backend </span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Backend" %}
-                        <li><a href="/categories/Backend" class="">Backend ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">DL Basics</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "DL_basics" %}
-                        <li><a href="/categories/DL_basics" class="">DL Basics ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        
-        <span class="nav__sub-title">GAN </span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "GAN" %}
-                        <li><a href="/categories/GAN" class="">GAN ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">Git </span>
+        <span class="nav__sub-title">Git/GitLab/Bitbucket/CICD </span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Git" %}
@@ -159,7 +133,6 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">GitLab </span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "GitLab" %}
@@ -167,7 +140,71 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Bitbucket" %}
+                        <li><a href="/categories/Bitbucket" class="">Bitbucket ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "CICD" %}
+                        <li><a href="/categories/CICD" class="">CICD ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Python </span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Python" %}
+                        <li><a href="/categories/Python" class="">Python  ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Pytorch" %}
+                        <li><a href="/categories/Pytorch" class="">Pytorch  ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Algorithm" %}
+                        <li><a href="/categories/Algorithm" class="">Algorithm ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "PythonAlgorithms" %}
+                        <li><a href="/categories/PythonAlgorithms" class="">Book-PythonAlgorithms  ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Pandas" %}
+                        <li><a href="/categories/Pandas" class="">Pandas  ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Basics </span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "DL_basics" %}
+                        <li><a href="/categories/DL_basics" class="">DL Basics ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "ML_basics" %}
+                        <li><a href="/categories/ML_basics" class="">ML basics  ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         <span class="nav__sub-title">Linux </span>
             <ul>
                 {% for category in site.categories %}
@@ -184,52 +221,27 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        
+        <span class="nav__sub-title">VSCODE </span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "VSCode" %}
+                        <li><a href="/categories/VSCode" class="">VSCode  ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Backend </span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Backend" %}
+                        <li><a href="/categories/Backend" class="">Backend ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         <span class="nav__sub-title">Misc </span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Misc" %}
                         <li><a href="/categories/Misc" class="">Misc  ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">ML_basics </span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "ML_basics" %}
-                        <li><a href="/categories/ML_basics" class="">ML_basics  ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">Pandas </span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Pandas" %}
-                        <li><a href="/categories/Pandas" class="">Pandas  ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">Python </span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Python" %}
-                        <li><a href="/categories/Python" class="">Python  ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">PythonAlgorithms </span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "PythonAlgorithms" %}
-                        <li><a href="/categories/PythonAlgorithms" class="">PythonAlgorithms  ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">VSCODE </span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "VSCODE" %}
-                        <li><a href="/categories/VSCODE" class="">VSCODE  ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
