@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "en-US"
-title                    : "YGSEO Dev"
+title                    : "Write down the problem. Think real hard. Write down the solution."
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "YG SEO"
@@ -94,11 +94,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Yilguk Seo"
+  name             : "Yilguk Seo 🚀"
   avatar           : "/assets/images/GGU.jpg"
   # "/assets/images/bio-photo.jpg"
-  bio              : "A DL/ML Engineer\n1. Write down the problem. \n2. Think real hard. \n3. Write down the solution. \n\n'The Feynman Algorithm' as described by Murray Gell-Mann"
-  location         : "Somewhere"
+  bio              : "A DL/ML Engineer"
+  # location         : "Somewhere"
   email            :
   links:
     - label: "Email"
