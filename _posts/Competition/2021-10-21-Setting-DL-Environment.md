@@ -1,8 +1,8 @@
 ---
 date: 2021-10-21 00:24
 title: "Setup DL Environment in Competition Container"
-categories: Competition
-tags: Competition
+categories: Competition Pathology
+tags: Competition Pathology
 # 목차
 toc: true  
 toc_sticky: true 
