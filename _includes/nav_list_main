@@ -15,8 +15,15 @@
         <span class="nav__sub-title">Competition </span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Competition" %}
-                        <li><a href="/categories/Competition" class="">Competition ({{category[1].size}})</a></li>
+                    {% if category[0] == "Segmentation" %}
+                        <li><a href="/categories/Segmentation" class="">Segmentation ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "ObjectDetection" %}
+                        <li><a href="/categories/ObjectDetection" class="">ObjectDetection ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
