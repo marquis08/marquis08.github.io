@@ -1,8 +1,8 @@
 ---
 date: 2021-11-04 04:20
 title: "Conda Vs. Pip"
-categories: Competition Pathology Conda
-tags: Competition Pathology Conda Pip
+categories: Competition Pathology Conda Segmentation
+tags: Competition Pathology Conda Pip Segmentation
 # 목차
 toc: true  
 toc_sticky: true 

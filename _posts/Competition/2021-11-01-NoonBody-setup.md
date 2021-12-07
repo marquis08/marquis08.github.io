@@ -1,8 +1,8 @@
 ---
 date: 2021-11-01 14:39
 title: "Setup Env with conda"
-categories: Competition NoonBody
-tags: Competition NoonBody
+categories: Competition NoonBody Segmentation
+tags: Competition NoonBody Segmentation
 # 목차
 toc: true  
 toc_sticky: true 

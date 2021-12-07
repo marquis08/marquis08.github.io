@@ -1,8 +1,8 @@
 ---
 date: 2021-11-04 00:20
 title: "OpenSlide Usages"
-categories: Competition Pathology
-tags: Competition Pathology
+categories: Competition Pathology Segmentation
+tags: Competition Pathology Segmentation
 # 목차
 toc: true  
 toc_sticky: true 
