@@ -30,3 +30,8 @@ mathjax align equal sign
 
 Tex
 > MathJax Tex command: <https://www.onemathematicalcat.org/MathJaxDocumentation/MathJaxKorean/TeXSyntax_ko.html>
+
+- 포스팅시 해야하는 것들
+    - `_posts` 에 글쓰기
+    - categories, tags 채우기
+    - if new categories, check `marquis08.github.io\_includes\nav_list_main`
